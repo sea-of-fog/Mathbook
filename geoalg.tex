@@ -1,4 +1,96 @@
-% \chapter{Local and Discrete Valuation Rings}
+\chapter{Local properties in algebra}
+
+\section{Localization of modules}
+
+\section{Local rings}
+
+This section is devoted to a class of rings very important in algebraic geometry --
+-- local rings. Although the definition is purely algebraic, it corresponds to
+notions of \textit{looking around a point} on a (affine) variety.
+
+\subsection{Characterisations of local rings}
+
+% TODO: add a ring subsection header
+All material in this section applies to (unital) rings. They need not be commutative
+for the results to work.
+
+\begin{def}[local ring]
+    A ring \( R \) having a unique maximal ideal \( \mathfrak{m} \) is called
+    a {\bf local ring} and denoted \( (R, \mathfrak{m}) \).
+\end{def}
+
+It turns out there is another characterisation of such rings, which is of~particular
+usefulness in working with the second point of interest of this chapter -- Discrete
+Valuation Rigs, whose definition we postpone for now.
+
+\begin{thm}[local ring characterisation]
+    A ring R is local iff the set of noninvertible elements forms an ideal.
+    This is the the unique maximal ideal.
+\end{thm}
+
+\begin{proof}
+    The first implication is trivial, since an ideal containing a unit
+    is~not proper.
+
+    Suppose now \( R \) is local with maximal ideal \( \mathfrak{m} \).
+    Since \( \mathfrak{m} \) is proper, it does not contain any invertible
+    element. Take a noninvertible \( r \in R \). The principal ideal \( (r) \)
+    can be extended (via Zorn's lemma) to a maximal ideal, which must be
+    the unique maximal ideal \( \mathfrak{m} \), so \( r \in \mathfrak{m} \).
+
+\end{proof}
+
+There is also an element-wise characterisation of local rings. To see it
+emerge, let us try a different line of attack for the previous proof.
+
+We know that \( \mathfrak{m} \) contains only noninvertible elements,
+but we still have to prove that it contains all such elements. By~way~of~contradiction,
+suppose \( r \not\in \mathfrak{m} \). Now by maximality we have
+\[ 
+    \mathfrak{m} + (r) = R 
+\]
+and in particular
+\[ 
+    m + ar = 1 
+\]
+for some \( a \in R, m \in \mathfrak{m}\). We would like to derive a contradiction,
+so we would hope that the identity above lets us conclude that \( r \) is invertible.
+The property below is what we need
+
+\begin{thm}[local ring addition]
+   A ring \( R \) is local iff it has the following property: for all \( a, b \) such that  
+   \[ 
+      a + b \in R^\star 
+  \]
+    at least one of \( a,b \) is invertible. 
+\end{thm}
+
+\begin{proof}
+    The line of attack above shows how this implies \( R \) being local.
+    Once we have this property, we can take any maximal ideal. If there was
+    some noninvertible element it did not contain, we would be able to extend it.
+
+    On the other hand, take a local ring. We will show it is impossible to sum
+    two noninvertibles to a unit. We have that
+    \[ 
+    (a) + (b) \subseteq \mathfrak{m} + \mathfrak{m} = \mathfrak{m}, 
+   \]
+   which contains no units.
+
+\end{proof}
+
+It should be noted that the property expressed in the previous theorem might
+be rephrased in two ways: first, take an arbitrary finite sum instead of two
+elements and second, have the sum be equal to \( 1 \) instead of invertible.
+It should be easy to see that all such characterisations are equivalent.
+
+\subsection{Examples and generic constructions}
+
+\subsection{Properties of local rings}
+
+Krull's intersection, Nakayama's, Kaplansky's theorem
+
+\section{Valuations on Fields and Discrete Valuation Rings}
 
 % lemma
 % In a DVR, elements of valuation zero are invertible
@@ -13,6 +105,17 @@
 % invertible
 
 % in a DVR, the only ideals are (r^n) = \mathfrak{m}^n
+
+\section{Literature used for this chapter}
+
+\begin{enumerate}
+    \item Piotr Kowalski, Algebraic Curves. Chapter 2.3.
+    \item nlab page for local rings
+    \item https://scholarworks.boisestate.edu/cgi/viewcontent.cgi?article=2933&context=td\
+          (for Kaplansky's theorem)
+    \item Wikipedia pages
+    % \item Atiyah MacDonald, Introduction to Commutative Algebra, Chapters 3 and 9
+\end{enumerate}
 
 \chapter{Algebraic Geometry, problemset 5}
 
