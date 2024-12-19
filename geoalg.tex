@@ -1,4 +1,4 @@
-\chapter{Local and Discrete Valuation Rings}
+% \chapter{Local and Discrete Valuation Rings}
 
 % lemma
 % In a DVR, elements of valuation zero are invertible
@@ -26,22 +26,24 @@ in that DVR.
 Thus is suffices to prove the following: in a DVR, an element is of valuation
 \( 1 \) iff it is irreducible.
 
-Since a DVR is a local ring, let us denote its maximal ideal by \( \mathfrak{m} = (r) \).
-The valuation on this DVR can be described as the usual \( r \)-adic valuation
-(see solution of {\bf Problem 7.}).
+Since a DVR is a local ring, let us denote its maximal ideal by 
+\( \mathfrak{m} = (r) \). Note that \( r \) must be irreducible, otherwise
+the~ideal \( \mathfrak{m} \) would not be maximal. The valuation on this DVR
+can~be~described as the usual \( r \)-adic valuation or belonging to a power of 
+the maximal ideal (see solution of {\bf Problem 7.}).
 
 Let \( f \) be a local parameter, i.e. irreducible. Then, by {\bf Remark 2.37.}
 \[ 
     (f) = \mathfrak{m} = (r), 
 \]
 so \( f \) and \( r \) are associates, therefore \( f = ur \) for some unit \( u \).
-We have that \( u \in \mathcal{O}_v \in \mathfrak{m} \), so \( v(u) = 0 \) and
+We have that \( u \in \mathcal{O}_v \setminus \mathfrak{m} \), so \( v(u) = 0 \) and
 \[ 
     v(f) = v(u) + v(r) = 0 + 1 = 1. 
 \]
 
-On the other had, let \( f \) be of valuation \( 1 \). Then, as the valuation
-is \( r \)-adic we have that
+On the other hand, let \( f \) be of valuation \( 1 \). Then, as the valuation
+is the \( r \)-adic valuation we have that
 \[ 
     f = ra 
 \]
@@ -51,18 +53,146 @@ so \( f \) is irreducible since \( r \) is.
 
 \subsection*{Problem 5}
 
-Since the vanishing ideal of a curve is always radical (by the Nullstellensatz),
-we have that \( F\) is irreducible.
-
 \subsubsection*{Problem 5a}
 
 Consider a tangent line 
 \( L = V(\alpha X + \beta Y + \gamma )\).
 
 If \( L \) is tangent, the intersection number \( I(0, L \cap C)  > 1 > 0 \),
-so \( 0 \in L \), so \( \gamma = 0 \). By the same reasoning
+so \( 0 \in L \), so \( \gamma = 0 \). By the same reasoning, \( F \) has zero
+constant term.
+
+It is easy to see that a line is a smooth curve. Therefore, the curve \( C \)
+is tangent to \( L \) iff \( F \) is of valuation at least two in \( \mathcal{O}_0 \)
+(which is a DVR). By {\bf Problem 7} that is equivalent to \( F \) being a 
+member of \( \mathfrak{m}^2_v \) (where \( F \) is reinterpreted
+as \( F + I(L) \) in \( K(L) \)).
+
+Algebraically, the square of the maximal ideal corresponds to
+\[ 
+    I^2_L(0) \mathcal{O}_0 = \left\{ \frac{G}{H} : G \in I^2_L(0), H \not\in I_L(0)\right \} .
+\]
+Thus, \( F \) being of valuation at least \( 2 \) is equivalent to it being of the form
+\[ 
+    F = \frac{1}{N} \cdot \sum_i G_i H_i  
+\]
+as a rational function in \( K(L) \) for some \( N \in K[L] \setminus I_L(0)\)
+and \( G_i, H_i \in I_L(0) \). This is again equivalent to the identity
+\[ 
+    FN = \sum_i G_i H_i 
+\]
+in \( K[L] \), which in turn is equivalent to \( F \) having the form
+\[ 
+    FN = \sum_i G_i H_i + P(\alpha X + \beta Y)
+\]
+for some polynomials such that \( N(0) \neq 0 \) and \( G_i (0) = H_i(0) = 0 \).
+
+After this introduction, we will show
+\[ 
+    T_0 C = V\left( \partial_X F (0) X + \partial_Y F(0) Y \right) 
+\]
+via two inclusions, first from left to right.
+
+If both partials are \( 0 \), the vanishing set is the whole space \( \mathbb{A}^2 \),
+so this inclusion is trivial. Suppose now at least one partial is nonzero.
+Differentiating both sides of the above identity w.r.t. \( X \) we get that
+\[ 
+    \partial_X F \cdot N + F \cdot \partial_X N = \left( \sum_i \partial_X G_i \cdot H_i
+    + G_i \cdot \partial_X H_i \right ) + \partial_X P \cdot (\alpha X + \beta Y) + \alpha P.
+\]
+Evaluating both sides at \( 0 \) and remembering which polynomials vanish at \( 0 \)
+we obtain
+\[ 
+    N(0) \partial_X F (0) = P(0) \alpha.
+\]
+We can now repeat this for differentiation w.r.t. \( Y \). This implies that the
+vectors
+\[ 
+    [ \partial_X F(0), \partial_Y F(0) ]^T, [ \alpha, \beta ]^T \in \mathbb{K}^2
+\]
+are linearly dependent, so they describe the same line.
+
+Now for the other inclusion. We will lean on the fact that the first partials
+evaluated at zero are the coefficients of the monomials \( X, Y \) in the polynomial \( F \).
+Suppose first both partials of \( F \) are zero.
+Then we can write \( F \) as
+\[ 
+    F = X^2G(X,Y) + XY H(X,Y) + Y^2 P(X,Y) + 0 \cdot (\alpha X + \beta Y)
+\]
+which is the form we needed. This gives that \textit{any} line is tangent to \( C \)
+at \( 0 \), so the tangent space is the whole plane (as is \( V(0 \cdot X + 0 \cdot Y) \)).
+
+If, on the other hand, some partial is nonzero, we can write \( F \) as
+\[ 
+    F = 1 \cdot (\partial_X F (0) \cdot X  + \partial_Y F(0) Y) + X^2G(X,Y) +
+    XY H(X,Y) + Y^2 P(X,Y).
+\]
+This proves that \( C \) is indeed tangent to \( V(\partial_X F (0) \cdot X  +
+\partial_Y F(0) Y)\).
 
 \subsubsection*{Problem 5b}
+
+From the previous subproblem and the lecture we know that both \( T_0 C \)
+and \( I_C (0) / I_C(0)^2 \) are finite-dimensional \( K \)-vector spaces.
+This allows us to use a theorem of linear algebra which states that a bilinear map
+such as is given in the problem induces an isomorphism iff for all \( P \neq 0 \)
+the function
+\[ 
+    x \mapsto \Phi(x, P)
+\]
+is nonzero (i.e. is nonzero for some \( x \)) or, equivalently, that if this 
+function is zero then so is \( P \). Here \( P \) should be understood as the
+representative regular function in \( K[C] \) or a polynomial which represents
+that function (so a representative of representatives).
+
+Suppose then that this function is zero. First consider the case that both
+partials of \( F \) are zero. Then the tangent space is the whole plane and
+we have that for all \( x, y \in K \)
+\[ 
+    \partial_X P(0) x + \partial_Y P(0) y = 0,
+\]
+which gives that both partials of \( P \) vanish at zero, so we have the form
+\[ 
+    P = X^2 P_1 + XY P_2 + Y^2 P_3 
+\]
+for \( P \) as a polynomial, which in particular implies
+\[ 
+    P \in I_C(0)^2  
+\]
+as a regular function, so
+\[ 
+    P = 0 
+\]
+in \( I_C(0)/I_C(0)^2 \). 
+
+Now consider what happens when \( F \) has a nonzero partial. This means that
+\[ 
+    \partial_X P(0) x + \partial_Y P(0) y = 0
+\]
+for all points such that
+\[ 
+    \partial_X F(0) x + \partial_Y F(0) y = 0,
+\]
+which gives that either the gradient of \( P \) is zero (in which case we can
+repeat the reasoning from the previous case) or that the gradients of \( P \)
+and \( F \) are linearly dependent. Then there exists a scalar \( \alpha \)
+such that
+\[ 
+    P - \alpha F 
+\]
+has zero first partials, so
+\[ 
+    P = \alpha F + X^2 P_1 + XY P_2 + Y^2 P_3
+\]
+as a polynomial, so
+\[ 
+    P = X^2 P_1 + XY P_2 + Y^2 P_3 + I(C)
+\]
+as a regular function. As we have done many times, we now conclude that
+\[ 
+    P \in I_C(0)^2,
+\]
+which is what we needed.
 
 \subsection*{Problem 6}
 
@@ -72,7 +202,7 @@ Let
 \[ 
     a = r^n \frac{\alpha}{\beta}, b = r^m \frac{\gamma}{\delta},
 \]
-with \( r \not\mid \alpha, \beta, \gamma, \delta \) and wlog \( n \geqslant m \). Then
+with \( r \nmid \alpha, \beta, \gamma, \delta \) and wlog \( n \geqslant m \). Then
 \[ 
     a + b = r^m \frac{r^{n-m}\alpha\delta + \beta\gamma}{\beta\delta}.
 \]
@@ -87,7 +217,7 @@ We have
 \[ 
     ab = r^{n+m} \frac{\alpha\gamma}{\beta\delta}. 
 \]
-By virtue of \( r\) being prime, we have \( r \not\mid \alpha\gamma\beta\delta \),
+By virtue of \( r\) being prime, we have \( r \nmid \alpha\gamma\beta\delta \),
 so
 \[ 
     v_r(ab) = n + m. 
