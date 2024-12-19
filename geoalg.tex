@@ -1,0 +1,197 @@
+\chapter{Local and Discrete Valuation Rings}
+
+% lemma
+% In a DVR, elements of valuation zero are invertible
+
+% lemma
+% In a DVR, the following are equivalent: an element is irreducible,
+% an element generates the maximal ideal,
+
+% text:
+% not any ring given a valuation is a DVR! mathbb{Z} with the usual
+% p-adic valuation is not a DVR (elements of valuation 0 are not)
+% invertible
+
+% in a DVR, the only ideals are (r^n) = \mathfrak{m}^n
+
+\chapter{Algebraic Geometry, problemset 5}
+
+\subsection*{Problem 4}
+
+Since \( v \) is a smooth point of \( C \), the ring \( \mathcal{O}_v \)
+is a DVR. A local parameter is defined as any uniformizing parameter
+of that DVR and having a zero of order 1 means being of valuation \( 1 \)
+in that DVR.
+
+Thus is suffices to prove the following: in a DVR, an element is of valuation
+\( 1 \) iff it is irreducible.
+
+Since a DVR is a local ring, let us denote its maximal ideal by \( \mathfrak{m} = (r) \).
+The valuation on this DVR can be described as the usual \( r \)-adic valuation
+(see solution of {\bf Problem 7.}).
+
+Let \( f \) be a local parameter, i.e. irreducible. Then, by {\bf Remark 2.37.}
+\[ 
+    (f) = \mathfrak{m} = (r), 
+\]
+so \( f \) and \( r \) are associates, therefore \( f = ur \) for some unit \( u \).
+We have that \( u \in \mathcal{O}_v \in \mathfrak{m} \), so \( v(u) = 0 \) and
+\[ 
+    v(f) = v(u) + v(r) = 0 + 1 = 1. 
+\]
+
+On the other had, let \( f \) be of valuation \( 1 \). Then, as the valuation
+is \( r \)-adic we have that
+\[ 
+    f = ra 
+\]
+for some \( r \nmid a \), so \( a \in \mathcal{O}_v \setminus \mathfrak{m} \).
+This implies \( a \) is a unit, so \( f \) and \( r \) are associated,
+so \( f \) is irreducible since \( r \) is.
+
+\subsection*{Problem 5}
+
+Since the vanishing ideal of a curve is always radical (by the Nullstellensatz),
+we have that \( F\) is irreducible.
+
+\subsubsection*{Problem 5a}
+
+Consider a tangent line 
+\( L = V(\alpha X + \beta Y + \gamma )\).
+
+If \( L \) is tangent, the intersection number \( I(0, L \cap C)  > 1 > 0 \),
+so \( 0 \in L \), so \( \gamma = 0 \). By the same reasoning
+
+\subsubsection*{Problem 5b}
+
+\subsection*{Problem 6}
+
+\subsubsection*{Problem 6a}
+
+Let
+\[ 
+    a = r^n \frac{\alpha}{\beta}, b = r^m \frac{\gamma}{\delta},
+\]
+with \( r \not\mid \alpha, \beta, \gamma, \delta \) and wlog \( n \geqslant m \). Then
+\[ 
+    a + b = r^m \frac{r^{n-m}\alpha\delta + \beta\gamma}{\beta\delta}.
+\]
+Note that \( r \) does not divide the numerator (since \( r \) is irreducible
+and thus prime in a UFD). If \( n > m \), it will also not divide the denominator,
+but if \( n = m \) it might. In the first case the valuation is exactly \( m \),
+while in the second case it might change -- but only increase.
+
+\subsubsection*{Problem 6b}
+
+We have
+\[ 
+    ab = r^{n+m} \frac{\alpha\gamma}{\beta\delta}. 
+\]
+By virtue of \( r\) being prime, we have \( r \not\mid \alpha\gamma\beta\delta \),
+so
+\[ 
+    v_r(ab) = n + m. 
+\]
+
+\subsubsection*{Problem 6c}
+
+For every \( n \in \mathbb{Z} \) we have
+\[ 
+    v_r(r^n) = n,   
+\]
+so the valuation is indeed surjective.
+
+\subsection*{Problem 7}
+
+We claim that
+\[ 
+    \mathfrak{m}^n = \{ x : v_R(x) \geqslant n \}, 
+\]
+from which the problem follows immediately. For \( n = 0 \) the claim follows
+from the nonnegativity of the valuation.
+
+Let \( r \in R \) be the uniformizing parameter. Then we have that 
+\[ 
+    \mathfrak{m} = (r)
+\]
+by {\bf remark 2.37.}, so an element of \(a \in \mathfrak{m}^n \) is of the form
+\[ 
+    a = \sum_i a_i r^n
+\]
+for some \( a_i \in R \), so 
+\[ 
+    v_R(a) \geqslant \min (v_r(a_1r^n), v_r(a_2r^n), \ldots, v_r(a_jr^n))
+    \geqslant \min ( n, n, \ldots n ) = n.
+\]
+This gives us one inclusion of the claim. For the other one, take an element
+\( x \) of valuation no less than \( n \). The definition of valuation implies
+that for some \( m \geqslant n \)
+\[ 
+    x = r^m y = (r^{m-n}y) r^n \in \mathfrak{m}^n.
+\]
+This completes the solution.
+
+
+\subsection*{Problem 8}
+
+Take \( x, y \in \mathcal{O}_v \). Then we have
+\[ 
+v(xy) = v(x) + v(y) \geqslant v(y) \geqslant 0
+\]
+and
+\[ 
+    v(x + y) \geqslant \min (v(x), v(y)) \geqslant 0. 
+\]
+This implies that \( \mathcal{O}_v \) is a subring of \( L \).
+If we take \( x,y \) such that both valuations are positive, the sum has
+a positive valuation, and if at least \( y \) has a positive valuation
+then the product does as well. This implies that \( \mathfrak{m}_v \) is an ideal.
+
+Note that for any valuation we have
+\[ 
+    v(1) = v(1 \cdot 1) = v(1) + v(1), 
+\]
+so
+\[ 
+    v(1) = 0. 
+\]
+Now take any \( x \in \mathcal{O}_v \setminus \mathfrak{m}_v \). This means
+that \( v(x) = 0 \). Let \( y \) be the multiplicative inverse (in \( L \)!)
+of \( x \). Then
+\[ 
+    0 = v(1) = v(xy) = v(x) + v(y), 
+\]
+so \( v(y) = 0\) and \( y \in \mathcal{O}_v \). If \( v(x) > 0 \), then \( v(y) < 0\)
+and \( y \not\in \mathcal{O}_v \). We have just proved that the set of noninvertible
+elements of \( \mathcal{O}_v \) is an ideal. Therefore \( (\mathcal{O}_v, \mathfrak{m}_v) \)
+is a local ring.
+
+Since the valuation is surjective, \( \mathfrak{m}_v \) is nonempty and \( \mathcal{O}_v \) has
+nonzero noninvertible elements, so it is not a field. To finish the proof~that
+\( \mathcal{O}_v \) is a DVR all we need to do is show that \( \mathcal{O}_v \) is a PID.
+
+To do that, take \( r \) to be any element of valuation \( 1 \). Such an element
+exists by surjectivity of the valuation.
+
+\paragraph{Claim.} Let \( t \in \mathcal{O}_v \) and \( v(t) = n \geqslant 0 \).
+Then \( t = ur^n \) for some unit \( u \in \mathcal{O}_v \).
+
+\paragraph{Proof.} Let
+\[ 
+    \alpha = \frac{t}{r^n} \in L. 
+\]
+Then \( \alpha \) has valuation \( 0 \), so it actually is an invertible
+element~of \( \mathcal{O}_v \).
+
+% \proofend
+
+Now take an ideal \( I \). Note that if \( I \) has any element of valuation \( n \),
+then by the claim above it contains all elements of valuation \( n \) as they all are
+associated with \( r^n \). It will also contain an element (so all elements) of higher
+valuations by virtue of being closed under multiplication by \( r \).
+
+This lets us conclude that 
+\[ 
+    I = (r^n) 
+\]
+where \( n \) is the smallest valuation achievable by an element of \( I \).
