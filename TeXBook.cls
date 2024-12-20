@@ -6,3 +6,7 @@
 \RequirePackage{amsmath}
 \RequirePackage{amssymb}
 \RequirePackage{amsthm}
+
+% AMSthm environments
+\newtheorem{thm}{Theorem}
+\newtheorem{defn}{Definition}
