@@ -26,11 +26,11 @@
 \RequirePackage{titlesec}
 % Chapters
 \titleformat{\chapter}[display]
-{\normalfont\huge\bfseries}{{\color{purple}\chaptertitlename\ \thechapter}}{20pt}{\Huge}
+{\normalfont\huge\bfseries}{{\sffamily\color{purple}\chaptertitlename\ \thechapter}}{20pt}{\sffamily\Huge}
 \titlespacing*{\chapter} {0pt}{50pt}{40pt}
 % Sections
 \titleformat{\section}
-{\normalfont\Large\bfseries}{{\color{purple}\S}\thesection}{1em}{}
+{\normalfont\Large\bfseries}{{\color{purple}\S}\thesection}{1em}{\sffamily}
 \titlespacing*{\section} {0pt}{3.5ex plus 1ex minus .2ex}{2.3ex plus .2ex}
 % Subsections
 \titleformat{\subsection}
