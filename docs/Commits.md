@@ -11,3 +11,6 @@ Commits adding actual content to the book. The first few are called _feat_.
 
 ## style
 Commits affecting the look of the book.
+
+## chore
+Moving things around, renaming etc.
