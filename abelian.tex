@@ -1,0 +1,107 @@
+\chapter{Abelian groups}
+
+We will now explore some features of abelian groups. These will later be
+recontextualized into features of modules (for those of you know, an abelian
+group is essentialy the same as a \mathbb{Z}-module). In this chapter, we will
+derive a structure theorem.
+
+\section{Basic properties}
+
+% TODO: additive notation, statements about it
+
+\section{Torsion}
+
+Central to the study of abelian groups is the notion of torsion. We begin with~
+two definitions, one for elements and one for groups.
+
+\begin{defn}
+    An element of an abelian group is called a \textbf{torsion element} if it is
+    of finite order. An element of infinite order is called \textbf{torsion-free}.
+\end{defn}
+
+\begin{defn}
+    An abelian group is called a \textbf{torsion group} if all its elements are torsion.
+    An abelian gropu is called \textbf{torsion-free} if all its \emph{nonzero} elements
+    are torsion-free.
+\end{defn}
+
+One might ask why we define this only for abelian groups. The following crucial fact
+is the reason -- more precisely, the fact that its proof relies on commutativity.
+
+\begin{thm}
+    If \( \alpha, \beta \) are two torsion elements then their sum (and difference)
+    is also a torsion element. Thus, the torsion elements form a subgroup.
+\end{thm}
+
+\begin{Proof}
+Let \( \alpha \) have order \( n \) and \( \beta \) have order \( m \). Then we have
+\[ 
+    nm(\alpha + \beta) = nm\alpha + nm\beta =  m(n\alpha) + n(m\beta) = m \cdot 0 + n \cdot 0 = 0.
+\]
+The subgroup claim is proved by noting that the same computation hold as well
+for difference and that the identity element is of course torsion.
+\end{Proof}
+
+% TODO: example of nonabelian group where the torsion elements are not subgroups
+
+Since we have a well defined kind of subgroup, we might as well give it a name.
+
+\begin{defn}
+    Let \( G \) be an abelian group. Its \textbf{torsion subgroup}, denoted
+    \[ 
+        {\rm T}(G) {\rm or} Tor(G) 
+   \]
+   is the subgroup consisting of all the torsion elements of \( G \).
+\end{defn}
+
+We may hope that such a nice notion of substructure is also valid for the torsion-free
+elements of a group. This fails, however, as the set of torsionfree elements is
+the~complement of a subgroup, which will very often fail to be a subgroup. On the level
+of elements, we have the following fact.
+
+% TODO: correct the Tor to an operator
+\begin{thm}
+    Let \( a \in G \) be torsionfree and \( b \in Tor(G) \). Then \( a + b \) is torsionfree.
+\end{thm}
+
+\begin{proof}
+    We give two proofs. For the first one, suppose \( a + b \) is torsion. Then
+    \[ 
+       a = (a + b) - b 
+   \]
+   would be torsion (since the torsion elements form a subgroup).
+
+   For the second proof, suppose \( a + b \) is torsion with order \( n \) and
+   that \( b \) has order \( m \). Then
+   \[ 
+      0 = mn(a + b) = mna + mnb = mna, 
+   \]
+   so \( a \) is torsion as well.
+\end{proof}
+
+All is not lost though! We cannot define a notion of \textit{torsion-free subgroup},
+but there is a simple way of killing the torsion -- quotienting!
+
+\subsection{A weird example of groups}
+% TODO: finitely generated torsion-free group is free
+
+\subsection{Functors}
+
+\subsection{Tensors}
+% TODO: torsion and tensors
+
+
+\section{Structure theorem}
+
+\section{A smudge of infinite abelian group theory: the prufer groups}
+
+Prufer groups are: divisible, \( p \)-torsion, subgroups, infinitely generated
+
+\section{Sources for this chapter}
+
+\begin{enumerate}
+    \item Ludomir Newelski, Algebra II
+    \item Ludomir Newelski, Algebra 2R
+    \item Wikipedia: torsion subgroup, torsion, torsion-free group, Prufer groups
+\end{enumerate}
+
