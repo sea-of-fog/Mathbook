@@ -76,10 +76,17 @@ where we would much prefer
 \[ 
     \supp h_n = [0,1].
 \]
-No worries -- we can see that the \emph{shape} is right, so squeezing the function will do. Take
-\[ 
-    f_n(x) = h_n(nx) = g(nx)g(n - nx). 
-\]
+No worries -- we can see that the \emph{shape} is right, so squeezing the function will do.
+
+\begin{lemma}
+    The function sequence  
+    \[ 
+        f_n(x) = h_n(nx) = g(nx)g(n - nx). 
+    \]
+    converges to \( \chi_{[0,1]} \) pointwise a.e. (outside of \( \{0,1\} \)) and in \( L^1 \).
+\end{lemma}
+
+\begin{proof}
 Let us quantify the idea that \emph{\( f_n \) is almost \( 1 \) on almost all of \( [0,1] \)}. In terms of \( h_n \), these functions should be almost \( 1 \) on almost all of \( [0,n] \). We will pick an \( \alpha \) (varying with \( n \)), for which we will be able to establish a good bound.
 Suppose
 \[ 
@@ -100,9 +107,9 @@ and
 \[ 
     \lim\limits_n \frac{2}{\alpha^2n^2} = 0.
 \]
-Of course, \( \alpha = 1/\sqrt{n} \) does the trick nicely. We can get better convergence estimates
-% TODO: package this into a lemma
-% TODO: make this into
+Of course, \( \alpha = 1/\sqrt{n} \) does the trick nicely. We can get better convergence estimates for a different choice.
+% TODO: expand on this
+\end{proof}
 
 \section{Higher dimensions}
 
