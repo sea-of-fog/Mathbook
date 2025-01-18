@@ -1,0 +1,117 @@
+\chapter{Approximation properties of smooth functions}
+
+Smoothness is a really good property that a function can have. However, a lot of the functions we need aren't smooth, i.e. ReLU, \( \max (0, \min(1, x)) \), \( \chi_{[a,b]} \) and so on. In this chapter, we will show how to effectively approximate such functions with very good smooth lookalikes.
+% TODO: insert pictures
+
+% CREDITS: everything in this section is by me
+\section{Characteristic functions on intervals}
+
+Let us make our way towards approximating the interval characteristic function. In the special case of the real line, the story begins with quite a wonderful function -- the magnificent
+\[ 
+    e^{-1/x^2}.
+\]
+Taken literally, it's not quite defined at \( 0 \). However, as \( x \to 0 \), \( -1/x^2 \to -\infty \), so we can define the value at \( 0 \) to be \( 0 \). Notice that the convergence of the argument to \( -\infty \) is really fast -- fast enough the we can retain smoothness at \( 0\). Let us state the properties formally.
+
+\begin{lemma}
+    The function
+    \[ 
+       g(x) =
+       \begin{cases}
+           e^{-1/x^2} & x \neq 0 \\
+           0          & x = 0
+       \end{cases}
+   \]
+   is smooth and satisfies the following properties:
+   \begin{enumerate}
+       \item \( g(0) = 0 \),
+       \item \( g(x) \leq 1 \),
+       \item \( \lim\limits_{x \to 0} g(x)/P(x) = 0 \) for any \( P \in \mathbb{R}[X] \),
+       \item \( g^{(n)}(0) = 0 \) for all \( n \).
+   \end{enumerate}
+\end{lemma}
+
+\begin{proof}
+    Properties (1) and (2) should be obvious. For (3) we perform the change of variables \( u := 1/x^2 \) to obtain
+    \[ 
+        \lim\limits_{x \to 0} \frac{g(x)}{P(x)} = \lim\limits_{u \to \infty} \frac{e^{-u}}{P(\pm 1/\sqrt{u})} = \lim\limits_{u \to \infty}\frac{u^{\deg P / 2} e^{-u}}{Q(\pm\sqrt{u})} = 0,
+   \]
+   where \( Q \in \mathbb{R}[X] \) (actually, it's \( P \) with the coefficients written backwards). We use (3) to derive an (4). By induction, we have that at all \( x \neq 0 \)
+   \[ 
+       g^{(n)} = \frac{g(x)P_n(x)}{Q_n(x)} 
+  \]
+  for some \( P, Q \in \mathbb{R}[X] \) and the only root of \( Q \) is \( 0 \). Indeed,
+  \[ 
+      \frac{\mathrm{d}}{\mathrm{d}x}  \frac{g(x)P_n(x)}{Q_n(x)} = \frac{ -\frac{1}{x^2}Q_n(x)P_n(x)g(x) + P_n'(x)Q_n(x)g(x) - P_nQ'_n g(x) }{Q^2_n(x)} = g(x) \frac{P_{n+1}(x)}{Q_{n+1}(x)},
+ \]
+where we have expanded the fraction by \( x^2 \) to get the desired form. This gives that
+ \[ 
+     Q_n = x^{a_n},
+\]
+where
+\begin{align*}
+    a_0 &= 0 \\
+    a_{n+1} &= 2a_n + 2,
+\end{align*}
+from which we can derive
+\[ 
+    a_n = 2(2^n - 1). 
+\]
+\end{proof}
+
+The magic of this function is that, since it has all the derivatives at \( 0 \) equal to \( 0 \), we might as well say it's zero on all negative numbers \emph{and still get a smooth function}! This is very much not the case for more primitive attempts to do this -- look at the case of \( x \) or more generally \( x^k \) and see that it only gives as a function of class \( C^{k-1} \).
+
+This maneover let us discard half of the real line a smooth fashion, and this means we're halfways towards approximating \( \chi_{[0,1]} \). The idea will be to use functions like this:
+\[ 
+    g(x)g(1-x).
+\]
+This has a small bump, but since \( g \) is very flat near \( 0 \), the product of two such functions will not be very large. The solution solution to this problem is to widen the interval for the moment, so that values closer to \( 1 \) get multiplied together in the formula above. Let us define
+\[ 
+    h_n = g(x)g(n-x).
+\]
+This should look better, but now
+\[ 
+    \supp h_n = [0,n] 
+\]
+where we would much prefer
+\[ 
+    \supp h_n = [0,1].
+\]
+No worries -- we can see that the \emph{shape} is right, so squeezing the function will do. Take
+\[ 
+    f_n(x) = h_n(nx) = g(nx)g(n - nx). 
+\]
+Let us quantify the idea that \emph{\( f_n \) is almost \( 1 \) on almost all of \( [0,1] \)}. In terms of \( h_n \), these functions should be almost \( 1 \) on almost all of \( [0,n] \). We will pick an \( \alpha \) (varying with \( n \)), for which we will be able to establish a good bound.
+Suppose
+\[ 
+    \alpha n \leq x \leq (1 - \alpha) n.
+\]
+This gives
+\begin{align*}
+    \frac{1}{\alpha^2n^2} &\geq \frac{1}{x^2}  \\
+    \frac{2}{\alpha^2n^2} &\geq \frac{1}{x^2} + \frac{1}{(n-x)^2} \\
+    -\frac{2}{\alpha^2n^2} &\leq -\frac{1}{x^2} - \frac{1}{(n-x)^2} \\
+    e^{-\frac{2}{\alpha^2n^2}} &\leq  h_n(x)
+\end{align*}
+We now want to pick a sequence \( \alpha \) such that both
+\[ 
+    \lim\limits_n \alpha = 0
+\]
+and
+\[ 
+    \lim\limits_n \frac{2}{\alpha^2n^2} = 0.
+\]
+Of course, \( \alpha = 1/\sqrt{n} \) does the trick nicely. We can get better convergence estimates
+% TODO: package this into a lemma
+% TODO: make this into
+
+\section{Higher dimensions}
+
+\section{Partitions of unity}
+
+
+\section{Approximative identities on \(\mathbb{R}\)}
+Now we will try to develop a more general way of approximating functions.
+
+\section{Banach algebras}
+
+\section{Literature used for this chapter}

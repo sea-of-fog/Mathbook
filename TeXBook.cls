@@ -12,14 +12,17 @@
 \RequirePackage{amsmath}
 \RequirePackage{amssymb}
 
+% Large curly braces
+\RequirePackage{cases}
+
 % AMSthm environments
 \RequirePackage{amsthm}
+\newtheorem{lemma}{Lemma}
 \newtheorem{thm}{Theorem}
 \newtheorem{defn}{Definition}
 
 % Colors
 \RequirePackage{xcolor}
-
 
 % Configuration of section headings
 % I copied the default from the titlesec documentation and changed them slightly
@@ -44,3 +47,6 @@
 \titleformat{\paragraph}[runin]
 {\normalfont\normalsize\bfseries}{\theparagraph}{1em}{}
 \titlespacing*{\paragraph} {0pt}{3.25ex plus 1ex minus .2ex}{1em}
+
+% Operators
+\DeclareMathOperator{\supp}{supp}
