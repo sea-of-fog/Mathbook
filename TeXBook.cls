@@ -20,6 +20,7 @@
 \newtheorem{lemma}{Lemma}
 \newtheorem{thm}{Theorem}
 \newtheorem{defn}{Definition}
+\newtheorem{example}{Example}
 
 % Colors
 \RequirePackage{xcolor}
@@ -50,3 +51,9 @@
 
 % Operators
 \DeclareMathOperator{\supp}{supp}
+
+% Topology
+\DeclareMathOperator{\Int}{Int}
+\DeclareMathOperator{\Ext}{Ext}
+\DeclareMathOperator{\Cl}{Cl}
+\DeclareMathOperator{\Bd}{Bd}

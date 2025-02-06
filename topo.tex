@@ -1,0 +1,194 @@
+\chapter{Point-set topology}
+%TODO: add paper references for all of the used stuff
+
+This chapter summaries basic, point-set topology. It is roughly equivalent to Chapter 2 of Munkres, without the metric space material.
+
+\section{The location trilemma}
+
+Fix a topological space $X$, a set $A$ an a point $x$. In terms of set theory, a point has two \emph{locations} with respect to $A$ -- either $x \in A$ or $x \not\in A$. In topology, we care about a little more. Although any endpoint of a closed interval $[a,b]$ certainly is \emph{in} the interval, we would not say it is \emph{inside} that interval. The difference becomes even starker when looking at sets like $\mathbb{N} \subseteq \mathbb{R}$ or $\mathbb{Q} \subseteq \mathbb{R}$.
+% TODO: picture of a "rugged set"
+
+The right way -- or at least \emph{a right way} -- is to say that a point $x$ is \emph{inside} a set $A$, if apart from $x \in A$, a whole neighbourhood $U \ni x$ is contained in $A$. Since this readily implies $x \in A$, we may dispense with that requirement in any definition. Metaphorically, this means that \emph{$x$ cannot escape $A$} or \emph{everything $x$ sees is inside of $A$}. 
+
+The notion that $x \not\in A$ has a very similar topological analogue. We will say that \emph{$x$ is outside of $A$} if not only $x \not\in A$, but a whole neighbourhood $ U \ni x$ is disjoint from $A$. Another word for that is that $x$ \emph{is separated from} $A$. This also provides the metaphorical meaning.
+
+With these two notions lifted up from mere set-based combinatoris to topology, we have made a bit of a problem. It could be the case that for a point $x$ and set $A$ neither of the above properties hold. Pictorially speaking, $x$ is then \emph{not far from $A$}, but also not really \emph{inside of $A$} -- a kind of in-between state. In this case we call $x$ a \emph{boundary point of $A$}.
+
+Topological properties of operators (such as $\Int$, $\Cl$, $\Bd$ etc.) can often be deduced from this simple observation, which we state as a lemma. This was first taught to me by Krzysztof Omiljanowski. I am not aware of any name for the fact, so I made up my own.
+
+\begin{lemma}(The location trilemma.)
+    Let $X$ be a topological space, $A \subseteq X$ and $x \in X$ (not neccesarily $x \in A$). Then exactly one of the following is true:
+    \begin{enumerate}
+        \item For some neighbourhood $U$, $x \in U \subseteq A$. Then $x$ is called an \emph{interior point}.
+        \item For some neighbourhood $U$, $x \in U \subseteq A^c$. Then $x$ is called an \emph{exterior point}. We also say that $x$ is \emph{separated from $A$} by the neighbourhood $U$.
+        \item For all neighbourhoods $U$, $U \cap A \neq \varnothing$ and $U \cap A^c \neq \varnothing$. Then $x$ is called a \emph{boundary point}.
+    \end{enumerate}
+\end{lemma}
+
+\begin{proof}
+    Clause (1) implies that $x \in A$ and (2) implies that $x \in A^c$, so they cannot hold at once. Moreover both of them imply that (3) is false. We will show that if both (1) and (2) do not hold, then (3) does.
+
+    Pick any neighbourhood $U \ni x$. Since (1) does not hold, $U \nsubseteq A$, so $U \cap A^c \neq \varnothing$. Analogously, $U \cap A \neq \varnothing$.
+\end{proof}
+
+The names we gave to the properties of points with respect to $A$ are not random -- they correspond exactly to the usual definitions of $\Int$, $\Bd$, $\Ext$. 
+
+% TODO: proof that these are actually right
+% TODO: definition of closure in terms of Int and Bd
+
+\section{The closure axiomatization}
+
+% TODO: actually mention the aximatization in terms of closed sets!
+As one should know, a topology on $X$ might as well be defined in terms of which sets are closed rather than which sets are open. In practice, another way of looking at closed sets might also pop up. In many scenarios, there is an operator $\Cl$, which we might call a \emph{closure} operator, of the signature
+\[
+    \Cl: \mathcal{P}(X) \to \mathcal{P}(X),
+\]
+which adjoins to a set $A$ some elements that are in a given sense \emph{reachable}, \emph{deducible}, \emph{obtainable} etc. from $A$.
+
+An example of such an operator would be, for any given topology $\mathcal{T}$ on $X$, the closure operator of that topology. One might wonder if from an operator one might recover a topology. If we are going to do that, there are a few questions we need to answer.
+
+% TODO: finish this: motivate all the axioms
+\paragraph{How do we recover open sets?} We can get open sets as complements of closed sets. Then the question is how do we recover closed sets. The key property to use is that a set $C$ is closed iff $\Cl C = C$.
+
+\begin{defn}
+    An operator
+    \[
+        \mathbf{c}: \mathcal{P}(X) \to \mathcal{P}(X)
+    \]
+    is said to satisfy the Kuratowski closure axioms if it satisfies to following
+    \begin{itemize}
+        \item[(K1)] it preserves $\varnothing$, i.e. $\mathbf{c}(\varnothing) = \varnothing$;
+        \item[(K2)] it is \emph{extensive}, i.e. $A \subseteq \mathbf{c}(A)$ for all $A$;
+        \item[(K3)] it is \emph{idempotent}, i.e. $\mathbf{c}(\mathbf{c}(A)) = \mathbf{c}(A)$ for all $A$;
+        \item[(K4)] it distributes over finite sums, i.e. $\mathbf{c}(A \cup B) = \mathbf{c}(A) \cup \mathbf{c}(B)$ for all $A, B$.
+    \end{itemize}
+\end{defn}
+
+Now we prove that this actually defines a topology.
+\begin{lemma}
+    Let $\mathbf{c}$ be an operator     
+    \[
+        \mathbf{c}: \mathcal{P}(X) \to \mathcal{P}(X)
+    \]
+    satisfying the Kuratowski closure axioms. Then, the collection of its fixpoints, i.e.
+    \[
+        co\mathcal{T} = \{ A \,\vert\, \mathbf{c}(A) = A \}
+    \]
+    defines a topology as its family of closed sets.
+\end{lemma}
+
+% FXIME: add \mathbf{c} as a subscript to all coT
+\begin{proof}
+    From the axiom (K1) we get that $\varnothing \in co\mathcal{T}_\mathbf{c}$. We also need $X \in co\mathcal{T}$, which follows from (K2), as no set in $X$ can be larger than all of $X$. Suppose now that $A, B$ are closed in the sens above. Then we have
+    \[
+        \mathbf{c}(A \cup B) = \mathbf{c}(A) \cup \mathbf{c}(B) = A \cup B,
+    \]
+    so $A \cup B$ is closed too. The intersection property is the tricky part.
+
+    Take $C_i \in co\mathcal{T}$. Then
+    \[
+    \bigcap_i C_i \subseteq C_j
+    \]
+    for all $j$, so
+    \[
+        \forall j.\, \mathbf{c}\left(\bigcap_i C_i\right) \subseteq \mathbf{c}(C_j) = C_j,
+    \]
+    so
+    \[
+       \mathbf{c}\left(\bigcap_i C_i\right) \subseteq \bigcap_j C_j.
+    \]
+    The other inclusion follows by extensivity of $\mathbf{c}$, so we actually have the equality
+    \[
+      \mathbf{c}\left(\bigcap_i C_i\right) = \bigcap_j C_j.
+    \]
+\end{proof}
+
+You may have noticed that (K1), (K2) and (K4) were used in the proof, but not (K3). Then an operator satisying all of the Kuratowski axioms except for (K3) defines a topology via closed sets. On the other hand, the closure operator of that topology definitely has property (K3), so these two are different operators!
+
+Luckily, we can recover the closure operator using lattice theory. First, a definition and a lemma.
+
+\begin{defn}
+    An operator
+    \[
+        \mathbf{c}: \mathcal{P}(X) \to \mathcal{P}(X)
+    \]
+    is called a \emph{Čech closure operator} if it satisfies the Kuratowski axioms (K1), (K2) and (K4).
+\end{defn}
+
+\begin{lemma}
+    Any operator satisfying (K4) is \emph{monotonic}, i.e.
+    \[
+        A \subseteq B \Rightarrow \mathbf{c}(A) \subseteq \mathbf{c}(B).
+    \]
+    for all $A, B \subseteq X$.
+\end{lemma}
+\begin{proof}
+    TODO!
+    % TODO: easy, use B \cup A in (K4)
+\end{proof}
+
+% FIXME: change \Cl to \mathbf{c} in all of the following
+Now that we've seen these, we'll want to recover the actual A. If you think of the operator $\mathbf{c}$ as \emph{enriching} a set, a closed set is one that \emph{is completely enriched}. Then, how do we get $\Cl A$? Well, we start by enriching it
+\[
+A \to \Cl A,
+\]
+but this may not be enough, so we enrich the result and get
+\[
+A \to \Cl A \to \Cl (\Cl A),
+\]
+but this may not be enough, so we enrich the result
+\[
+A \to \Cl A \to \Cl (\Cl A) \to \Cl (\Cl (\Cl A)),
+\]
+and\ldots we're stuck in an infinite loop. In such cases, it helps to take a peek past infinity and consider
+%TODO: add ascending sum
+\[
+    \bigcup_{k=0}^n \Cl^k A.
+\]
+This still does not work.
+
+%TODO: definition of Cech closure/preclosure operator
+% TODO: describe the failure of the chain reasoning
+\begin{example}
+    You can define a Cech closure operator which fails this. Let
+    \[
+        X = \mathbb{N} \cup \{\infty\}
+    \]
+    and
+    \[
+        \mathbf{c}(A) = \begin{cases} 
+            \varnothing &\text{ when } A = \varnothing \\
+            X &\text{ when } \infty \in A \\
+            \{0, 1, \ldots, \sup A + 1 \} &\text{ when } A \neq \varnothing \text{ and } \infty \not\in A
+        \end{cases}
+    \]
+    You can check that this is a Cech closure operator, but the only closed sets in $\mathbf{co}\mathcal{T}_\mathbf{c}$ are $\varnothing$ and $X$, i.e. this is the indiscrete topology on $X$.
+\end{example}
+In reality you need a transfinite number of iterations. However, for a Kuratowski operator this chain stabilizes almost immediately, so we're saved!
+
+% TODO: add a "generated topology" clause to the topology lemma
+\begin{lemma}
+    For a Kuratowski closure operator $\mathbf{c}$, the closure operator of its generated topology $\mathcal{T}_\mathbf{c}$ is precisely $\mathbf{c}$.
+\end{lemma}
+
+\begin{proof}
+    Let $C \supseteq A$ be the topological closure of $A$. Then
+    \[
+        \mathbf{c}(A) \subseteq \mathbf{c}(C) = C.
+    \]
+    Since $\mathbf{c}$ is idempotent by (K3), $\mathbf{c}(A)$ is closed in $\mathcal{T}_\mathbf{c}$. Since a topological closure is the smallest closed set containing $A$, we have that
+    \[
+        C \subseteq \mathbf{c}(A) \Rightarrow  C = \mathbf{c}(A)
+    \]
+\end{proof}
+
+\paragraph{Connection with lattice theory.} Note that we want to find the least (because topological closure is the smallest closed set) fixpoint (because of the definition of topology) of $\mathbf{c}$ greater than $A$. This is exactly the setting of the Kleene fixpoint theorem, and what we're doing here is using that.
+
+%TODO: idempotent monotonic function is Kleene-continuous (on countable sets or sth???)
+
+\section{Literature used for this chapter}
+\begin{enumerate}
+    \item Munkres, chapter 2
+    \item Wikipedia, Kuratowski Closure Axioms
+    \item Wikipedia, Preclosure operator
+\end{enumerate}
