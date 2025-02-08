@@ -18,9 +18,30 @@ Generally, we have the following:
 
 \begin{lemma}
 
-    Suppose we have a map f: \Bd I^k \to I^{k-1}/boundary which is constant on the first interval. Then its degree is the same as if we removed that map.
+    Suppose we have a continuous map
+    \[
+    f: I^k \to I^{k-1},
+    \]
+    which is equal to a product map
+    \[
+        f = id_I \times g
+    \]
+    for some continuous
+    \[
+        g: I^{k-1} \to I^{k-2}.
+    \]
+    Then, the degree of
+    \[
+        \widetilde{f}: \Bd I^k \to I^{k-1}/\Bd I^{k-1}
+    \]
+    is equal to the degree of
+    \[
+        \widetilde{g}: \Bd I^{k-1} \to I^{k-2}/\Bd I^{k-2}.
+    \]
 
 \end{lemma}
+
+\paragraph{Remark.} Note that since this is not the same sphere, the degree only makes sense \emph{modulo orientation}.
 
 \section{Literature used for this chapter}
 
