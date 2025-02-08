@@ -1,0 +1,33 @@
+\chapter{The Künneth formula}
+
+This chapter accomplishes a lofty goal: to calculate the homology groups of a product topological space. 
+% Along the way we will discover a new way of combining spaces together, called the \emph{smash product}.
+
+\section{Setup}
+
+% Doesn't this need: finite CW-complexes or of finite dimension?
+We will first try and discover how this all works for CW-homologies, and then use what we've found to generalize the statements to singular homology. The reason why CW-complexes are good for the job is that given CW-structures on $X$ and $Y$, we can easily form a CW-structure on $X \times Y$. One should expect to form a simplicial structure on a product of simplicial complexes, but that would require subdividing a product of $n$- and $m$-simplices into $(n+m)$-simplices, which, if anything, is unpleasant.
+
+We have a product structure on \( X \times Y \) given by products of cells and products of characteristic maps. Let us now try to calculate the cellular boundaries.
+
+One of the cells is larger in dimension: then we get a coefficient of zero, because the map turns out to be constant.
+
+If the above does not hold, then we have to reduce exactly one dimension by one. However, if in the dimension we keep we use a different cell of that dimension, the same problem applies.
+
+Generally, we have the following:
+
+\begin{lemma}
+
+    Suppose we have a map f: \Bd I^k \to I^{k-1}/boundary which is constant on the first interval. Then its degree is the same as if we removed that map.
+
+\end{lemma}
+
+\section{Literature used for this chapter}
+
+\begin{enumerate}
+    \item Allen Hatcher, Algebraic Topology
+    % TODO: add umlaut  
+    \item MathOverflow, biography of Hermann Kunneth: https://mathoverflow.net/questions/114215/who-was-hermann-k%C3%BCnneth
+    % TODO: Make this a link
+    \item https://sili-math.github.io/AT2020/Lecture-22.pdf
+\end{enumerate}
