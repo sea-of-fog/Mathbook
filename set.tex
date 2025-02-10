@@ -1,0 +1,60 @@
+\chapter{Naive set theory}
+
+% TODO: add a tree picture
+\begin{lemma}
+    Let
+    \[
+        f: X \to X
+    \]
+    be a function from a \emph{finite} nonempty set into itself. Then, you can uniquely decompose the set \( X \) into disjoint parts
+    \[
+        X = X_1 \cup X_2
+    \]
+    such that \( f \) restricted to \( X_1 \) is a permutation and every element from \( X_2 \) eventually gets to \( X_1 \), that is
+    \[
+        \forall x_2 \in X_2 \exists k \, f^k \in X_1.
+    \]
+\end{lemma}
+
+\begin{proof}
+
+    Define a decreasing (TODO: why) sequence of sets by
+    \[
+        X^0 = 0, X^{k+1} = f[X^k].
+    \]
+    Every set in the sequence is finite and nonempty. Since the sequence is decreasing, it must stabilize eventually. Let \( k_0 \) be the first index at which it stabilizes, i.e.
+    \[
+        X^k = X^{k+1} = f[X^k].
+    \]
+    Then
+    % TODO: add restriction
+    \[
+        f: X^k \to X^k
+    \]
+    % TODO: add lemma reference
+    is surjective, so by a previous lemma it is bijective. We take
+    \[
+        X_1 = X^k,\,X_2 = X \setminus X^k
+    \]
+    to form the desired decomposition.
+
+\end{proof}
+
+\paragraph{Visualization} If we want to visualize how such a function looks, let us first recall a visualization of permutations -- they form cycles! The elemnts outside of the \emph{permutation set} \(X_1\) form trees, whose roots are vertices of \( X_1 \).
+
+% TODO: examples
+\begin{example}
+    Consider the function \ldots
+\end{example}
+
+This may seem like a silly little fact, but the ideas come up often: in the Lefschetz Fixpoint theorem, Jordan decomposition from linear algebra \ldots
+
+\paragraph{How do we extend this to infinite sets?} Let's try using a fixpoint theorem! In this case, we'll be looking for the largest fixpoint of a decreasing function.
+Note that on infinite sets the trees mentioned earlier may be infinite (consider the example of \( x \mapsto x+1 \) on \(\mathbb{N}\)). But these are actually permutations! So maybe the structure looks the same? But how do we define the \emph{permutation set}?
+
+Attempt 1: take the maximal set from
+\[
+    \{ A \mid f \text{ is a permutation on } A \}
+\]
+
+\section{Literature used for this chpater}
