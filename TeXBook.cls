@@ -49,7 +49,9 @@
 {\normalfont\normalsize\bfseries}{\theparagraph}{1em}{}
 \titlespacing*{\paragraph} {0pt}{3.25ex plus 1ex minus .2ex}{1em}
 
-% Operators
+%%%%%%%%%%%%% Operators
+
+% Analysis
 \DeclareMathOperator{\supp}{supp}
 
 % Topology
@@ -57,3 +59,6 @@
 \DeclareMathOperator{\Ext}{Ext}
 \DeclareMathOperator{\Cl}{Cl}
 \DeclareMathOperator{\Bd}{Bd}
+
+% Homological algebra
+\DeclareMathOperator{\Tor}{Tor}
