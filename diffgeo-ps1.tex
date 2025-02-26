@@ -16,9 +16,60 @@
 
 \chapter{Differential Geometry, Problemset 1}
 
+\section{Problem 6}
+
+Assume the curve is parametrized by arclength. We will compute how the distance from the center of the circle changes along the curve. Let the circle have curvature \(\kappa\). Then the radius of the circle is \(1/\kappa\) and its center is the point
+\[
+\gamma(0) + \frac1\kappa N(0).
+\]
+Then, the vector from the centre to a point on the curve is
+\[
+r(s) := \gamma(s) - \gamma(0) - \frac1\kappa N(0).
+\]
+This is clearly not changed by translating the whole configuration, so without loss of generality \(\gamma(0) = 0\). In what follows, we use the dot product differentiation formula \ref{DotProductDifferentiation}.
+\begin{align*}
+    \frac{\mathrm{d}}{\mathrm{d}s} \lvert \lvert r(s) \rvert \rvert^2 &= \frac{\mathrm{d}}{\mathrm{d}s} \langle r(s), r(s) \rangle \\
+                                                                      &=  2\langle \dot{r}(s), r(s) \rangle \\
+                                                                      &= 2\langle \gamma(s), \dot{\gamma}(s))\rangle - 2\left\langle \frac1\kappa N(0), \dot{\gamma}(s)\right\rangle.
+\end{align*}
+At \( s = 0 \) both terms come out to \( 0 \), so we need to compute another derivative to see what is going on. We have
+\begin{align*}
+    \frac{\mathrm{d^2}}{\mathrm{d}s^2} \lvert \lvert r(s) \rvert \rvert^2 &= 4\langle \dot{\gamma}(s), \dot{\gamma}(s)\rangle + 4\langle \gamma(s), \ddot\gamma(s) \rangle - 4\left\langle \frac1\kappa N(0), \ddot\gamma (s) \right\rangle \\
+                                                                      &=  4 + 4\langle \gamma(s), \ddot\gamma(s) \rangle - 4\frac{\kappa_\gamma(s)}{\kappa}\langle N(0), N(s) \rangle,
+\end{align*}
+where we have used \ref{ArclengthParametrisedVelocityOne} and \ref{FrenetEquation}. At \( s = 0 \) this comes out to
+\[
+    4 \left(1 - \frac{\kappa_\gamma(0)}{\kappa}\right),
+\]
+which is positive for \(\kappa_\gamma(0) < \kappa\) and negative for \( \kappa_\gamma(0) > \kappa \). This concludes the problem: for example, if the curve \(\gamma\) stays inside the circle (even locally!), then we cannot have \(\kappa_\gamma(0) < \kappa \), because then the distance would be increasing (by Taylor \ref{Taylor}).
+
+\paragraph{Remark.} This still works for negative \( \kappa \). The only thing we need to check to make sure of that is that the center of the circle is where it is. It gets more tricky for \(\kappa = 0 \) -- in that case the appropriate reformulation of \emph{inside} and \emph{outside} is on one or the other side of the line, and instead of the distance we should consider
+\[
+\langle \gamma(s) - \gamma(0), N(0) \rangle.
+\]
+The derivative of this is
+\[
+2\langle \dot\gamma(s), N(0) \rangle, 
+\]
+which equals \(0\) at \(s = 0\). The second derivative is
+\[
+4\langle \ddot \gamma(s), N(0) \rangle = 4\kappa_\gamma(s) \langle N(s), N(0) \rangle
+\]
+by Frenet \ref{FrenetEquation}. At \(s\) this is just \( 4\kappa_\gamma(0) \), and analysing signs as above finishes the problem.
+
 \section{Problem 5}
 
-By \ref{EvolventDistanceFormula}, 
+Recall from Problem 6 that
+\[
+    \frac{\mathrm{d^2}}{\mathrm{d}s^2} \lvert \lvert r(s) \rvert \rvert^2 =  4 + 4\langle \gamma(s), \ddot\gamma(s) \rangle - 4\frac{\kappa_\gamma(s)}{\kappa}\langle N(0), N(s) \rangle
+\]
+and that the first derivative disappears at \( s = 0 \) for a tangent circle. For a circle of best fit, the curvature \( \kappa = \kappa_\gamma(0) \) (see my solution of Problem 4), so the second derivative disappears as well.
+% TODO: Higher derivatives from Frenet!
+% TODO: factoid -- derivative of signed distance disappears for a tangent dircle, and second derivative disappears for a circle of best fit
+Computing the derivative of this
+\begin{align*}
+    \frac{\mathrm{d^3}}{\mathrm{d}s^3} \lvert \lvert r(s) \rvert \rvert^2 =  8\langle \gamma(s), \dddot\gamma(s) \rangle + 8\langle \dot\gamma(s) \rangle - 4\frac{\kappa_\gamma(s)}{\kappa}\langle N(0), N(s) \rangle
+\end{align*}
 
 \section{Problem 8}
 
