@@ -14,9 +14,48 @@
 \paragraph{Observation.} Curvature is the determinant of the Frenet frame.
 \paragraph{Observation.} Walking the curve backwards negates the curvatues, but does not change its derivative!
 
+\begin{lemma}\label{DoubleChainRule}
+    The second derivative of 
+    \[
+        g \circ f
+    \]
+    is given by
+    \[
+        (g''\circ f)\cdot (f')^2 + (g'\circ f) \cdot f''
+    \]
+\end{lemma}
+\begin{proof}
+    By the Chain Rule,
+\[
+    (g\circ f)' = f' \cdot (g' \circ f).
+\]
+    To take the derivative of this, we use the product rule and chain rule.
+\end{proof}
+
 \chapter{Differential Geometry, Problemset 1}
 
+\section{Problem 1}
+Solved in the lecture.
+
+\section{Problem 2}
+Solved in the lecture.
+
 \section{Problem 3}
+
+By \ref{DoubleChainRule}, if the hypothesis holds for a curve \(\gamma\), it also holds for all reparametrizations. Therefore, we may assume that \(\gamma\) is parametrized by arclength. Denote the center of the circle as \(c\). We now have
+\begin{align*}
+    f(\gamma) &= \langle \gamma - c, \gamma - c \rangle - R^2 \\
+    \frac{\mathrm{d}}{\mathrm{d}t} f(\gamma) &= 2\langle \dot\gamma, \gamma - c \rangle \\
+    \frac{\mathrm{d^2}}{\mathrm{d}t^2} f(\gamma) &= 2\langle \ddot\gamma, \gamma - c \rangle + 2\langle \dot\gamma, \dot\gamma \rangle
+\end{align*}
+
+Now, \(f(\gamma) = 0\) iff \(\gamma(t) \in C(x, R)\). Then, the first derivative is 0 iff \(\dot\gamma\) is perpendicular to the radius of the circle. Note that the tangent to the circle has precisely this property, so this gives us equivalence of \(\gamma\) being tangent to the circle and the derivative of \(f(\gamma)\) being = 0.
+
+For the third part, we assume arclength parametrization. Then the equation becomes
+\[
+0 = 1 + \langle \ddot\gamma, \gamma - c \rangle,
+\]
+which means that the length of \( \ddot\gamma \) must be \( \frac1R\) and its direction must be opposite to \(\gamma - c \), i.e. it must be directed toward the centre of the circle. This is true for the second derivative of the arclength parametrised circle, so the second derivative of \( f( \gamma ) \) is zero iff the second derivatives of \(\gamma\) and the arclength parametrization of the circle agree.
 
 \section{Problem 4} An equivalent definition:
 
@@ -78,16 +117,47 @@ and that the first derivative disappears at \( s = 0 \) for a tangent circle. Fo
 % TODO: factoid -- derivative of signed distance disappears for a tangent dircle, and second derivative disappears for a circle of best fit
 Computing the derivative of this
 \begin{align*}
-    \frac{\mathrm{d^3}}{\mathrm{d}s^3} \lvert \lvert r(s) \rvert \rvert^2 =  8\langle \gamma(s), \dddot\gamma(s) \rangle + 8\langle \dot\gamma(s) \rangle - 4\frac{\kappa_\gamma(s)}{\kappa}\langle N(0), N(s) \rangle
+    \frac{\mathrm{d^3}}{\mathrm{d}s^3} \lvert \lvert r(s) \rvert \rvert^2 =  4\langle \gamma(s), \dddot\gamma(s) \rangle + 4\langle \dot\gamma(s), \ddot\gamma(s) \rangle - 4\frac{\kappa'_\gamma(s)}{\kappa}\langle N(0), N(s) \rangle - 4\frac{\kappa_\gamma(s)}{\kappa}\langle N(0), \dot N(s) \rangle
 \end{align*}
+For \( s = 0 \) this gives
+\[
+    \frac{\mathrm{d^3}}{\mathrm{d}s^3} \lvert \lvert r(s) \rvert \rvert^2 = -4\frac{\kappa'_\gamma(s)}{\kappa}.
+\]
+So, if the derivative is nonzero 
+
+\section{Problem 7}
+I have a shitty calculatory solution, but nothing nice geometrically. It goes like
+\begin{enumerate}
+    \item Parametrize the points on the parabola by \( (p, p^2) \).
+    \item Centers of tangent circles lie on \( p - 2pt, p^2 + pt \) and have radii \( t\sqrt{1 + 4p^2} \).
+    \item Together with \( y = x^2 \) this gives an equation for the intersection points. Divided by \( (x - p)^2 \) the equation is
+        \[
+        1 + (x+p)^2 + 2t = 0.
+        \]
+    \item To avoid having two solutions, pick \(t\) so that \( x = p \) is a solution of this. Then, \( x = -3p \) is another solution (same value of the square).
+    \item Caclulate that in this configuration
+        \[
+            t = -\frac{1+4p^2}{2}.
+        \]
+\item The tangent to the parabola at the chosen point is \( (1, -6p) \). The point is \( (-3p, 9p^2) \) and the center of the circle is \( (2p + 4p^3, -p^2 - 1/2) \). The vector from the circle to the point is then \((5p + 4p^3, -10p^2 -1/2) \).
+\item The dot product between the tangent and the vector from the point to the center is a nonzero polynomial, so for almost all \( p \) the circle is not tangent.
+
+\end{enumerate}
 
 \section{Problem 8}
 
-\paragraph{Geometry.} The curve \emph{rolls in on itself}.
 % TODO: add picture of curve, which has increasing curvature whose range is the whole real line
-The main idea is the below lemma, from which the problem follows immediately.
-\begin{lemma}\label{IncreasingCurvatureInsideCircle}
-    If a curve
-    \[ \gamma: (a, b) \to \mathbb{R}^2 \]
-    has increasing curvature, then for all \( t \), 
-\end{lemma}
+Geometrically, the curve rolls into itself, like a spiral. Note that the curvature can also be negative or zero at some points, but increasing. In what follows, we consider a point of self-intersection.
+\subsection{Non-zero curvature}
+By the \ref{EvoluteDistanceFormula}, we know that if the curvature at some point is nonzero, then points in the direction of the absolute value of curvature are properly inside the osculating circle. Therefore, there can be no self-intersection at a point of nonzero curvature.
+
+\subsection{Zero curvature}
+
+For a point of zero curvature, we know from the remark to problem 6 that the first derivative of the signed distance from the line (which is the osculating circle at a point of curvature 0) is 0 and the second derivative is strictly positive after the point of zero curvature and strictly negative before (in a small neighbourhood!).
+
+Taking points arbitrarily close to zero, we see that
+
+TO BE CONTINUED!
+
+
+\section{Problem 9}
