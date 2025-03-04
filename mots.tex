@@ -1,1 +1,33 @@
 \chapter{Measures on Topological Spaces, Problemset 1}
+
+\begin{lemma}\label{CuttingOutMeasure}
+    Let \(A\), \(A_1\), \ldots, \(A_k\) be measurable sets such that
+    \[
+        \forall k.\, \mu(A_i \cap A) \geq (1 - \delta_i)\mu(A).
+    \]
+    Then
+    \[
+        \mu(A \cap A_1 \cap A_2 \cap \ldots \cap A_k) \geq \left(1 - \sum \delta_i \right) \mu(A).
+    \]
+\end{lemma}
+\begin{proof}
+    Union bound on the sets
+    \[
+        A \cap A_i^c.
+    \]
+\end{proof}
+
+\paragraph{Remark.} There is an infinitary version.
+
+\section*{Problem 8}
+\subsection*{Problem 8a}
+
+\section*{Problem 4}
+
+
+\subsection*{Extension 1}
+We show that the set can be the graph of a function! Let \(Z\) be a borel set of positive measure and define
+\[
+    T_Z = \{ x : \lambda(Z_x) > 0 \}.
+\]
+Then \(T_Z\) is a measurable set by Fubini's Theorem. We can pick a compact subset \( T'_Z \). A compact set of positive measure has at least \(\mathfrak{c}\) elements, and there are as many borel sets. Then, enumerate borel sets of \( \mathbb{R}^2 \).
