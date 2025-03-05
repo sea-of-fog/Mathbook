@@ -59,6 +59,7 @@
 \DeclareMathOperator{\Ext}{Ext}
 \DeclareMathOperator{\Cl}{Cl}
 \DeclareMathOperator{\Bd}{Bd}
+\DeclareMathOperator{\diam}{diam}
 
 % Homological algebra
 \DeclareMathOperator{\Tor}{Tor}
