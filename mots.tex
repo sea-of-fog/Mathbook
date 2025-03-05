@@ -55,15 +55,29 @@ Note that a density point is by neccesity an accumulation point. The promised li
    
 \end{thm}
 \paragraph{Remark.} Note that the theorem follows trivially for null sets. Also, for a given \( A \), we may as well apply the theorem to \( A^c \) to get that almost all points outside of \( A \) have density \( 0 \).
+\\
 
-For the proof, we will need a tool, which we introduce now and prove later.
-\begin{definition}
+For the proof of the \textbf{Lebesgue Density Theorem}, we will need a tool, which we introduce now and prove later.
+%TOOD: does the set have to be measurable?
+\begin{defn}
     A family \(\mathcal{J} \) of nontrivial closed intervals is called a \textbf{Viali cover} of a set \( A \) if for any given \(\varepsilon > 0 \) and \( x \in A \) there is an interval \( J \in \mathcal{J} \) such that
     \[ 
-       \diam  
+       \diam J <\varepsilon \wedge x \in J.
    \]
-\end{definition}
-\begin{proof}
+\end{defn}
+\begin{thm}
+    If \( \mathcal{J} \) is a Vitali cover of \( A \), there exists a sequence of pariwaise disjoint segments \( J_n \in \mathcal{J} \) such that
+    \[ 
+      \lambda \left( A \setminus \bigcup_n J_n \right) = 0.
+   \]
+\end{thm}
+
+\paragraph{Why is this theorem useful?} Vitali's theorem may not sound very smart on first glance. Its strength lies in the \emph{disjointness} of the cover. If we go about choosing the cover \( J_n \) without any guarantees, we can for example choose
+\[ 
+    \bigcup_{q_n \in \mathbb{Q}} (q_n - \frac{\varepsilon}{2^{n+1}}, q_n + \frac{\varepsilon }{2^{n+1}}) 
+\]
+and get stuck! We have only covered a subset of the reals of size \(\varepsilon \), but we cannot use any other segment by density of \( \mathbb{Q} \).
+\begin{proof}[Proof of the Lebesgue Density Theorem]
     We represent
     \[ 
     A \setminus \phi(A) = \bigcup_k A_k      
@@ -111,6 +125,25 @@ Since \(\varepsilon \) can be picked arbitrarily close to 0, we get
    \lambda^*(A_k) = 0. 
 \]
 
+\end{proof}
+
+\begin{proof}[Proof of the Vitali Covering Theorem.]
+    The key to avoiding the \emph{trap} we wrote about after stating the VCT is to choose the segments to be as large as possible -- or at least, not embarassingly small.
+
+    % Does this reduction work????
+    Without loss of generality, \( A \) is bounded since we can sum the coverings of \( A \cap (n,n+1) \). The sequence of segments we pick is denoted \( J_n \). Its prefixes are
+    \[ 
+       \mathcal{J}_n := \left\{ J_k : k < n \right\}, 
+   \]
+   and the \emph{width} of what we can choose is
+    \[ 
+       \gamma_n := \sup_{J \not\in \mathcal{J}_n} \diam J.  
+    \]
+    Note that in particular
+    \begin{align*}
+        \mathcal{J}_0 &= \varnothing, \\
+        \gamma_0 &\leqslant \diam A.
+    \end{align*}
 \end{proof}
 
 
