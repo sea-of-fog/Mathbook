@@ -10,6 +10,12 @@
 
 % Clickable references
 \RequirePackage{hyperref}
+% Setup stolen from https://tex.stackexchange.com/questions/73862/how-can-i-make-a-clickable-table-of-contents
+\hypersetup{
+    colorlinks=true,
+    linktoc=all,
+    linkcolor=blue
+}
 
 \RequirePackage{amsfonts}
 \RequirePackage{amsmath}
