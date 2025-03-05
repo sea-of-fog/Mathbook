@@ -1,2 +1,2 @@
 #!/bin/zsh
-rm *.aux *.log *.toc
+rm *.aux *.log *.toc *.fls *.fdb_latexmk
