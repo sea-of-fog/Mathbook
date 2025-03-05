@@ -5,3 +5,6 @@ rm *.toc
 # latexmk artifacts
 rm *.fls 
 rm *.fdb_latexmk
+rm *.dvi
+# hyperref artifacts
+rm *.out
