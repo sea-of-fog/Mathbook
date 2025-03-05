@@ -8,6 +8,9 @@
 \geometry{left=2cm}     % left margin
 \geometry{right=4cm}    % right margin
 
+% Clickable references
+\RequirePackage{hyperref}
+
 \RequirePackage{amsfonts}
 \RequirePackage{amsmath}
 \RequirePackage{amssymb}
@@ -25,7 +28,7 @@
 % Colors
 \RequirePackage{xcolor}
 
-% Configuration of section headings
+%%%%%%%%%%%%%% Headings
 % I copied the default from the titlesec documentation and changed them slightly
 \RequirePackage{titlesec}
 % Chapters
