@@ -45,17 +45,43 @@ However, there does exist a link between the two notions. It is a bit more subtl
 \end{defn}
 
 
-Note that a density point is by neccesity an accumulation point. The promised link between geometry, measure and topology is provided by the \textbf{Lebesgue Density Theorem} below.
-\begin{thm}\label{LebesgueDensityTheorem}
-    Let \( A \subseteq \mathbb{R} \) be a measurable set. Then allmost all points of \( A \) are density points~of~\( A \) in the sense that 
+Note that a density point is by neccesity an accumulation point. The promised link between geometry, measure and topology is provided by the theorem below.
+\begin{thm}[Lebesgue Density Theorem]
+    \label{LebesgueDensityTheorem}
+    \hypertarget{LebesgueDensityTheorem}
+    Let \( A \subseteq \mathbb{R} \) be a measurable set. Then almost all points of \( A \) are density points~of~\( A \) in the sense that 
     \ankimark
     \[ 
        \lambda^* (A \setminus \phi(A)) = 0. 
    \]
-   
 \end{thm}
+
 \paragraph{Remark.} Note that the theorem follows trivially for null sets. Also, for a given \( A \), we may as well apply the theorem to \( A^c \) to get that almost all points outside of \( A \) have density \( 0 \).
-\begin{proof}
+\\
+
+For the proof of the \textbf{Lebesgue Density Theorem}, we will need a tool, which we introduce now and prove later.
+%TOOD: does the set have to be measurable?
+\begin{defn}
+    A family \(\mathcal{J} \) of nontrivial closed intervals is called a \textbf{Viali cover} of a set \( A \) if for any given \(\varepsilon > 0 \) and \( x \in A \) there is an interval \( J \in \mathcal{J} \) such that
+    \[ 
+       \diam J <\varepsilon \wedge x \in J.
+   \]
+\end{defn}
+\begin{thm}[Vitali Covering Theorem]
+    \label{VitaliCoveringTheorem}
+    \hypertarget{VitaliCoveringTheorem}
+    If \( \mathcal{J} \) is a Vitali cover of \( A \), there exists a sequence of pariwaise disjoint segments \( J_n \in \mathcal{J} \) such that
+    \[ 
+      \lambda \left( A \setminus \bigcup_n J_n \right) = 0.
+   \]
+\end{thm}
+
+\paragraph{Why is this theorem useful?} Vitali's theorem may not sound very smart on first glance. Its strength lies in the \emph{disjointness} of the cover. If we go about choosing the cover \( J_n \) without any guarantees, we can for example choose
+\[ 
+    \bigcup_{q_n \in \mathbb{Q}} (q_n - \frac{\varepsilon}{2^{n+1}}, q_n + \frac{\varepsilon }{2^{n+1}}) 
+\]
+and get stuck! We have only covered a subset of the reals of size \(\varepsilon \), but we cannot use any other segment by density of \( \mathbb{Q} \).
+\begin{proof}[Proof of the Lebesgue Density Theorem]
     We represent
     \[ 
     A \setminus \phi(A) = \bigcup_k A_k      
@@ -105,7 +131,49 @@ Since \(\varepsilon \) can be picked arbitrarily close to 0, we get
 
 \end{proof}
 
+\begin{proof}[Proof of the Vitali Covering Theorem.]
+    The key to avoiding the \emph{trap} we wrote about after stating the \hyperlink{VitaliCoveringTheorem}{VCT} is to choose the segments to be as large as possible -- or at least, not embarassingly small.
 
+    % Does this reduction work????
+    Without loss of generality, \( A \) is bounded since we can sum the coverings of \( A \cap (n,n+1) \). The sequence of segments we pick is denoted \( J_n \). Its prefixes are
+    \[ 
+        \mathcal{J}_n := \left\{ J \in \mathcal{J}: J \cap J_1 \cup \ldots J_{n-1} = \varnothing \right\}, 
+   \]
+   and the \emph{width} of what we can choose is
+    \[ 
+       \gamma_n := \sup_{J \in \mathcal{J}_n} \diam J.  
+    \]
+    Note that in particular
+    \begin{align*}
+        \mathcal{J}_0 = \mathcal{J}, \\
+        \gamma_0 \leqslant \diam &A < \infty.
+    \end{align*}
+\end{proof}
+
+\section{Corollaries and the Lebesgue Differentiation Theorem}
+
+\begin{thm}[Lebesgue Differentiation Theorem]
+    \label{LebesgueDifferentiationTheorem}
+    \hypertarget{LebesgueDifferentiationTheorem}
+    Let \( f \in L^1( \mathbb{R} ) \). Then, for almost all \( x \),
+    \[ 
+        \lim_{\delta \to 0^+} \frac{1}{2\delta} \int\limits_{x - \delta}^{x + \delta} f(s)\,\mathrm{d} \lambda(s) = f(x)
+   \]
+\end{thm}
+
+\begin{proof}[]
+    For characteristic functions, this is just a restatement of the \hyperlink{LebesgueDensityTheorem}{LDT}.
+\end{proof}
+
+\section{Generalization to metric spaces}
+
+The argument in the proof of the \hyperlink{VitaliCoveringTheorem}{VCT} was written so that it is easliy generalizable to any metric space with a measure on its Borel sets. 
+
+To be more precise, what we need to lift the argument is that
+\[ 
+    \mu \left( B(x, 5r) \right) \leqslant C \mu \left( B(x,r) \right)
+\]
+for some constant \( C \). We can also substitute any constant larger that 3 instead of \( 5 \).
 
 \chapter{Measures on Topological Spaces, Problemset 1}
 
