@@ -62,3 +62,6 @@
 
 % Homological algebra
 \DeclareMathOperator{\Tor}{Tor}
+
+% Lie groups
+\DeclareMathOperator{\Isom}{Isom}
