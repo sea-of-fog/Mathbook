@@ -65,3 +65,4 @@
 
 % Lie groups
 \DeclareMathOperator{\Isom}{Isom}
+\DeclareMathOperator{\Aff}{Aff}
