@@ -8,6 +8,15 @@
 \geometry{left=2cm}     % left margin
 \geometry{right=4cm}    % right margin
 
+% Clickable references
+\RequirePackage{hyperref}
+% Setup stolen from https://tex.stackexchange.com/questions/73862/how-can-i-make-a-clickable-table-of-contents
+\hypersetup{
+    colorlinks=true,
+    linktoc=all,
+    linkcolor=blue
+}
+
 \RequirePackage{amsfonts}
 \RequirePackage{amsmath}
 \RequirePackage{amssymb}
@@ -25,7 +34,7 @@
 % Colors
 \RequirePackage{xcolor}
 
-% Configuration of section headings
+%%%%%%%%%%%%%% Headings
 % I copied the default from the titlesec documentation and changed them slightly
 \RequirePackage{titlesec}
 % Chapters
