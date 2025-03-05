@@ -1,1 +1,141 @@
+\chapter{An introduction to geometric measure theory }
+
+In this chapter, we study the links between the topology and geometry of \( \mathbb{R} \) and the Lebesgue measure. We first give two examples of how the two structures agree, and one example of how they don't.
+
+\paragraph{Isometries.} Consider the group \( \Isom \mathbb{R} \) of the isometries of \( \mathbb{R} \) with the euclidean metric. One easily shows that this group consists of functions of the form
+\[ 
+    x + a \text{ or } a-x
+\]
+for \( a \in \mathbb{R} \). The Lebesgue measure is invariant on transformations \( g \in \Isom \mathbb{R} \), i.e.
+\[ 
+    \lambda(gA) =\lambda(A)
+\]
+for all measurable \( A \subseteq \mathbb{R} \). A corollary of this is that the Lebesgue measure is invariant w.r.t. the addition operation on \( \mathbb{R} \), which gives the reals the structure of a topological group.
+
+\paragraph{Affine transformations.} Similarly to the above, the Lebesque measure work well with the action of the affine transformation group \( \Aff \mathbb{R} \). Directly from the definition, the group of affine transformations consists of the functions
+\[ 
+    g_{a, b} (x) := ax + b
+\]
+for \( r \neq 0 \), and the interaction with measure is given by
+\[ 
+    \lambda( g_{a,b} A ) = \lvert a \rvert \cdot \lambda( A ) .
+\]
+
+\paragraph{Topology.} There is a disconnect between the topological (nonempty interior) and measure-theoretic (positive measure) notions of \emph{large} or \emph{non-negligable} -- the topological notion is strictly stronger! Indeed, a set with nonempty interior has positive measure, but if we enumerate the rationals as
+\[ 
+    \mathbb{Q} = \{ q_1, q_2, \ldots \}
+\]
+the set
+\[ 
+    \mathbb{R} \setminus \bigcup_{n=1}^\infty (q_n - \frac{\varepsilon}{2^{n+1}},q_n + \frac{\varepsilon}{2^{n+1}} )  
+\]
+has comeasure \( \varepsilon \), but is nowhere dense.
+
+However, there does exist a link between the two notions. It is a bit more subtle.
+
+\begin{defn}
+    Fix a measurable set \( A \subseteq \mathbb{R} \). A point \( x \in \mathbb{R} \) is called a \textbf{density point} iff
+    \[ 
+        \lim_{\delta \to 0^+} \frac{\lambda(A \cap B(x, \delta))}{2\delta} = 1.
+   \]
+   The \( 2\delta \) in the numerator is of course \( \lambda(B(x, \delta)) \).
+\end{defn}
+\begin{defn}
+    The set of density points of \( A \) will be denoted \( \phi(A) \).
+\end{defn}
+
+
+Note that a density point is by neccesity an accumulation point. The promised link between geometry, measure and topology is provided by the \textbf{Lebesgue Density Theorem} below.
+\begin{thm}\label{LebesgueDensityTheorem}
+    Let \( A \subseteq \mathbb{R} \) be a measurable set. Then allmost all points of \( A \) are density points~of~\( A \) in the sense that 
+    \[ 
+       \lambda^* (A \setminus \phi(A)) = 0. 
+   \]
+   
+\end{thm}
+\paragraph{Remark.} Note that the theorem follows trivially for null sets. Also, for a given \( A \), we may as well apply the theorem to \( A^c \) to get that almost all points outside of \( A \) have density \( 0 \).
+\begin{proof}
+    We represent
+    \[ 
+    A \setminus \phi(A) = \bigcup_k A_k      
+   \]
+   for
+   \[ 
+       A_k = \left\{ x \in A : \liminf_{\delta \to 0^+} \frac{\lambda(A \cap B(x,\delta))}{2\delta} < 1 - \frac{1}{k} \right\}.
+  \]
+  It suffices to show
+  \[ 
+     \lambda^*(A_k) = 0 
+ \]
+ for all \( k \) to finish the proof. Since we may represent \( A \) as
+ \[ 
+     A = \bigcup_{z \in \mathbb{Z}} A \cap [z-1, z+1] 
+\]
+and being a density point of \( A \) is the same as being a density point of one of the \emph{cutouts} in the sum above, we may assume without loss of generality that \( A \subseteq [0,1] \).
+
+Approximate \( A_k \) from above by an open set \( U \) such that
+\[ 
+    \lambda(A_k) \leqslant \lambda(U) \leqslant \lambda(A_k) + \varepsilon.
+\]
+Construct a covering
+\[ 
+    \mathcal{J} = \left\{ [a,b] : [a,b] \subseteq U,\,\lambda(A \cap [a,b]) \leqslant \left(1 - \frac{1}{k}\right)\lambda([a,b])\right\}.
+\]
+It is a Vitali Cover. By Vitali's Theorem we can pick a pairwise disjoint sequence of intervals \( [a_i, b_i] \in \mathcal{J}\) for which
+\[ 
+    \lambda^*\left( A \setminus \bigcup_n\; [a_n, b_n]\right) = 0.
+\]
+This gives
+\begin{align*}
+    \lambda^* (A_k) &=\lambda^*\left(A_k \cap \bigcup_n \; [a_n, b_n] \right) \\
+                    &\leqslant \sum_n \lambda^*(A_k \cap [a_n, b_n] ) \\
+                    &\leqslant \left( 1 - \frac{1}{k} \right) \sum_n\lambda[a_n, b_n] \\
+                    &\leqslant \left( 1 - \frac{1}{k} \right)\lambda(U) \\
+                    &\leqslant \left( 1 - \frac{1}{k} \right) \left(\lambda^*(A_k) +\varepsilon \right).
+\end{align*}
+Rearranging gives
+\[ 
+   \lambda^*(A_k) \leqslant k\varepsilon. 
+\]
+Since \(\varepsilon \) can be picked arbitrarily close to 0, we get
+\[ 
+   \lambda^*(A_k) = 0. 
+\]
+
+\end{proof}
+
+
+
 \chapter{Measures on Topological Spaces, Problemset 1}
+
+\begin{lemma}\label{CuttingOutMeasure}
+    Let \(A\), \(A_1\), \ldots, \(A_k\) be measurable sets such that
+    \[
+        \forall k.\, \mu(A_i \cap A) \geq (1 - \delta_i)\mu(A).
+    \]
+    Then
+    \[
+        \mu(A \cap A_1 \cap A_2 \cap \ldots \cap A_k) \geq \left(1 - \sum \delta_i \right) \mu(A).
+    \]
+\end{lemma}
+\begin{proof}
+    Union bound on the sets
+    \[
+        A \cap A_i^c.
+    \]
+\end{proof}
+
+\paragraph{Remark.} There is an infinitary version.
+
+\section*{Problem 8}
+\subsection*{Problem 8a}
+
+\section*{Problem 4}
+
+
+\subsection*{Extension 1}
+We show that the set can be the graph of a function! Let \(Z\) be a borel set of positive measure and define
+\[
+    T_Z = \{ x : \lambda(Z_x) > 0 \}.
+\]
+Then \(T_Z\) is a measurable set by Fubini's Theorem. We can pick a compact subset \( T'_Z \). A compact set of positive measure has at least \(\mathfrak{c}\) elements, and there are as many borel sets. Then, enumerate borel sets of \( \mathbb{R}^2 \).
