@@ -130,11 +130,136 @@ The Cantor set has a natural abelian group structure given by its product struct
 \[ 
     A \oplus B := A \Delta B 
 \]
-
 Every element has order two!
 
 \paragraph{Fact.} Together with the operation \( \oplus \), the Cantor set \( C \) is a compact topological group, i.e. the function
 \[ 
     (x, y) \mapsto x \oplus y 
 \]
-is continuous (in general the second element is inversed, but here every element is its own inverse anyway).
+is continuous (in general the second element is inversed, but here every element is its own inverse anyway). 
+
+\section{Measure}
+
+We can define the measure on the Cantor set as a countable product of probability measures:
+\[ 
+    \nu = \bigotimes_{n=1}^\infty ( \frac{1}{2} (\delta_0 + \delta_1) ).
+\]
+But we will do it by hand.
+\begin{defn}
+Let \( A \subseteq C \) be clopen. Then
+\[ 
+    A \sim \{1, 2, \ldots, n\} 
+\]
+for some \( n \). Let
+\[ 
+    A' := \pi_{\{1, 2, \ldots, n\} }[A]
+\]We define its measure to be
+\[ 
+    \nu (A) := \frac{\# A'}{2^n}.
+\]
+\end{defn}
+This makes sens with the probabilistic definition.
+
+\begin{thm}[Well-definedness of the premeasure]
+\label{CantorPremeasureWellDefined}
+\hypertarget{CantorPremeasureWellDefined}
+The function
+\[ 
+    \nu: \Clop C \to \mathbb{R} 
+\]
+is a well-defined, additive function on the set algebra \( \Clop C \).
+\end{thm}
+
+% TODO: add reference
+\paragraph{Proof.} Since the Cantor set is compact, \( \nu \) is automatically downward continuous on the empty set. By Caratheodory's Theorem, \( \nu \) extends uniquely to a probabilistic measure on 
+\[ 
+    \Bor C = \sigma \left( \Clop C \right).
+\]
+
+What now??
+\[ 
+    \mathcal{A} := \left\{ B \in \Bor C : \forall\varepsilon > 0. \exists A \in \Clop C. \nu (A \Delta B) <\varepsilon \right\}.
+\]
+We prove that this is a \( \sigma \)-algebra.
+
+\begin{thm}
+\label{CantorMeasureHaar}
+\hypertarget{CantorMeasureHaar}
+The measure \( \nu \) is the Haar measure on \( C \), that is, the unique probability measure invariant under group actions
+\[ 
+    \nu \left( x \oplus B \right) = \nu (B) 
+\]
+for all \( x \in C \), \( B \subseteq C \).
+\end{thm}
+\begin{proof}
+    Let us first consider \( B = \left [ \phi \right ] \), and \( I = \dom \phi \). Then
+    \[ 
+       \nu \left( x \oplus \left[ \phi \right] \right) = \nu \left( \left[ x \oplus \phi \right] \right) = \nu \left( \left[ \phi \right] \right).
+   \]
+   A clopen is a disjoint sum of \( \left[ \phi_i \right] \) for finitely many \( \phi_i \), so additivity on clopens follows. Now, take a superficially different measure
+   \[ 
+      \nu_x(B) := \nu \left( x \oplus B \right). 
+  \]
+  Since \( \nu \) and \( \nu_x \) agree on clopens, by uniqueness in Caratheodory's Theorem they agree on all sets.
+\end{proof}
+
+Note the isomorphism
+\[ 
+    (C, \oplus) \cong ( \mathcal{P}( \mathbb{N} ), \Delta ) 
+\]
+of (topological) groups.
+
+\section{Normal number theorem}
+
+\begin{defn}
+\label{CantorTailSubset}
+\hypertarget{CantorTailSubset}
+Let \( A \subseteq C \). We call \( A \) a \textbf{tail} set if
+\[ 
+    A \sim \left\{ k : k \geqslant n \right\} 
+\]
+for all \( n \). Equivalently, if \( x \in A \) and \( x(n) = y(n) \) for almost all \( n \), then \( y \in A \).
+\end{defn}
+
+\paragraph{Example.} A naturally occuring example of a tail set is
+\[ 
+    A_\beta := \left\{ x \in C : \lim_n \frac{x(1) + \ldots x(n)}{n}= \beta \right\}.
+\]
+
+\begin{thm}[Kolmogorov zero-one law for the Cantor set]
+\label{CantorZeroOneLaw}
+\hypertarget{CantorZeroOneLaw}
+A borel tail set \( A \subseteq C \) has measure \( 0 \) or \( 1 \).
+\end{thm}
+
+\begin{proof}
+Take a basis set \( \left[ \phi \right] \). We have
+\[ 
+    \nu \left( \left[ \phi \right] \cap A \right) = \nu \left( \left[ \phi \right] \right) \cdot \nu(A).
+\]
+From this immediately follows that this work for any \( B \in \Clop C \).
+%TODO: find a good notation for the Cantor set
+Now approximate \( A \) by a clopen \( B \) so that
+\[ 
+    \nu \left( A \Delta C \right).
+\]
+To finish the proof, compute
+\[ 
+    \nu(A) \cdot \nu(B) = \nu( A \cap B ) \geqslant \nu(A) -\varepsilon\nu(A). 
+\]
+\end{proof}
+
+Returning to the example we have \( \nu(A_\beta) \in \left\{ 0,1 \right\} \). We have
+\[ 
+    \nu(A_\beta) = \nu (A_{1-\beta}).
+\]
+
+\begin{thm}[Borel's normal number theorem]
+\label{BorelNormalNumber}
+\hypertarget{BorelNormalNumber}
+\[ 
+    \nu \left( A_{ \frac{1}{2} } \right) = 1. 
+\]
+\end{thm}
+
+\paragraph{Remark.} According to Billingsley, this theorem was the founding work of modern probability theorem, which is founded on limit theorems.

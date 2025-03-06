@@ -68,6 +68,8 @@
 %FIXME: this should not me an operator!
 \DeclareMathOperator{\Id}{Id}
 
+\DeclareMathOperator{\dom}{dom}
+
 % Linear Algebra
 \DeclareMathOperator{\Lin}{Lin}
 
@@ -80,6 +82,10 @@
 \DeclareMathOperator{\Cl}{Cl}
 \DeclareMathOperator{\Bd}{Bd}
 \DeclareMathOperator{\diam}{diam}
+
+% Measure Theory
+\DeclareMathOperator{\Bor}{Bor}
+\DeclareMathOperator{\Clop}{Clop}
 
 % Homological algebra
 \DeclareMathOperator{\Tor}{Tor}
