@@ -1,0 +1,197 @@
+\chapter{Differential Geometry, Lecture 2}
+
+\section{Curves in \( \mathbb{R}^3 \)}
+
+Let \( \gamma: (a,b) \to \mathbb{R}^3 \) be parametrised by arclength and \( \gamma'' \neq 0 \). Then
+\[ 
+    \gamma' \perp \gamma'' 
+\]
+and we can define
+\[ 
+    N := \frac{ \gamma'' }{ \left \lvert\lvert \gamma'' \right\rvert\rvert  }.
+\]
+We need a third vector, ideally so that the three vectors are positively oriented. No worries, we can put down
+\[ 
+    B := \tau \times N. 
+\]
+
+\begin{defn}
+    We define the curvature in \( \mathbb{R}^3 \) to be
+    \[ 
+       \kappa_\gamma := \left \lvert\lvert \gamma'' \right\rvert\rvert  
+   \].
+\end{defn}
+
+\begin{defn}
+    We define \emph{trójnóg Freneta} to be the ordered orthonormal basis
+    \[ 
+        (\tau, N, B).
+   \]
+\end{defn}
+
+%TODO: name of the B vector
+We have an analogue of the Frenet equations
+\begin{thm}[3D Frenet Equations]
+\label{FrenetEquations3D}
+\hypertarget{FrenetEquations3D}
+    For the \emph{Frenet trójnóg} we have
+    \[ 
+       \frac{\mathrm{d}^{}}{\mathrm{d}^{}t} (T, N, B) = (T,N,B) M
+       %TODO
+   \]
+\end{thm}
+
+\begin{proof}
+The first row follows from the definition. Let
+\[ 
+    A = (T,N,B). 
+\]
+This is an orthonormal matrix for all \( t \in (a,b) \), so it traces a curve in \( \SO(3) \) and we want its derivative. We will show
+\[ 
+    A^{-1}  A'
+\]
+is skew-symmetric -- this will give us the theorem. We know that
+\[ 
+   AA^T = \Id,
+\]
+so let us differentiate both sides and obtain
+\[ 
+    (A')^TA + A^TA' = 0
+\]
+and
+\[ 
+    (A^TA')^T = (A')^TA = -A^TA'. 
+\]
+Where we have used the matrix Leibniz rule.
+%TODO: matrix Leibniz rule
+\end{proof}
+
+\begin{defn}
+    The function \( \tau \) mentioned in the previous theorem is called \textbf{torsion}.
+\end{defn}
+
+We have another analogue to curves in \( \mathbb{R}^2 \).
+
+\begin{thm}[Fundamental Theorem of Curves is \( \mathbb{R}^3 \)]
+\label{FundamentalCurveTheorem3D}
+\hypertarget{FundamentalCurveTheorem3D}
+For a positive function
+\[ 
+    \kappa: (a,b) \to \mathbb{R}_+,
+\]
+an arbitrary function
+\[ 
+    \tau: (a,b) \to \mathbb{R} 
+\]
+and any positively oriented orthonormal basis of \( \mathbb{R}^3 \) (the initial Frenet frame), there exists exactly one arclength parametrised curve
+\[ 
+    \gamma: (a,b) \to \mathbb{R}^3
+\]
+which has Frenet frame at \( t = 0 \) equal to \( B \).
+\end{thm}
+
+\begin{proof}[Proof (sketch).]
+As in the 2-dimensional case -- put down a differential equation.
+\end{proof}
+
+\paragraph{What is torsion?} The torsion describes how much a curve escapes a plane in which it starts (the \emph{osculating plane}).
+
+\section{Curvature of surfaces}
+
+% TODO: inclusion arrow
+Consider a surface 
+\[ 
+    S \subseteq \mathbb{R}^3.
+\]
+We will want to define its curvature in terms of plane curvature. We will work with surfaces given as immersions
+\[ 
+    \Sigma: U \to \mathbb{R}^3,
+\]
+where \( U \subseteq \mathbb{R}^2 \).
+
+\begin{defn}
+    Let \( p \in U \subseteq \mathbb{R}^2 \) and \( \Sigma \) be as above. The \textbf{Riemann metric} on \( TU \) is the smooth, positive definite bilinear form given at \( p \) by
+    \[ 
+        \left\langle v_p, w_p \right\rangle_\Sigma = \left\langle \mathrm{d}\Sigma(v_p), \mathrm{d}\Sigma(w_p) \right\rangle. 
+   \]
+\end{defn}
+
+\paragraph{Notation.} We will denote by
+\begin{align*}
+    \partial_x &= \mathrm{d}\Sigma ( \partial_x ) \\
+    \partial_y &= \mathrm{d}\Sigma ( \partial_y ) 
+\end{align*}
+the push by \( \Sigma \) of the standard vector field on \( \mathbb{R}^2 \).
+
+\begin{defn}
+    \label{3DSurfaceNormal}
+\hypertarget{3DSurfaceNormal}
+The \textbf{surface normal vector} to the surface \( \Sigma \) at \( p \) is
+\[ 
+    n_p = \frac{ \partial_x \times \partial_y }{ \left \lvert\lvert \partial_x \times \partial_y  \right\rvert\rvert  }.
+\]
+\end{defn}
+
+Now we can start talking about curvature!
+\begin{defn}
+\label{3DSurfaceCurvature}
+\hypertarget{3DSurfaceCurvature}
+%TODO: define T_p \Sigma and add a picture
+For \( v \in T_p\Sigma \) of length \( 1 \), the \textbf{curvature} 
+\[ 
+    \kappa_p(v) 
+\]
+is equal to the plane curvature \( \kappa \) at \( p \) of the curve, which is the intersection of \( \Sigma \) and the plane
+\[ 
+    \Lin \left\{ n_p, v \right\}.
+\]
+(This is a set -- the parametrization can be recovered with aid of the inverse function theorem).
+\end{defn}
+Since we have defined the above notion of curvature for \( \left \lvert\lvert v \right\rvert\rvert = 1 \), we have a function
+\[ 
+    \kappa: S^1 \to \mathbb{R} 
+\]
+
+\subsection{Example of surface curvature}
+
+Let us isometrically change the coordinate system so that \( p = 0 \) and take
+\[ 
+    T_p\Sigma = \Lin \left \{ e_1, e_2 \right \}.
+\]
+
+\paragraph{Problem.} This can be done so that in a neighbourhood of \( 0 \) the surface looks like the graph of
+\[ 
+    f = \frac{1}{2} \alpha x^2 + \frac{1}{2} \beta y^2 + O( x^3 + y^3 ).
+\]
+Let \( v = (\cos \theta, \sin \theta, 0) \). We have that
+\[ 
+    n_p = (0,0,1) 
+\]
+and so
+\[ 
+    \gamma_v(t) = f(tv) = \frac{1}{2}\alpha \cos^2\theta + \frac{1}{2}\beta \sin^2\theta + O(t^3) = ct^2 + O(t^3).
+\]
+The curvature of this after going back to the plane is the same as the curve
+\[ 
+    g(t) = ct^2. 
+\]
+What is the curvature of \( g(t) \) at \( t = 0 \)? After applying a homothety of scale \( c^{-1} \) we get a curve \( h(t) = t^2 \), which has curvature \( 2 \) at \( t = 0 \). By considering osculating circles, the curvature of \( g(t) \) is
+\[ 
+    2c = \alpha\cos^2\theta  + \beta\sin^2\theta.
+\]
+The extreme values of this are \( \alpha, \beta \) obtained for \( v = (1,0,0) \) and \( v = (0,1,0) \). Note that the vectors are orthogonal!
+
+\subsection{Why will we multiply these?}
+
+Picture one -- immersing a square into \( \mathbb{R}^3 \) as a cylinder.
+
+\section{Euclidean connection}
+
+Take two vector fields \( X, Y  \) and a surface \( \Sigma \). We have
+\[ 
+    D_X Y = (X(Y_1), X(Y_2), X(Y_3)). 
+\]
+A part of that will be tangent to \( \Sigma \), and part will be normal. Writing this decomposition down defines
+\[ 
+    D_X Y = \nabla_X Y + \mathrm{I\!I}(X,Y) n_p.
+\]
