@@ -64,6 +64,13 @@
 
 %%%%%%%%%%%%% Operators
 
+% Basics
+%FIXME: this should not me an operator!
+\DeclareMathOperator{\Id}{Id}
+
+% Linear Algebra
+\DeclareMathOperator{\Lin}{Lin}
+
 % Analysis
 \DeclareMathOperator{\supp}{supp}
 
@@ -80,3 +87,4 @@
 % Lie groups
 \DeclareMathOperator{\Isom}{Isom}
 \DeclareMathOperator{\Aff}{Aff}
+\DeclareMathOperator{\SO}{SO}
