@@ -1,0 +1,140 @@
+\chapter{Cantor set}
+
+We work with the Cantor set understood as
+\[ 
+    \left\{ 0,1  \right\}^{ \mathbb{N} },
+\]
+topologized by the metric
+\[ 
+    d(x,y) = 
+    \begin{cases}
+        0 \text{ for } x = y \\
+        \frac{1}{n}\text{ for } x \neq y
+   \end{cases}
+\]
+
+Note that
+\begin{enumerate}
+    \item it is an ultrametric
+    \item it is a homeomorphism onto the base-3 Cantor set \( C \subseteq [0,1] \).
+\end{enumerate}
+%TODO: continuity
+
+We begin by proving
+\begin{thm}[The Universal Property of the Cantor Set]
+\label{CantorSetUniversalProperty}
+\hypertarget{CantorSetUniversalProperty}
+ Every metrizable compact space \( K \) is a continuout image of \( C \).
+\end{thm}
+
+\begin{proof}
+Considering an element of \( C \) as a binary expansion, we have a continuous surjection
+%TODO: surjection arrow
+\[ 
+    g: \left\{ 0,1 \right\}^{ \mathbb{N} } \to [0,1]^{ \mathbb{N} }.
+\]
+The space \( K \) can be embedded into the Hilbert cube. We also have a surjection
+\[ 
+    h: \left\{ 0,1 \right\}^{ \mathbb{N} } \to [0,1]^{ \mathbb{N} }
+\]
+by using the previous surjection and \emph{unweaving} the Cantor set into the product of countably many Cantor sets. The last step is restricting the embedding \( h \) to the embedded \( K \).
+\end{proof}
+
+\paragraph{A warning agains generalization.} If \( K \) is a compact set, it embeds into a \emph{Tichonow Cube}
+\[ 
+    K \to [0,1]^\Gamma 
+\]
+and we can surject the Tichonow cube with a generalized Cantor set
+\[ 
+    \left\{ 0,1 \right\}^{\Gamma},
+\]
+but the universality theorem fails!
+
+\section{Topology of the Cantor set}
+
+% TODO: partial function arrow
+\begin{defn}[Cantor Cylinder]
+\label{CantorCylinder}
+\hypertarget{CantorCylinder}
+    Let \( I \subseteq \mathbb{N} \) be finite and
+    \[ 
+       \phi: I \to \left\{ 0,1 \right\}. 
+   \]
+   Then we define the \textbf{cylinder set} with base \( \phi \) as
+   \[ 
+       \left[ \phi \right] := \left\{ x \in \left\{ 0,1 \right\} : x\vert_I = \phi \right\}.
+  \]
+\end{defn}
+
+\begin{lemma}
+\label{CantorCylinderBasis}
+\hypertarget{CantorCylinderBasis}
+The sets \( \left[ \phi \right] \) form a base of the topology of \( \left\{ 0,1 \right\}^\mathbb{N} \).
+\end{lemma}
+
+\begin{defn}
+\label{CantorSubsetDependent}
+\hypertarget{CantorSubsetDependent}
+A set \( A \subseteq C \) is ???? by \( I \subseteq \mathbb{N} \), which we donte by \(A \sim I\) if for all \( x \in A \), \( y \in C \) we have
+\[ 
+    x\vert_I = y\vert_I \implies y \in A. 
+\]
+Equivalently,
+\[ 
+    \pi^{-1}_I\pi_I [A] = A. 
+\]
+\end{defn}
+
+\begin{lemma}[Clopen sets in the Cantor set]
+\label{CantorClopen}
+\hypertarget{CantorClopen}
+A set \( A \subseteq C \) is clopen iff \( A \sim I \) for some finite \( I \subseteq \mathbb{N} \).
+\end{lemma}
+
+\begin{proof}[(Direction one)]
+If \( A \) is clopen, then
+\[ 
+A = \bigcup_i \left[ \phi_i \right] 
+\]
+for some finitely many (by compactnes) \( \phi_i \) with finite domain \( I_i \). Then
+\[ 
+    A \sim \bigcup_i I_i. 
+\]
+\end{proof}
+
+\begin{proof}[(Other direction)]
+ if \( A \sim I \), blabla
+\end{proof}
+
+Immediately, a lemma follows.
+
+\begin{lemma}[Cantor set is zerodimensional]
+\label{CentorZerodimensional}
+\hypertarget{CentorZerodimensional}
+The Cantor set \( C \) is zerodimensional, i.e. it has a base of clopen sets.
+\end{lemma}
+
+\begin{thm}[Topological characterisation of the Cantor set]
+\label{CantorSetUniversalProperty}
+\hypertarget{CantorSetUniversalProperty}
+If a topological space \( K \) is compact, metrizable, zerodimensional with no isolated points, then
+\[ 
+    K \cong C. 
+\]
+\end{thm}
+
+\section{The group structure}
+
+The Cantor set has a natural abelian group structure given by its product structure. We can phrase it even more efficiently when we think of \( C \) as \( \mathcal{P}( \mathbb{N} ) \) -- the symmetric difference (or xor for the informatically inclined).
+
+\[ 
+    A \oplus B := A \Delta B 
+\]
+
+Every element has order two!
+
+\paragraph{Fact.} Together with the operation \( \oplus \), the Cantor set \( C \) is a compact topological group, i.e. the function
+\[ 
+    (x, y) \mapsto x \oplus y 
+\]
+is continuous (in general the second element is inversed, but here every element is its own inverse anyway).
