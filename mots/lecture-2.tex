@@ -140,11 +140,11 @@ is a continuous surjection.
 \begin{thm}[The Universal Property of the Cantor Set]
 \label{CantorSetUniversalProperty}
 \hypertarget{CantorSetUniversalProperty}
- Every metrizable compact space \( K \) is a continuout image of \( C \).
+ Every metrizable compact space \( K \) is a continuout image of \( \mathcal{C} \).
 \end{thm}
 
 \begin{proof}
-Considering an element of \( C \) as a binary expansion, we have a continuous surjection
+Considering an element of \( \mathcal{C} \) as a binary expansion, we have a continuous surjection
 %TODO: surjection arrow
 \[ 
     g: \left\{ 0,1 \right\}^{ \mathbb{N} } \to [0,1]^{ \mathbb{N} }.
@@ -176,22 +176,22 @@ Let
         \varphi: \mathbb{N} \partto \left\{ 0,1 \right\}
    \]
    be a partial function with finite domain.
-   Then we define the \textbf{cylinder set} with base \( \phi \) as
+   Then we define the \textbf{cylinder set} with base \( \varphi \) as
    \[ 
-       \left[ \phi \right] := \left\{ x \in \left\{ 0,1 \right\} : x\vert_I = \phi \right\}.
+       \left[ \varphi \right] := \left\{ x \in \left\{ 0,1 \right\} : x\vert_I = \varphi \right\}.
   \]
 \end{defn}
 
 \begin{lemma}
 \label{CantorCylinderBasis}
 \hypertarget{CantorCylinderBasis}
-The sets \( \left[ \phi \right] \) form a base of the topology of \( \left\{ 0,1 \right\}^\mathbb{N} \).
+The sets \( \left[ \varphi \right] \) form a base of the topology of \( \left\{ 0,1 \right\}^\mathbb{N} \).
 \end{lemma}
 
 \begin{defn}
 \label{CantorSubsetDependent}
 \hypertarget{CantorSubsetDependent}
-A set \( A \subseteq C \) is ???? by \( I \subseteq \mathbb{N} \), which we donte by \(A \sim I\) if for all \( x \in A \), \( y \in C \) we have
+A set \( A \subseteq \mathcal{C} \) is ???? by \( I \subseteq \mathbb{N} \), which we donte by \(A \sim I\) if for all \( x \in A \), \( y \in \mathcal{C} \) we have
 \[ 
     x\vert_I = y\vert_I \implies y \in A. 
 \]
@@ -204,15 +204,15 @@ Equivalently,
 \begin{lemma}[Clopen sets in the Cantor set]
 \label{CantorClopen}
 \hypertarget{CantorClopen}
-A set \( A \subseteq C \) is clopen iff \( A \sim I \) for some finite \( I \subseteq \mathbb{N} \).
+A set \( A \subseteq \mathcal{C} \) is clopen iff \( A \sim I \) for some finite \( I \subseteq \mathbb{N} \).
 \end{lemma}
 
 \begin{proof}[(Direction one)]
 If \( A \) is clopen, then
 \[ 
-A = \bigcup_i \left[ \phi_i \right] 
+A = \bigcup_i \left[ \varphi_i \right] 
 \]
-for some finitely many (by compactnes) \( \phi_i \) with finite domain \( I_i \). Then
+for some finitely many (by compactnes) \( \varphi_i \) with finite domain \( I_i \). Then
 \[ 
     A \sim \bigcup_i I_i. 
 \]
@@ -227,7 +227,7 @@ Immediately, a lemma follows.
 \begin{lemma}[Cantor set is zerodimensional]
 \label{CentorZerodimensional}
 \hypertarget{CentorZerodimensional}
-The Cantor set \( C \) is zerodimensional, i.e. it has a base of clopen sets.
+The Cantor set \( \mathcal{C} \) is zerodimensional, i.e. it has a base of clopen sets.
 \end{lemma}
 
 \begin{thm}[Topological characterisation of the Cantor set]
@@ -241,14 +241,14 @@ If a topological space \( K \) is compact, metrizable, zerodimensional with no i
 
 \section{The group structure}
 
-The Cantor set has a natural abelian group structure given by its product structure. We can phrase it even more efficiently when we think of \( C \) as \( \mathcal{P}( \mathbb{N} ) \) -- the symmetric difference (or xor for the informatically inclined).
+The Cantor set has a natural abelian group structure given by its product structure. We can phrase it even more efficiently when we think of \( \mathcal{C} \) as \( \mathcal{P}( \mathbb{N} ) \) -- the symmetric difference (or xor for the informatically inclined).
 
 \[ 
     A \oplus B := A \Delta B 
 \]
 Every element has order two!
 
-\paragraph{Fact.} Together with the operation \( \oplus \), the Cantor set \( C \) is a compact topological group, i.e. the function
+\paragraph{Fact.} Together with the operation \( \oplus \), the Cantor set \( \mathcal{C} \) is a compact topological group, i.e. the function
 \[ 
     (x, y) \mapsto x \oplus y 
 \]
@@ -262,7 +262,7 @@ We can define the measure on the Cantor set as a countable product of probabilit
 \]
 But we will do it by hand.
 \begin{defn}
-Let \( A \subseteq C \) be clopen. Then
+Let \( A \subseteq \mathcal{C} \) be clopen. Then
 \[ 
     A \sim \{1, 2, \ldots, n\} 
 \]
@@ -281,38 +281,38 @@ This makes sens with the probabilistic definition.
 \hypertarget{CantorPremeasureWellDefined}
 The function
 \[ 
-    \nu: \Clop C \to \mathbb{R} 
+    \nu: \Clop \mathcal{C} \to \mathbb{R} 
 \]
-is a well-defined, additive function on the set algebra \( \Clop C \).
+is a well-defined, additive function on the set algebra \( \Clop \mathcal{C} \).
 \end{thm}
 
 % TODO: add reference
 \paragraph{Proof.} Since the Cantor set is compact, \( \nu \) is automatically downward continuous on the empty set. By Caratheodory's Theorem, \( \nu \) extends uniquely to a probabilistic measure on 
 \[ 
-    \Bor C = \sigma \left( \Clop C \right).
+    \Bor \mathcal{C} = \sigma \left( \Clop \mathcal{C} \right).
 \]
 
 What now??
 \[ 
-    \mathcal{A} := \left\{ B \in \Bor C : \forall\varepsilon > 0. \exists A \in \Clop C. \nu (A \Delta B) <\varepsilon \right\}.
+    \mathcal{A} := \left\{ B \in \Bor \mathcal{C} : \forall\varepsilon > 0. \exists A \in \Clop C. \nu (A \Delta B) <\varepsilon \right\}.
 \]
 We prove that this is a \( \sigma \)-algebra.
 
 \begin{thm}
 \label{CantorMeasureHaar}
 \hypertarget{CantorMeasureHaar}
-The measure \( \nu \) is the Haar measure on \( C \), that is, the unique probability measure invariant under group actions
+The measure \( \nu \) is the Haar measure on \( \mathcal{C} \), that is, the unique probability measure invariant under group actions
 \[ 
     \nu \left( x \oplus B \right) = \nu (B) 
 \]
-for all \( x \in C \), \( B \subseteq C \).
+for all \( x \in \mathcal{C} \), \( B \subseteq \mathcal{C} \).
 \end{thm}
 \begin{proof}
-    Let us first consider \( B = \left [ \phi \right ] \), and \( I = \dom \phi \). Then
+    Let us first consider \( B = \left [ \varphi \right ] \), and \( I = \dom \varphi \). Then
     \[ 
-       \nu \left( x \oplus \left[ \phi \right] \right) = \nu \left( \left[ x \oplus \phi \right] \right) = \nu \left( \left[ \phi \right] \right).
+       \nu \left( x \oplus \left[ \varphi \right] \right) = \nu \left( \left[ x \oplus \varphi \right] \right) = \nu \left( \left[ \varphi \right] \right).
    \]
-   A clopen is a disjoint sum of \( \left[ \phi_i \right] \) for finitely many \( \phi_i \), so additivity on clopens follows. Now, take a superficially different measure
+   A clopen is a disjoint sum of \( \left[ \varphi_i \right] \) for finitely many \( \varphi_i \), so additivity on clopens follows. Now, take a superficially different measure
    \[ 
       \nu_x(B) := \nu \left( x \oplus B \right). 
   \]
@@ -330,7 +330,7 @@ of (topological) groups.
 \begin{defn}
 \label{CantorTailSubset}
 \hypertarget{CantorTailSubset}
-Let \( A \subseteq C \). We call \( A \) a \textbf{tail} set if
+Let \( A \subseteq \mathcal{C} \). We call \( A \) a \textbf{tail} set if
 \[ 
     A \sim \left\{ k : k \geqslant n \right\} 
 \]
@@ -339,25 +339,25 @@ for all \( n \). Equivalently, if \( x \in A \) and \( x(n) = y(n) \) for almost
 
 \paragraph{Example.} A naturally occuring example of a tail set is
 \[ 
-    A_\beta := \left\{ x \in C : \lim_n \frac{x(1) + \ldots x(n)}{n}= \beta \right\}.
+    A_\beta := \left\{ x \in \mathcal{C} : \lim_n \frac{x(1) + \ldots x(n)}{n}= \beta \right\}.
 \]
 
 \begin{thm}[Kolmogorov zero-one law for the Cantor set]
 \label{CantorZeroOneLaw}
 \hypertarget{CantorZeroOneLaw}
-A borel tail set \( A \subseteq C \) has measure \( 0 \) or \( 1 \).
+A borel tail set \( A \subseteq \mathcal{C} \) has measure \( 0 \) or \( 1 \).
 \end{thm}
 
 \begin{proof}
-Take a basis set \( \left[ \phi \right] \). We have
+Take a basis set \( \left[ \varphi \right] \). We have
 \[ 
-    \nu \left( \left[ \phi \right] \cap A \right) = \nu \left( \left[ \phi \right] \right) \cdot \nu(A).
+    \nu \left( \left[ \varphi \right] \cap A \right) = \nu \left( \left[ \varphi \right] \right) \cdot \nu(A).
 \]
-From this immediately follows that this work for any \( B \in \Clop C \).
+From this immediately follows that this work for any \( B \in \Clop \mathcal{C} \).
 %TODO: find a good notation for the Cantor set
 Now approximate \( A \) by a clopen \( B \) so that
 \[ 
-    \nu \left( A \Delta C \right).
+    \nu \left( A \Delta \mathcal{C} \right).
 \]
 To finish the proof, compute
 \[ 
