@@ -1,0 +1,47 @@
+\chapter{Measure Theory Bank of Lemmas}
+
+\begin{lemma}
+\label{BoundedUniformApproxBySimple}
+\hypertarget{BoundedUniformApproxBySimple}
+A bounded measurable function \( f \) on a measure space \( (X, \mu ) \) can be uniformly approximated by simple functions.
+\end{lemma}
+\begin{proof}
+    Let
+    \[ 
+        \left\lvert f \right\rvert \leqslant [-M, M]. 
+   \]
+    We will construct the approximation by considering \emph{bins} of the values of \( f \), i.e. the sets
+    \[ 
+        A_k := f^{-1} \Bigl [ [k\varepsilon, (k+1) \varepsilon) \Bigr ]
+   \]
+   for \( k \in \mathbb{Z} \). In such a \emph{bin}, all the values are within an \(\varepsilon \) of each other. Since \( f \) is bounded, all but finitely many of the bins are empty \( X \), so the function
+   \[ 
+       \widetilde{f}_\varepsilon := \sum_{A_k \neq \varnothing} (k\varepsilon) \cdot \chi_{A_k}
+  \]
+\end{proof}
+\paragraph{Remark.} This works equally well for almost everywhere bounded functions, giving almost everywhere uniform convergence.
+
+\begin{lemma}
+    \label{CuttingOutMeasure}
+    \hypertarget{CuttingOutMeasure}
+    Let \(A\), \(A_1\), \ldots, \(A_k\) be measurable sets such that
+    \[
+        \forall k.\, \mu(A_i \cap A) \geq (1 - \delta_i)\mu(A).
+    \]
+    Then
+    \[
+        \mu(A \cap A_1 \cap A_2 \cap \ldots \cap A_k) \geq \left(1 - \sum \delta_i \right) \mu(A).
+    \]
+\end{lemma}
+\begin{proof}
+    Union bound on the sets
+    \[
+        A \cap A_i^c.
+    \]
+\end{proof}
+
+\paragraph{Remark.} This also works for an infinite sequence of sets \( A_k \); we obtain.
+\[ 
+    \mu \left( A \cap \bigcap_k A_k \right) \geqslant \left( 1 - \sum_k \delta_k \right)\mu(A). 
+\]
+
