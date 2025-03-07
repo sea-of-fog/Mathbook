@@ -37,35 +37,106 @@ A real number \( x \in [0,1] \) is an element of \( \mathcal{C}_3 \) iff \( x \)
 We proceed by induction with the induction thesis: \emph{\( x \) belongs to \( \mathcal{C}_3 \) iff \( x \) can be written in base 3 so that its first k digits are 0 or 2.} It should be clear that this thesis is equivalent to the lemma statement. For each \( k \), the statement is true by \hyperlink{PositionalSystemPrefix}{the previous lemma}.
 \end{proof}
 
-The ternary Cantor set has many interesting properties. However, to study it, we will move to a more convenient representation.
-
 \section{Abstract Cantor}
 
-We work with the Cantor set understood as
+% TODO: picture of inifinite tree
+The ternary Cantor set has many interesting properties. However, to study it, we will move to a more convenient representation. We can think of the Cantor set as the set of leaves of an infinite binary tree -- starting from the root, at each level we choose whether to go right or left, or whether to insert 0 or 2 as the next digit in the base-3 representation of an \( x \in \mathcal{C}_3 \).
+
+In this way, we can represent the ternary Cantor as
 \[ 
-    \left\{ 0,1  \right\}^{ \mathbb{N} },
+  \mathcal{C} := \left\{ 0,1  \right\}^{ \mathbb{N} }.
 \]
-topologized by the metric
+That the map we just described is a bijection follows from
+\begin{lemma}
+\label{PositionalSystemCollision}
+\hypertarget{PositionalSystemCollision}
+Let \( d_k, \widetilde{d}_k \) be two sequences of base \( b \) digits. Then the corresponding real numbers are equal iff \( d_k \) and \( \widetilde{d} \) agree on some prefix and afterwards one of them is \( 0 \) and the other is \( (b-1) \). 
+\end{lemma}
+\begin{proof}
+The condition implies equality of numbers by the sum of a geometric series. The other direction follows by looking at the first moment the expansions differ at then bounding the series sum.
+\end{proof}
+
+What is missing from this description is the topology. We topologize \( \mathcal{C} \) by the metric
 \[ 
     d(x,y) = 
     \begin{cases}
-        0 \text{ for } x = y \\
-        \frac{1}{n}\text{ for } x \neq y
-   \end{cases},
+        0 &\text{ for } x = y \\
+        \frac{1}{n}&\text{ for } x \neq y,
+   \end{cases}
 \]
 which can also be written succintly as
 \[ 
-    d(x,y) = \frac{1}{\inf \left\{ n : x(n) \neq y(n) \right\}}.
+    d(x,y) = \frac{1}{n_0(x,y)}
 \]
+with the notation
+\[ 
+    n_0(x,y) := \inf \left\{ n: x_n \neq y_n \right\} 
+\]
+for the first index at which \( x \) and \( y \) differ. The function \( d \) may not look like a metric at first sight, but in fact it has an even better property.
+\begin{lemma}
+\label{CantorMetricMin}
+\hypertarget{CantorMetricMin}
+For the metric \( d \) described above we have for all \( x, y, z \in \mathcal{C} \)
+\[ 
+    d(x, z) \leqslant \max \left\{ d(x, y), d(y,z) \right\}.
+\]
+In particular, \( d \) is an \textbf{ultrametric}.
+\end{lemma}
+\begin{proof}
+    Recall that \( n_0(x,z) \) is the first position at which \( x \) and \( z \) differ. Then any \( y \) has to differ with at least one of \( y \) and \( z \) at \( n_0 \), but might even earlier. This gives
+    \[ 
+       n_0(x,z) \geqslant \min \bigl( n_0(x,y), n_0(y,z) \bigr).
+   \]
+   Since the function \( x \mapsto 1/x \) is decreasing, the thesis follows.
+\end{proof}
+We have established that \( ( \mathcal{C}, d ) \) is a metric space. It is, in fact, homeomorphic with the subspace topology of \( \mathcal{C}_3 \) inherited from \( [0,1] \).
 
-Note that
-\begin{enumerate}
-    \item it is an ultrametric
-    \item it is a homeomorphism onto the base-3 Cantor set \( C \subseteq [0,1] \).
-\end{enumerate}
-%TODO: continuity
+\begin{lemma}
+\label{CantorAbstractTernaryHomeo}
+\hypertarget{CantorAbstractTernaryHomeo}
+    The function 
+    \[ 
+       h_3: \mathcal{C} \to \mathcal{C}_3 
+   \]
+   defined by
+   \[ 
+       h_3(x) := \sum_{k=1}^\infty \frac{2x_k}{3^k} 
+  \]
+  is a homeomorphism.
+\end{lemma}
+\begin{proof}
+    Bijectivity follows from the number-system lemma \ref{PositionalSystemCollision} and \ref{ZeroTwoTernaryCantor}. For continuity, put down \( n_0 := n_0(x,y) \) and compute
+    \begin{align*}
+        \left| h_3(x) - h_3(y) \right| &= \sum_{k=1}^\infty \frac{2|x_k - y_k|}{3^k} \\
+                                   &\leqslant \sum_{k = n_0}^\infty \frac{2}{3^k} \\
+                                   &= \frac{2}{3^{n_0}} \cdot \frac{3}{2} \\
+                                   &= \frac{1}{3^{n_0 - 1}}.
+    \end{align*}
+    The continuity of the inverse follows from the bound
+    \[ 
+        \left| h_3(x) - h_3(y) \right| \geqslant \frac{2}{3^{n_0}}.
+   \]
+\end{proof}
 
-We begin by proving
+The function \( h_3 \) in \ref{CantorAbstractTernaryHomeo} can be understood as a base 3 expansion operator. When we consider a base 2 expansion instead, we lose bijectivity, but we can cover the whole interval.
+
+\begin{lemma}
+\label{CantorAbstractIntervalSurjection}
+\hypertarget{CantorAbstractIntervalSurjection}
+The function
+\[ 
+    h_2: \mathcal{C} \to [0,1] 
+\]
+given by
+\[ 
+    h_2(x) := \sum_{k = 1}^\infty \frac{x_k}{2^k} 
+\]
+is a continuous surjection.
+\end{lemma}
+\begin{proof}
+    Surjectivity follows from number system properties, and continuity is essentialy the same calculation as in the proof of \ref{CantorAbstractTernaryHomeo}.
+\end{proof}
+
 \begin{thm}[The Universal Property of the Cantor Set]
 \label{CantorSetUniversalProperty}
 \hypertarget{CantorSetUniversalProperty}
@@ -97,14 +168,14 @@ but the universality theorem fails!
 
 \section{Topology of the Cantor set}
 
-% TODO: partial function arrow
 \begin{defn}[Cantor Cylinder]
 \label{CantorCylinder}
 \hypertarget{CantorCylinder}
-    Let \( I \subseteq \mathbb{N} \) be finite and
+Let
     \[ 
-       \phi: I \to \left\{ 0,1 \right\}. 
+        \varphi: N \multimap \mspace{-2mu} \to \left\{ 0,1 \right\}
    \]
+   be a partial function with finite domain.
    Then we define the \textbf{cylinder set} with base \( \phi \) as
    \[ 
        \left[ \phi \right] := \left\{ x \in \left\{ 0,1 \right\} : x\vert_I = \phi \right\}.
