@@ -1,4 +1,45 @@
-\chapter{Cantor set}
+\chapter{One (Cantor) set to rule them all}
+\section{Ternary Cantor}
+Let us begin by making a construction. Take the closed interval \( C_0 := [0,1] \) and remove the middle one third of it in such a way that the remaining two interval are closed. The result of this is
+\[ 
+    C_1 := \left[0, \frac{1}{3}\right] \cup \left[ \frac{2}{3}, 1 \right].
+\]
+Now, repeat the operation of cutting out the middle third and call the result \( C_2 \). We can repeat this \emph{ad inifinitum} and obtain a decresing sequence of sets
+\[ 
+    [0,1] = C_0 \supset C_1 \supset C_2 \supset \ldots.
+\]
+Perhaps surprisingly, there are numbers which are not removed at any step, i.e. the intersection
+\[ 
+    \mathcal{C}_3 := \bigcap_{k=0}^\infty C_k
+\]
+is nonempty! It contains \( 0 \) and \( 1 \). In fact, any number which can be written in base \( 3 \) using only 0's and 2's is an element of this intersection. These are in fact all such numbers. We introduce a tool to prove that.
+
+\begin{lemma}
+\label{PositionalSystemPrefix}
+\hypertarget{PositionalSystemPrefix}
+Let \( b \geqslant 2\) be a positional system base and \( x_0 \) be a number with \( k \) digits after the positional point. Then, the numbers formed by adjoining (perhaps infinitely many) digits to the base \( b \) representation of \( x_0 \) are all the numbers in the interval
+\[ 
+    \left[ x_0,\, x_0 + b^{-k} \right].
+\]
+If we allow only finite extensions, we get the \( b \)-ary rational numbers in that interval, and if we disallow the infinite extension by the digit \( (b-1) \), we get the interval
+\[ 
+    \left[ x_0,\, x_0 + b^{-k} \right).
+\]
+\end{lemma}
+
+\begin{lemma}
+\label{ZeroTwoTernaryCantor}
+\hypertarget{ZeroTwoTernaryCantor}
+A real number \( x \in [0,1] \) is an element of \( \mathcal{C}_3 \) iff \( x \) can be written in base using only the digits 0 and 2.
+\end{lemma}
+
+\begin{proof}[Proof (if).] 
+We proceed by induction with the induction thesis: \emph{\( x \) belongs to \( \mathcal{C}_3 \) iff \( x \) can be written in base 3 so that its first k digits are 0 or 2.} It should be clear that this thesis is equivalent to the lemma statement. For each \( k \), the statement is true by \hyperlink{PositionalSystemPrefix}{the previous lemma}.
+\end{proof}
+
+The ternary Cantor set has many interesting properties. However, to study it, we will move to a more convenient representation.
+
+\section{Abstract Cantor}
 
 We work with the Cantor set understood as
 \[ 
@@ -10,7 +51,11 @@ topologized by the metric
     \begin{cases}
         0 \text{ for } x = y \\
         \frac{1}{n}\text{ for } x \neq y
-   \end{cases}
+   \end{cases},
+\]
+which can also be written succintly as
+\[ 
+    d(x,y) = \frac{1}{\inf \left\{ n : x(n) \neq y(n) \right\}}.
 \]
 
 Note that
