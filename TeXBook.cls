@@ -94,3 +94,6 @@
 \DeclareMathOperator{\Isom}{Isom}
 \DeclareMathOperator{\Aff}{Aff}
 \DeclareMathOperator{\SO}{SO}
+
+%%%%%%%%%%%%%%%% Symbols
+\newcommand{\partto}{\multimap\mspace{-2mu}\to}
