@@ -26,10 +26,10 @@
 
 % AMSthm environments
 \RequirePackage{amsthm}
-\newtheorem{lemma}{Lemma}
-\newtheorem{thm}{Theorem}
-\newtheorem{defn}{Definition}
-\newtheorem{example}{Example}
+\newtheorem{lemma}{Lemma}[chapter]
+\newtheorem{thm}{Theorem}[chapter]
+\newtheorem{defn}{Definition}[chapter]
+\newtheorem{example}{Example}[chapter]
 
 % Colors
 \RequirePackage{xcolor}
