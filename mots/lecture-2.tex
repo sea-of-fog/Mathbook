@@ -140,27 +140,30 @@ is a continuous surjection.
 \begin{thm}[The Universal Property of the Cantor Set]
 \label{CantorSetUniversalProperty}
 \hypertarget{CantorSetUniversalProperty}
- Every metrizable compact space \( K \) is a continuout image of \( \mathcal{C} \).
+ Every metrizable compact space \( K \) is a continuous image of \( \mathcal{C} \).
 \end{thm}
 
 \begin{proof}
-Considering an element of \( \mathcal{C} \) as a binary expansion, we have a continuous surjection
-%TODO: surjection arrow
+    Considering an element of \( \mathcal{C} \) as a binary expansion, we have by \ref{CantorAbstractIntervalSurjection} a surjection
 \[ 
-    g: \left\{ 0,1 \right\}^{ \mathbb{N} } \to [0,1]^{ \mathbb{N} }.
+    h_2: \left\{ 0,1 \right\}^{ \mathbb{N} } \twoheadrightarrow [0,1] .
 \]
-The space \( K \) can be embedded into the Hilbert cube. We also have a surjection
+The space \( K \) can be embedded into the Hilbert cube by the \textbf{Urysohn Metrization Theorem} \ref{UrysohnMetrizationTheorem}. By compactness of \( K \), the image of the embedding is a compact and thus a closed subset. We also have a surjection
 \[ 
     h: \left\{ 0,1 \right\}^{ \mathbb{N} } \to [0,1]^{ \mathbb{N} }
 \]
-by using the previous surjection and \emph{unweaving} the Cantor set into the product of countably many Cantor sets. The last step is restricting the embedding \( h \) to the embedded \( K \).
+by using the previous surjection and \emph{unweaving} the Cantor set into the product of countably many Cantor sets, i.e. using
+\[ 
+    \mathbb{N} \cong \mathbb{N} \times \mathbb{N} \implies \mathcal{C} =  \left\{ 0,1 \right\}^\mathbb{N} \cong \left\{ 0,1 \right\}^{ \mathbb{N} \times \mathbb{N} } \cong \left( \left\{ 0,1 \right\}^{ \mathbb{N} } \right)^{ \mathbb{N} } = \mathcal{C}^{ \mathbb{N} }.
+\]
+The last step is using the fact that any closed set of \( \mathcal{C} \) is a retract of \( \mathcal{C} \), which is \ref{MoTSL2P1}.
 \end{proof}
 
-\paragraph{A warning agains generalization.} If \( K \) is a compact set, it embeds into a \emph{Tichonow Cube}
+\paragraph{A warning against generalization.} If \( K \) is a compact set, it embeds into a \emph{Tichonov Cube}
 \[ 
     K \to [0,1]^\Gamma 
 \]
-and we can surject the Tichonow cube with a generalized Cantor set
+and we can surject the Tichonov cube with a generalized Cantor set
 \[ 
     \left\{ 0,1 \right\}^{\Gamma},
 \]
@@ -191,7 +194,7 @@ The sets \( \left[ \varphi \right] \) form a base of the topology of \( \left\{ 
 \begin{defn}
 \label{CantorSubsetDependent}
 \hypertarget{CantorSubsetDependent}
-A set \( A \subseteq \mathcal{C} \) is ???? by \( I \subseteq \mathbb{N} \), which we donte by \(A \sim I\) if for all \( x \in A \), \( y \in \mathcal{C} \) we have
+A set \( A \subseteq \mathcal{C} \) is determined by \( I \subseteq \mathbb{N} \), which we donte by \(A \sim I\) if for all \( x \in A \), \( y \in \mathcal{C} \) we have
 \[ 
     x\vert_I = y\vert_I \implies y \in A. 
 \]
