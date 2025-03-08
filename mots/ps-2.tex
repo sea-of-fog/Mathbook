@@ -1,0 +1,20 @@
+\chapter{Measures on Topological Spaces, problemset 2}
+
+\section{Problem 1}
+
+Such an \( a \) exists by \ref{ClosestPointExistsInClosedSet}. If we have two \( a_1, a_2 \) such that 
+\[ 
+    \rho(x, a_1) = \rho(x, a_2) 
+\]
+then \( a_1, a_2 \) must agree and disagree with \( x \) at all places, so in fact \( a_1 = a_2 \), thus \( r_A \) is well-defined. For any \( a \in A \), \( d(a,A) = 0 = d(a,a) \), so \( r_A \) is a retraction. What remains to be shown is continuity.
+
+Let \( x, y \) agree up to \( n_0(x,y) \). Then \( r_A(x) \) and \( r_A(y) \) also agree up to \( n_0(x,y) \) -- if they differed earlier, we could use \( r_A(x) \) instead of \( r_A(y) \) and get a closer point \( a \) in the definition! So we have
+\[ 
+    n_0(x, y) \leqslant n_0 \left( r_A(x), r_A(y) \right) 
+\]
+and
+\[ 
+    d(x,y) \geqslant d \left(  r_A(x), r_A(y) \right).
+\]
+
+\paragraph{Remark.} The metric \( d(x,y) = 1/n_0(x,y) \), i.e. the first moment where \( x \) and \( y \) differ, won't work, because it can't tell apart points from which \( x \) differs at the same position!
