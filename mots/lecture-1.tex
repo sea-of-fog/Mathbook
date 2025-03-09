@@ -62,10 +62,14 @@ Note that a density point is by neccesity an accumulation point. The promised li
 For the proof of the \textbf{Lebesgue Density Theorem}, we will need a tool, which we introduce now and prove later.
 %TOOD: does the set have to be measurable?
 \begin{defn}
-    A family \(\mathcal{J} \) of nontrivial closed intervals is called a \textbf{Viali cover} of a set \( A \) if for any given \(\varepsilon > 0 \) and \( x \in A \) there is an interval \( J \in \mathcal{J} \) such that
+    A family \(\mathcal{J} \) of nontrivial closed intervals is called a \textbf{Vitali cover} of a set \( A \) (not necessarily measurable) if for any given \(\varepsilon > 0 \) and \( x \in A \) there is an interval \( J \in \mathcal{J} \) such that
     \[ 
        \diam J <\varepsilon \wedge x \in J.
    \]
+   In particular
+   \[ 
+      A \subseteq \bigcup \mathcal{J}.
+  \]
 \end{defn}
 \begin{thm}[Vitali Covering Theorem]
     \label{VitaliCoveringTheorem}
@@ -78,7 +82,7 @@ For the proof of the \textbf{Lebesgue Density Theorem}, we will need a tool, whi
 
 \paragraph{Why is this theorem useful?} Vitali's theorem may not sound very smart on first glance. Its strength lies in the \emph{disjointness} of the cover. If we go about choosing the cover \( J_n \) without any guarantees, we can for example choose
 \[ 
-    \bigcup_{q_n \in \mathbb{Q}} (q_n - \frac{\varepsilon}{2^{n+1}}, q_n + \frac{\varepsilon }{2^{n+1}}) 
+    \bigcup_{q_n \in \mathbb{Q}} \left(q_n - \frac{\varepsilon}{2^{n+1}}, q_n + \frac{\varepsilon }{2^{n+1}}\right) 
 \]
 and get stuck! We have only covered a subset of the reals of size \(\varepsilon \), but we cannot use any other segment by density of \( \mathbb{Q} \).
 \begin{proof}[Proof of the Lebesgue Density Theorem]
@@ -88,7 +92,7 @@ and get stuck! We have only covered a subset of the reals of size \(\varepsilon 
    \]
    for
    \[ 
-       A_k = \left\{ x \in A : \liminf_{\delta \to 0^+} \frac{\lambda(A \cap B(x,\delta))}{2\delta} < 1 - \frac{1}{k} \right\}.
+       A_k = \left\{ a \in A : \liminf_{\delta \to 0^+} \frac{\lambda(A \cap B(a,\delta))}{2\delta} < 1 - \frac{1}{k} \right\}.
   \]
   It suffices to show
   \[ 
@@ -100,29 +104,30 @@ and get stuck! We have only covered a subset of the reals of size \(\varepsilon 
 \]
 and being a density point of \( A \) is the same as being a density point of one of the \emph{cutouts} in the sum above, we may assume without loss of generality that \( A \subseteq [0,1] \).
 
-Approximate \( A_k \) from above by an open set \( U \) such that
+By definition of outer measure, we can approximate \( A_k \) from above by an open set \( U \) such that
 \[ 
-    \lambda(A_k) \leqslant \lambda(U) \leqslant \lambda(A_k) + \varepsilon.
+    \lambda^*(A_k) \leqslant \lambda(U) \leqslant \lambda^*(A_k) + \varepsilon.
 \]
 Construct a covering
 \[ 
-    \mathcal{J} = \left\{ [a,b] : [a,b] \subseteq U,\,\lambda(A \cap [a,b]) \leqslant \left(1 - \frac{1}{k}\right)\lambda([a,b])\right\}.
+    \mathcal{J} = \left\{ [a,b] : [a,b] \subseteq U,\,\lambda\Bigl(A \cap [a,b]\Bigr) \leqslant \left(1 - \frac{1}{k}\right)\lambda[a,b]\right\}.
 \]
-It is a Vitali Cover. By Vitali's Theorem we can pick a pairwise disjoint sequence of intervals \( [a_i, b_i] \in \mathcal{J}\) for which
+It is a Vitali cover of \( A_k \). By \hyperlink{VitaliCoveringTheorem}{Vitali's Theorem} we can pick a pairwise disjoint sequence of intervals \( J_i \in \mathcal{J}\) for which
 \[ 
-    \lambda^*\left( A \setminus \bigcup_n\; [a_n, b_n]\right) = 0.
+    \lambda^*\left( A_k \setminus \bigcup_i\; J_i\right) = 0.
 \]
 This gives
 \begin{align*}
-    \lambda^* (A_k) &=\lambda^*\left(A_k \cap \bigcup_n \; [a_n, b_n] \right) \\
-                    &\leqslant \sum_n \lambda^*(A_k \cap [a_n, b_n] ) \\
-                    &\leqslant \left( 1 - \frac{1}{k} \right) \sum_n\lambda[a_n, b_n] \\
+    \lambda^* (A_k) &=\lambda^*\left(A_k \cap \bigcup_i \; J_i \right) \\
+                    &\leqslant \sum_i \lambda^*(A_k \cap J_i ) \\
+                    &\leqslant \sum_i \lambda^*(A \cap J_i ) \\
+                    &\leqslant \left( 1 - \frac{1}{k} \right) \sum_i\lambda(J_i) \\
                     &\leqslant \left( 1 - \frac{1}{k} \right)\lambda(U) \\
                     &\leqslant \left( 1 - \frac{1}{k} \right) \left(\lambda^*(A_k) +\varepsilon \right).
 \end{align*}
-Rearranging gives
+The passage from line 2 to 3 may seem trivial, but is in fact crucial. This is the place where we use \( A_k \subseteq A \)! Otherwise the theorem is quite absurd, even for simple examples like \( [0,1] \). Since \( \lambda^*(A_k) \leqslant\lambda(A) < \infty \), we can rearrange this to obtain
 \[ 
-   \lambda^*(A_k) \leqslant k\varepsilon. 
+   \lambda^*(A_k) \leqslant (k-1)\varepsilon. 
 \]
 Since \(\varepsilon \) can be picked arbitrarily close to 0, we get
 \[ 
@@ -132,22 +137,27 @@ Since \(\varepsilon \) can be picked arbitrarily close to 0, we get
 \end{proof}
 
 \begin{proof}[Proof of the Vitali Covering Theorem.]
-    The key to avoiding the \emph{trap} we wrote about after stating the \hyperlink{VitaliCoveringTheorem}{VCT} is to choose the segments to be as large as possible -- or at least, not embarassingly small.
+    The key to avoiding the \emph{trap} we wrote about after stating the \hyperlink{VitaliCoveringTheorem}{VCT} is to choose the segments to be as large as possible -- or at least not embarassingly small.
 
     % Does this reduction work????
     Without loss of generality, \( A \) is bounded since we can sum the coverings of \( A \cap (n,n+1) \). The sequence of segments we pick is denoted \( J_n \). Its prefixes are
     \[ 
-        \mathcal{J}_n := \left\{ J \in \mathcal{J}: J \cap J_1 \cup \ldots J_{n-1} = \varnothing \right\}, 
+        \mathcal{J}_n := \bigcup_{i < n} J_i
    \]
    and the \emph{width} of what we can choose is
     \[ 
-       \gamma_n := \sup_{J \in \mathcal{J}_n} \diam J.  
+       \gamma_n := \sup \left\{ \diam J : J \cap \mathcal{J}_n = \varnothing \right\}
     \]
     Note that in particular
     \begin{align*}
-        \mathcal{J}_0 = \mathcal{J}, \\
+        \mathcal{J}_0 = \varnothing, \\
         \gamma_0 \leqslant \diam &A < \infty.
     \end{align*}
+    We choose \( J_n \) so that
+    \[ 
+       \diam J_n \geqslant \frac{1}{2}\gamma_n,
+   \]
+   or we stop if \( \gamma_n = 0 \) at some point.
 \end{proof}
 
 \section{Corollaries and the Lebesgue Differentiation Theorem}
@@ -157,12 +167,12 @@ Since \(\varepsilon \) can be picked arbitrarily close to 0, we get
     \hypertarget{LebesgueDifferentiationTheorem}
     Let \( f \in L^1( \mathbb{R} ) \). Then, for almost all \( x \),
     \[ 
-        \lim_{\delta \to 0^+} \frac{1}{2\delta} \int\limits_{x - \delta}^{x + \delta} f(s)\,\mathrm{d} \lambda(s) = f(x)
+        \lim_{\delta \to 0^+} \frac{1}{2\delta} \int\limits_{x - \delta}^{x + \delta} f(s)\,\mathrm{d} \lambda(s) = f(x).
    \]
 \end{thm}
 
-\begin{proof}[]
-    For characteristic functions, this is just a restatement of the \hyperlink{LebesgueDensityTheorem}{LDT}.
+\begin{proof}
+    For characteristic functions, this is just a restatement of the \hyperlink{LebesgueDensityTheorem}{Lebesgue Density Theorem}.
 \end{proof}
 
 \section{Generalization to metric spaces}
