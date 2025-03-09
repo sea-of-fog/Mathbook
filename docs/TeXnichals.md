@@ -9,6 +9,9 @@ I try to avoid creating many custom macros to make the code readableand maintain
 
 I shifted the heavy lifting of custom macros to snippets, so there is little loss of convenince in the process. What does happen is that anyone not familiar with the project can read the LaTeX without issu.
 
+## Typesetting tips
+1. When typesetting intervals, always add `\,` after the comma. This spacing just looks better. *Example*: `(a,\,b)` instead of `(a,b)`.
+
 ## Resources for learning LaTeX
 1. LaTeX książka kucharska
 2. https://ejmastnak.com/tutorials/vim-latex/prerequisites/#literacy-in-basic-vimneovim-differences

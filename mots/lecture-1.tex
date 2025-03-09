@@ -75,6 +75,7 @@ For the proof of the \textbf{Lebesgue Density Theorem}, we will need a tool, whi
     \label{VitaliCoveringTheorem}
     \hypertarget{VitaliCoveringTheorem}
     If \( \mathcal{J} \) is a Vitali cover of \( A \), there exists a sequence of pariwaise disjoint segments \( J_n \in \mathcal{J} \) such that
+    \ankimark
     \[ 
       \lambda \left( A \setminus \bigcup_n J_n \right) = 0.
    \]
@@ -82,7 +83,7 @@ For the proof of the \textbf{Lebesgue Density Theorem}, we will need a tool, whi
 
 \paragraph{Why is this theorem useful?} Vitali's theorem may not sound very smart on first glance. Its strength lies in the \emph{disjointness} of the cover. If we go about choosing the cover \( J_n \) without any guarantees, we can for example choose
 \[ 
-    \bigcup_{q_n \in \mathbb{Q}} \left(q_n - \frac{\varepsilon}{2^{n+1}}, q_n + \frac{\varepsilon }{2^{n+1}}\right) 
+    \bigcup_{q_n \in \mathbb{Q}} \left(q_n - \frac{\varepsilon}{2^{n+1}},\,q_n + \frac{\varepsilon }{2^{n+1}}\right) 
 \]
 and get stuck! We have only covered a subset of the reals of size \(\varepsilon \), but we cannot use any other segment by density of \( \mathbb{Q} \).
 \begin{proof}[Proof of the Lebesgue Density Theorem]
