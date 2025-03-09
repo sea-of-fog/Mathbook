@@ -140,25 +140,75 @@ Since \(\varepsilon \) can be picked arbitrarily close to 0, we get
     The key to avoiding the \emph{trap} we wrote about after stating the \hyperlink{VitaliCoveringTheorem}{VCT} is to choose the segments to be as large as possible -- or at least not embarassingly small.
 
     % Does this reduction work????
-    Without loss of generality, \( A \) is bounded since we can sum the coverings of \( A \cap (n,n+1) \). The sequence of segments we pick is denoted \( J_n \). Its prefixes are
-    \[ 
-        \mathcal{J}_n := \bigcup_{i < n} J_i
-   \]
+    Without loss of generality, \( A \) is bounded since we can sum the coverings of \( A \cap (n,n+1) \). The sequence of segments we pick is denoted \( J_n \). In that case we may also assume \( \bigcup \mathcal{J} \) is bounded. Its prefixes are
+    \begin{align*}
+        P_n &:= \bigcup_{i < n} J_i \\
+        \mathcal{J}_n &:= \left\{ J \in \mathcal{J} : J \cap P_n = \varnothing \right\}
+    \end{align*}
    and the \emph{width} of what we can choose is
     \[ 
-       \gamma_n := \sup \left\{ \diam J : J \cap \mathcal{J}_n = \varnothing \right\}
+        \gamma_n := \sup_{J \in \mathcal{J}_n} \diam J.
     \]
     Note that in particular
     \begin{align*}
-        \mathcal{J}_0 = \varnothing, \\
-        \gamma_0 \leqslant \diam &A < \infty.
+        P_1 &= \varnothing, \\
+        \mathcal{J}_1 &= \mathcal{J} \\
+        \gamma_1 \leqslant &\diam A < \infty.
     \end{align*}
-    We choose \( J_n \) so that
+    At each step, we choose \( J_n \) so that
     \[ 
        \diam J_n \geqslant \frac{1}{2}\gamma_n,
    \]
    or we stop if \( \gamma_n = 0 \) at some point.
+\paragraph{Claim 1.} The sequence \( \gamma_n \) converges monotonically to \( 0 \).
+\begin{proof}[Proof of Claim 1.] Being the supremum of ever decreasing sets, \( \gamma_n \) is decreasing. It is also nonnegative, so the sequence converges and \( \lim_n \gamma_n \geqslant 0 \). Suppose that \( \lim_n \gamma_n = c > 0 \). Then in the construction, we would almost always choose disjoint intervals of diameter at least \( c/2 \). This is impossible, since \( \bigcup \mathcal{J} \) was assumed to be bounded, so it has finite measure!
 \end{proof}
+
+   The key to proving that the choice procedure is correct will be the \textbf{blowup}, which we define for \( J = [x-r,x+r] \) as
+   \[ 
+       \widetilde{J} :=  [x - 5r,\, x + 5r]
+  \]
+   \paragraph{Claim 2.} At all steps of the construction
+   \[ 
+       A \subseteq \mathcal{J}_n \cup \bigcup_{i \geqslant n} \widetilde{J}_i.
+  \]
+  \begin{proof}[Proof of Claim 2.]
+      %TODO: get rid of that "is considered junk" with sensible notation.
+      The set \( \mathcal{J}_n \) is closed as a union of closed intervals. Therefore, if \( a \in A  \setminus \mathcal{J}_n \), there is a nondegenerate interval \( I \ni a \). Since \( \gamma_n \to 0 \) by \textbf{Claim 1}, \( I \) is not considered in the construction of the sequence \( J_n \) for almost all \( n \). Let \( n_0 \) be the last step where it is considered. Then we must have \( I \cap J_{n_0 + 1} \neq 0\), because that is the step at which \( I \) is no longer considered.
+
+      We will show that this implies \( a \in \widetilde{J}_{n_0 + 1} \). Let \( J_{n_0 + 1} = [x - r,\, x + r] \) and \( y \in I \cap J_{n_0 + 1} \). Then we have
+      \begin{align*}
+          d(a, x) &\leqslant d(a,y) + d(y,z) \\
+                  &\leqslant \diam I + r \\
+                  &\leqslant \left(  2\cdot \diam J_{n_0 + 1} \right)+ r \\
+                  &= 2 \cdot 2r + r \\
+                  &= 5r,
+      \end{align*}
+      where the diameter bound comes from the definition of \( \gamma_{n_0} \) and the fact that \( I \) is still available at step \( n_0 \) of the construction.
+  \end{proof}
+  
+  To finish the proof of Vitali's Covering Theorem, we compute that for all \( n \)
+  \begin{align*}
+      \lambda^* \left( A \setminus P_n \right) &\leqslant\lambda^* \left( A \cap \bigcup_{i \geqslant n} \widetilde{J}_i \right) \\
+                                               &\leqslant \lambda \left( \bigcup_{i \geqslant n} \widetilde{J}_i \right) \\
+                                               &\leqslant \sum_{i \geqslant n}\lambda(\widetilde{J}_i) \\
+                                               &= 5\sum_{i \geqslant n}\lambda(J_i).
+  \end{align*}
+  These are the tails of the convergent series
+  \[ 
+      \sum_{i=1}^{\infty}\lambda(J_i) =\lambda \left( \bigcup_i J_i \right) < \infty,
+ \]
+ so we get
+ \[ 
+  \lambda^* \left( A \setminus \bigcup_i J_i \right) \leqslant \lambda^* \left( A \setminus P_n \right) \to 0.
+\]
+\end{proof}
+
+\paragraph{Remark.} Retracing the argument behind \textbf{Claim 2.}, we might prove that for any \( \alpha < 1 \), if we define \( \gamma_n \) with a coefficient of \( \alpha \) instead of \( \frac{1}{2} \), the constant used for blowing up intervals can be brought down to
+\[ 
+    1 + \frac{2}{\alpha}. 
+\]
+In particular, we can get arbitrarily close to \( 3 \).
 
 \section{Corollaries and the Lebesgue Differentiation Theorem}
 
