@@ -1,8 +1,5 @@
 \chapter{Measures on Topological Spaces, Problemset 1}
 
-\section*{Problem 8}
-\subsection*{Problem 8a}
-
 \section*{Problem 4}
 
 
@@ -12,3 +9,127 @@ We show that the set can be the graph of a function! Let \(Z\) be a borel set of
     T_Z = \{ x : \lambda(Z_x) > 0 \}.
 \]
 Then \(T_Z\) is a measurable set by Fubini's Theorem. We can pick a compact subset \( T'_Z \). A compact set of positive measure has at least \(\mathfrak{c}\) elements, and there are as many borel sets. Then, enumerate borel sets of \( \mathbb{R}^2 \).
+
+\section*{Problem 5}
+
+\subsection*{Set of undefined density at \( 0 \)}
+\textbf{TODO} 
+
+\subsection*{Set of density \( t \) at \( 0 \)}
+
+Presented in class by \textbf{Michał Baran}. 
+Fix \( t \in (0,\,1) \). 
+
+The set we will construct will be symmetric around 0. We will find a sequence \( b_n \) such that with
+\[ 
+    A_n = \left( \frac{1}{n} - b_n,\, \frac{1}{n} \right) 
+\]
+we will have for all \( n \)
+\[ 
+    \frac{t}{n} =\lambda \left( \bigcup_{k = n}^\infty A_n \right) = \sum_{k = n}^{\infty} b_k,
+\]
+so
+\[ 
+    b_n = \sum_{k=n}^\infty b_k  - \sum_{k=n+1}^\infty b_k = \frac{t}{n(n+1)}.
+\]
+Consider
+\[ 
+    A :=  \bigcup_{k=1}^\infty A_k \cup -A_k.
+\]
+We will bound the fraction
+\[ 
+    \frac{\lambda \left( A \cap (-\delta, \delta) \right) }{2\delta} = \frac{\lambda \left( A \cap (0, \delta)  \right) }{\delta}
+\]
+from above and below. For \( \delta \in (1/(n+1), 1/n] \) we have
+\[ 
+    \bigcup_{k=n+1} A_k \subseteq A \cap (0, \delta) \subseteq \bigcup_{k=n} A_k,
+\]
+passing to measure
+\[ 
+    \frac{t}{n+1} \leqslant\lambda \left( A \cap (0, \delta) \right) \leqslant \frac{t}{n}.
+\]
+When divided by \( \delta \), we get the result by the squeeze theorem.
+
+\paragraph{Remark.} The solution would work equally well if instead of \( a_n = 1/n \) we used a sequence that converges to \( 0 \) monotonically and satisfies
+\[ 
+    \frac{a_n - a_{n+1}}{a_n} \to 0.
+\]
+
+\section*{Problem 9}
+
+Presented in class by \textbf{dr Arturo Martinez Celiz}.
+
+Wlog, everything happens within \( (0,\,1) \). Following the hint, take a countable sequence \( A_i \) such that the set \( B := \bigcup_i A_i \) has maximal measure.
+
+By this choice, for any \( C \in \mathcal{A} \), we have
+\[ 
+   \lambda \Bigl( \left( C \cup B \right) \Delta B \Bigr) = 0, 
+\]
+so that
+\[ 
+    \phi(C \cup B) = \phi(B)
+\]
+and
+\[ 
+    C \subseteq \phi(C \cup B) = \phi(B). 
+\]
+Since \( C \) was arbitrary
+\[ 
+    \bigcup \mathcal{A} \subseteq \phi(B) \implies B \subseteq \bigcup \mathcal{A} \phi(B).
+\]
+Since \( \lambda(B) =\lambda \left( \phi(B) \right) \) we know that the sum of \( \mathcal{A} \) is measurable.
+
+\section*{Problem 10}
+
+Presented in class by \textbf{Szymon Smolarek}. 
+
+We take a cover of \textbf{regular sets}, i.e. a family for which there exists a constant \( C \) such that
+\[ 
+    \diam^2 A \leqslant C \lambda_2(A).
+\]
+It can be proven that if such a family is a Vitali cover of a set \( A \subseteq \mathbb{R}^2 \), an analogue of the \hyperlink{VitaliCoveringTheorem}{VCT} holds.
+
+The family of all triangles does not satisfy the regularity condition -- think of keeping one segment constant and bringing the third verted evert closer to the segment. To deal with this, we subdivide the family \( \mathcal{T} \) into subfamilies
+\[ 
+    \mathcal{T}_n := \left\{ T \in \mathcal{T} : \diam^2 T \leqslant n\lambda_2(A) \right\}.
+\]
+Reducing to a given subfamily, we can cover each triangle \( T \) by arbitrarily small traingles similar to \( T \) contained within \( T \). This gives us a regular Vitali cover \( \widetilde{T}_n \) of \( \bigcup \mathcal{T}_n \).
+
+\section*{Problem 11}
+
+Stated in class by \textbf{Szymon Smolarek}.
+
+\begin{thm}[Steinhaus theorem for the Cantor Set]
+\label{CantorSteinhaus}
+\hypertarget{CantorSteinhaus}
+For any measurable set \( A \), the set
+\[ 
+    A \oplus A 
+\]
+contains an open neighbourhood of \( 0 \).
+\end{thm}
+
+\begin{thm}[Vitali Covering Theorem for the Cantor Set]
+\label{CantorSetVitaliCoveringTheorem}
+\hypertarget{CantorSetVitaliCoveringTheorem}
+    If a family of clopens \( \mathcal{J} \subseteq \Clop \mathcal{C} \) is a Vitali cover of \( A \), then there is a sequence \( J_n \in \mathcal{J} \) such that
+    \[ 
+      \nu^* \left( A \setminus \bigcup_n J_n \right) = 0. 
+   \]
+\end{thm}
+
+\begin{thm}[Lebesgue Density Theorem for the Cantor Set]
+\label{CantorSetLebesgueDensityTheorem}
+\hypertarget{CantorSetLebesgueDensityTheorem}
+    Let \( A \subseteq \mathcal{C} \). An element \( a \in A \) is a \textbf{density point} of \( A \) if
+    \[ 
+        \lim_{n \to \infty} \frac{ \nu \left( A \cap [a|_{[n]}] \right) }{2^{-n}} = 1.
+   \]
+   If \( A \) is measurable, then almost all points of \( A \) are density points of \( A \).
+\end{thm}
+
+The proofs are quite the same, as \( \mathcal{C} \) is a topological group and the measure \( \nu \) is its Haar measure.
+
+\section*{Problem 12}
+
+\paragraph{Hint.} Use Baire's theorem.
