@@ -192,9 +192,9 @@ The sets \( \left[ \varphi \right] \) form a base of the topology of \( \left\{ 
 \end{lemma}
 
 \begin{defn}
-\label{CantorSubsetDependent}
-\hypertarget{CantorSubsetDependent}
-A set \( A \subseteq \mathcal{C} \) is determined by \( I \subseteq \mathbb{N} \), which we donte by \(A \sim I\) if for all \( x \in A \), \( y \in \mathcal{C} \) we have
+\label{CantorSubsetDetermined}
+\hypertarget{CantorSubsetDetermined}
+A set \( A \subseteq \mathcal{C} \) is \textbf{determined} by \( I \subseteq \mathbb{N} \), which we donte by \(A \sim I\) if for all \( x \in A \), \( y \in \mathcal{C} \) we have
 \[ 
     x\vert_I = y\vert_I \implies y \in A. 
 \]
@@ -207,7 +207,7 @@ Equivalently,
 \begin{lemma}[Clopen sets in the Cantor set]
 \label{CantorClopen}
 \hypertarget{CantorClopen}
-A set \( A \subseteq \mathcal{C} \) is clopen iff \( A \sim I \) for some finite \( I \subseteq \mathbb{N} \).
+A set \( A \subseteq \mathcal{C} \) is clopen iff \( A \sim I \) for some finite \( I \subseteq \mathbb{N} \). In particular, clopen sets can be written as a finite union of disjoint basis clopens \( \left[ \varphi_i \right] \) for \( \varphi_i \) with finite domain.
 \end{lemma}
 
 \begin{proof}[(Direction one)]
@@ -215,7 +215,7 @@ If \( A \) is clopen, then
 \[ 
 A = \bigcup_i \left[ \varphi_i \right] 
 \]
-for some finitely many (by compactnes) \( \varphi_i \) with finite domain \( I_i \). Then
+for some finitely many (by compactness) \( \varphi_i \) with finite domain \( I_i \). Then
 \[ 
     A \sim \bigcup_i I_i. 
 \]
@@ -277,8 +277,7 @@ for some \( n \). Let
     \nu (A) := \frac{\# A'}{2^n}.
 \]
 \end{defn}
-This makes sens with the probabilistic definition.
-
+This makes sense with the probabilistic definition. 
 \begin{thm}[Well-definedness of the premeasure]
 \label{CantorPremeasureWellDefined}
 \hypertarget{CantorPremeasureWellDefined}
@@ -301,6 +300,37 @@ What now??
 \]
 We prove that this is a \( \sigma \)-algebra.
 
+There is a nice formula for cylinders.
+\begin{lemma}[Measure of a cylinder]
+\label{CantorCylinderMeasure}
+\hypertarget{CantorCylinderMeasure}
+For a partial function
+\[ 
+    \varphi: \mathbb{N} \partto \left\{ 0,1 \right\},
+\]
+its cylinder has measure
+\[ 
+    \nu \left[ \phi \right] = 2^{- \left|    \dom\varphi \right|}.
+\]
+The result holds even if \( \dom \varphi \) is infinite, in which case the measure is \( 0 \).
+\end{lemma}
+
+\begin{proof}
+For finite-domain partial functions \( \phi \), take
+\[ 
+    \dom\varphi =: I \subseteq \left\{ 1, 2, \ldots, n \right\} =: [n]
+\]
+for some \( n \). Then
+\[ 
+    \left| \pi_{[n]}[ \varphi ] \right| = \frac{2^{n - |I|}}{2^n} = 2^{-|I|}.
+\]
+For infinite-domain functions \( \phi \), taking a decreasing intersection
+%TODO: add decreasing intersection symbol
+\[ 
+    \left[ \phi \right] = \bigcap_n \left[ \phi |_{[n]} \right]
+\]
+shows that the measure of the intersection is \( 0 \).
+\end{proof}
 \begin{thm}
 \label{CantorMeasureHaar}
 \hypertarget{CantorMeasureHaar}
