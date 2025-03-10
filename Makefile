@@ -7,4 +7,4 @@ mots: mots.tex
 	latexmk -pdf -pdflatex mots.tex
 
 clean:
-	tools/clean
+	find | grep -e .aux -e .log -e .toc -e .fls -e .fdb_latexmk -e .dvi -e .out | xargs rm
