@@ -195,3 +195,146 @@ A part of that will be tangent to \( \Sigma \), and part will be normal. Writing
 \[ 
     D_X Y = \nabla_X Y + \mathrm{I\!I}(X,Y) n_p.
 \]
+
+\begin{lemma}[Propeties of \( \nabla \)]
+\label{EuclideanConnectionPropeties}
+\hypertarget{EuclideanConnectionPropeties}
+% TODO: add any two
+For any surface \( \Sigma \), vector fields \( X, Y, Z \) and function \( f \) we have
+\begin{enumerate}
+    \item \( \nabla_{fX}Y = f\nabla_X Y \)
+\item \(\nabla \emph{agrees with} \left\langle -,\, - \right\rangle \), i.e.
+    \[ 
+       X \left\langle Y,Z \right\rangle = \left\langle \nabla_X Y, Z \right\rangle + \left\langle Y, \nabla_X Z \right\rangle. 
+   \]
+\item the connection \( \nabla \) is torsion-free, i.e.
+    \[ 
+        \nabla_X Y - \nabla_Y X = [X, Y],
+   \]
+\item the second fundamental form is symmetric and bilinear, i.e.
+    \[ 
+        \mathrm{I\!I} (fX, Y) = f\mathrm{I\!I}(X,Y)
+   \]
+   \[ 
+       \mathrm{I\!I}(X,Y) = \mathrm{I\!I}(Y,X). 
+  \]
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+    For the first one,
+    \[ 
+        D_{fX} Y = fD_XY = f\nabla_X Y + f\mathrm{II}(X,Y)n.
+   \]
+   For the second one
+   \[ 
+       D_X(fY) = X(f)Y + fD_X Y = X(f)Y + f\nabla_X Y + f \mathrm{II}(X,Y) n. 
+  \]
+  For (2)
+  \[ 
+     X \left\langle Y,Z \right\rangle = X \left( \sum_i Y_i Z_i \right) = \sum_i X(Y_i)Z_i + Y_iX(Z_i) = \left\langle D_X(Y), Z \right\rangle + \left\langle Y, D_X(Z) \right\rangle = \left\langle \nabla_X Y, Z \right\rangle + \left\langle Y, \nabla_X Z \right\rangle.
+ \]
+ For (3), we know that
+\[ 
+    [X, Y]f = X(Yf) - Y(Xf)
+\]
+Let us extend \( X, Y \) to vector fields \( \widetilde{X}, \widetilde{Y} \). Then
+\[ 
+    D_X Y - D_Y X = D_{\widetilde{X}} \widetilde{Y} - D_{\widetilde{Y}} \widetilde{X} = [\widetilde{X}, \widetilde{Y}] = [X, Y].  
+\]
+\end{proof}
+This gives some corollaries.
+\begin{enumerate}
+    \item The value of \( (D_XY)_p \) depends only on \( X_p, Y_p \) and the first derivaties of \( Y \). Therefore the same is true for \( \nabla_X Y \) and \( \mathrm{I\!I} (X, Y) \).
+    \item Since \( \mathrm{I\!I} \) is symmetric, the value of \( \mathrm{I\!I}(X, Y)_p \) depends only on \( X_p \) and \( Y_p \). And particular, \( \mathrm{I\!I} \) is a bilinear form on \( T_p \Sigma \).
+\end{enumerate}
+
+\begin{defn}
+\label{LinearConnection}
+\hypertarget{LinearConnection}
+A \textbf{linear connection} is an \( \mathbb{R} \)-bilinear map
+%TODO: substitute M for vector fields on M
+\[ 
+    \nabla: M \times M \to M 
+\]
+such that for any two vector fields and a smooth function \( f \in C^\infty(M) \) it holds that
+\begin{enumerate}
+    \item \( \nabla_{fX} Y = f\nabla_X Y \) and
+    \item \( \nabla_X fY = X(f)Y + f\nabla_X Y \).
+\end{enumerate}
+\end{defn}
+
+\begin{defn}
+\label{LinearConnectionConsistentWithMetric}
+\hypertarget{LinearConnectionConsistentWithMetric}
+A linear connection is \textbf{consistent with metric} if
+\[ 
+    X \left\langle Y, Z \right\rangle = \left\langle \nabla_X Y, Z \right\rangle + \left\langle Y, \nabla_X Z \right\rangle. 
+\]
+\end{defn}
+
+\begin{defn}
+\label{LinearConnectionTorsionfree}
+\hypertarget{LinearConnectionTorsionfree}
+A linear connection \( \nabla \) is \textbf{torsion-free} if
+\[ 
+    \nabla_X Y - \nabla_Y X = [X,Y]. 
+\]
+\end{defn}
+
+\begin{thm}[Fundamental Theorem of Differential Geometry]
+\label{FundamentalTheoremDifferentialGeometry}
+\hypertarget{FundamentalTheoremDifferentialGeometry}
+Let \( M \) be a Riemannian manifold. Then there exists exactly one linear connection that is torsionfree and consistent with metric. It is called the \textbf{Levi-Civita connection}.
+\end{thm}
+
+\begin{defn}
+\label{RiemannianManifold}
+\hypertarget{RiemannianManifold}
+Let \( M \) be smooth manifold and \( TM \) be its tangent bundle. A \textbf{Riemann metric} on \( M \) is a smooth, bilinear, symmetric, positive definite form
+\[ 
+    g_p = \left\langle -,\, - \right\rangle_p : T_pM \times T_pM \to \mathbb{R}. 
+\]
+Smoothness means that for a chart \( \varphi \), we have a basis of \( TM \) around \( p \) called \( \partial_i \) and for that basis all the functions
+\[ 
+    g_{ij}(p) = g_p(\partial_i(p), \partial_j(p)).
+\]
+\end{defn}
+
+\paragraph{Example.} (Pullback of Riemann metric). Let \( \Sigma: U \to \mathbb{R}^3 \). Then for \( p \in U \) we can take
+\[ 
+    g_p : T_pU \times T_pU \to \mathbb{R} 
+\]
+by putting down
+\[ 
+    g_p(v, w) = \left\langle D\Sigma(v), D\Sigma(w) \right\rangle  
+\]
+where \( \left\langle -,\, - \right\rangle  \) is the \( \mathbb{R}^3 \) dot product.
+
+\paragraph{Example (hyperbolic plane).} Take \( \mathbb{H}^2 = \mathbb{R} \times \mathbb{R}_+ \). We can give a Riemann Metric by
+\[ 
+    \left\langle (v_1, v_2), (w_1, w_2) \right\rangle  = \frac{v_1w_1 + v_2w_2}{y^2}.
+\]
+
+Why is this called a \emph{Riemann Metric}? Well, since we can measure tangent vectors, we can measure the \emph{length} of curves!
+\[ 
+    d( \gamma ) = \int\limits_{0}^{1} \left\langle \dot{\gamma}(t), \dot{\gamma}(t) \right\rangle_{\gamma(t)} \,\mathrm{d}t.
+\]
+Now, we can measure the distance by
+\[ 
+    d_g(x,y) = \inf d(x). 
+\]
+
+\begin{proof}[Proof of the Fundamental Theorem of Differential Geometry.]
+    Existence work by partitions of unity. For uniqueness, we will use
+    \begin{align*}
+        X \left\langle Y, Z \right\rangle &= \left\langle \nabla_X Y, Z \right\rangle + \left\langle Y, \nabla_X Z \right\rangle \\
+        Y \left\langle Z, X \right\rangle &= \left\langle \nabla_Y Z, X \right\rangle + \left\langle Z, \nabla_Y X \right\rangle \\
+        -Z \left\langle X, Y \right\rangle &= - \left\langle \nabla_Z X, Y \right\rangle - \left\langle X, \nabla_Z Y \right\rangle.
+    \end{align*}
+Adding these three equations up
+\[ 
+    X \left\langle Y, Z \right\rangle + Y \left\langle Z, X \right\rangle - Z \left\langle X, Y \right\rangle =
+
+\]
+\end{proof}
