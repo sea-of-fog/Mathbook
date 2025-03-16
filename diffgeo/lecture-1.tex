@@ -1,8 +1,32 @@
 \chapter{Differential Geometry, Lecture 1}
 
-\begin{lemma}\label{DotProductDifferentiation}
-
+\begin{lemma}
+    \label{BilinearFormDifferentiation}
+    \hypertarget{BilinearFormDifferentiation}
+    Let
+    \[ 
+       f,g: (a,b) \to \mathbb{R}^n 
+   \]
+   be two differentiable functions and \( \left\langle -, - \right\rangle_B \) be a bilinear form. Then the derivative of the \( B \)-dot product is
+   \[ 
+      \frac{\mathrm{d}^{}}{\mathrm{d}t^{}} \left\langle f, g \right\rangle_B = \left\langle \frac{\mathrm{d}^{}f}{\mathrm{d}t^{}}, g\right\rangle_B + \left\langle f, \frac{\mathrm{d}^{}g}{\mathrm{d}t^{}} \right\rangle_B. 
+  \]
+  If the form is symmetric and \( f = g \), we have additionally
+  \[ 
+     \frac{\mathrm{d}^{}}{\mathrm{d}t^{}} \left\langle f, f  \right\rangle_B  = 2 \left\langle \frac{\mathrm{d}^{}f}{\mathrm{d}t^{}}, f \right\rangle_B.
+ \]
 \end{lemma}
+
+\begin{proof}
+    Let the matrix of the form be
+    \[ 
+        [B] = b_{i, j}.
+   \]
+   Then
+   \[ 
+       \left\langle f, g \right\rangle_B = \sum_{i, j} b_{ij}f_ig_j.  
+  \]
+\end{proof}
 
 \begin{lemma}\label{EvolventDistanceFormula}
     The distance between two points on the evolvent is given by

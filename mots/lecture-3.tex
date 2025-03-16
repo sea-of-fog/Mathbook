@@ -7,6 +7,7 @@ For brevity, we will denote the class of separable and metrisable topological sp
 \begin{thm}
 \label{SMSpaceEmbedsInHilbertCube}
 \hypertarget{SMSpaceEmbedsInHilbertCube}
+\ankimark
 Every \( \mathcal{SM} \) topological space embeds in the Hilbert Cube.
 \end{thm}
 
@@ -70,7 +71,7 @@ The space of bounded, continuous functions from a topological space \( X \) to \
 \]
 If we want bounded functions into \( \mathbb{C} \), we use the notation
 \[ 
-    C(X; \mathbb{C}). 
+    C_b(X; \mathbb{C}). 
 \]
 \end{defn}
 
@@ -128,6 +129,7 @@ The first and so far only property we investigate for \( C_b(X) \) is separabili
 \begin{thm}
 \label{SMSpaceSeparableAlgebra}
 \hypertarget{SMSpaceSeparableAlgebra}
+\ankimark
 Let \( X \) be an \( \mathcal{SM} \) topological space. Then \( C_b(X) \) is separable iff \( X \) is compact.
 \end{thm}
 
@@ -136,9 +138,9 @@ Let \( X \) be an \( \mathcal{SM} \) topological space. Then \( C_b(X) \) is sep
     This subalgebra is in general not countable, however. One small fix is required to find a countable dense subset of \( C_b(X) \) -- only take rational coefficients in linear combinations.
 \end{proof}
 
-\begin{proof}[Proof \(\Rightarrow\).]
+\begin{proof}[Proof (\(\Rightarrow\)).]
 
-We'll mirror the proof of the nonseparability of \( C_b( \mathbb{R} ) \) -- we will find \( \mathfrak{C} \) many balls of radius \( \frac{1}{2} \).
+We'll mirror the proof of the nonseparability of \( C_b( \mathbb{R} ) \) -- we will find \( \mathfrak{c} \) many balls of radius \( \frac{1}{2} \).
 
 Since \( X \) is noncompact and metrisable, we have a discrete sequence of elements of \( X \). Call it \( a_n \) and let \( A = \left\{ x_n : n \in \mathbb{N} \right\} \). For a subset \( I  \) of the natural numbers, we define the function \( f_I: A \to [0,\,1] \) by
 \[ 
@@ -225,7 +227,8 @@ which are open. Since \( F \) is closed, we have
 \begin{thm}[First Regularity Theorem]
 \label{FirstRegularityTheorem}
 \hypertarget{FirstRegularityTheorem}
-For any \( \mathcal{SM} \) space \( X \) and \( \mu \in \mathbb{P}(X) \), the measure \( \mu \) is \textbf{regular}, that is are for any \( B \in \Bor X \) and \(\varepsilon > 0 \) two sets \( F, V \) which are respectively closed and open such that
+For any \( \mathcal{SM} \) (in fact, any metrisable) space \( X \) and \( \mu \in \mathbb{P}(X) \), the measure \( \mu \) is \textbf{regular}, that is for any \( B \in \Bor X \) and \(\varepsilon > 0 \) there are two sets \( F, V \), respectively closed and open, such that
+\ankimark
 \[ 
     \mu \left( V \setminus F \right) <\varepsilon. 
 \]
@@ -273,7 +276,7 @@ with
 \end{proof}
 
 
-\paragraph{Remark.} This implies that we don't care much about Descriptive Set Theory. For \( X \in SM \) and \( \mu \in \mathbb{P}(X) \), we only care about \( F_\sigma \) and \( G_\delta \) sets. More formally, for any \( B \in \Bor X \), any set is up to a set of measure \( 0 \) an \( F_\sigma \) from below and \( G_\delta \) from above.
+\paragraph{Remark.} This implies that we don't care much about Descriptive Set Theory. For \( X \in \mathcal{SM} \) and \( \mu \in \mathbb{P}(X) \), we only care about \( F_\sigma \) and \( G_\delta \) sets. More formally, for any \( B \in \Bor X \), any set is up to a set of measure \( 0 \) an \( F_\sigma \) from below and \( G_\delta \) from above.
 
 \paragraph{Remark.} An analytical set is an image of a Polish space.
 
@@ -281,6 +284,7 @@ with
 \label{PolishSpaceTight}
 \hypertarget{PolishSpaceTight}
 If \( X \) is a Polish space and \( \mu \in \mathbb{P}(X) \), then \( \mu \) is \textbf{tight}, i.e. for every \(\varepsilon > 0 \) there is a compact \( K \) such that
+\ankimark
 \[ 
     \mu (K) > 1 -\varepsilon. 
 \]
