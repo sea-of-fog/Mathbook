@@ -1,21 +1,35 @@
 \chapter{Measures on separable, metrisable topological spaces}
 
-\section{Basic properties.}
+\section{Basic properties}
 
 For brevity, we will denote the class of separable and metrisable topological spaces by \( \mathcal{SM} \). A lot of the time, it is easier to work with such spaces in a \emph{common box}, i.e. use a universal space in which all of these spaces can be embedded. Luckily, we have such a space -- the Hilbert Cube.
 
 \begin{thm}
 \label{SMSpaceEmbedsInHilbertCube}
 \hypertarget{SMSpaceEmbedsInHilbertCube}
-Every SM topological space embeds in the Hilbet Cube.
+Every \( \mathcal{SM} \) topological space embeds in the Hilbert Cube.
 \end{thm}
 
 \begin{proof}
-    Fix a metric \( \rho \leqslant 1 \) and a countable dense subset \( x_n \in X \). We define the embedding as 
+    Fix a metric \( d \leqslant 1 \) and a countable dense subset \( x_n \in X \). We define the embedding as 
     \[ 
-       f_n(x) := \rho(x, x_n). 
+       f_n(x) := d(x, x_n). 
    \]
-   This is a product of continuous functions, so it continuous. Why is it open?
+   This is a product of continuous functions, so it continuous. It is injective, as if \( f(x) = f(y) \), then a subsequence of \( x_n \) convergent to \( x \) is also convergent to \( y \), so \( x = y \). 
+
+   The most difficult fact is that this is open. To see this, take \( x \in U \subseteq X \) with \( U \) open. We will show that \( f[U] \) is open. The neighbourhood \( U \) contains some ball \( B(x, r) \). We can find an element \( x_k \) of the countable dense set such that \( d(x, x_k) < r/4 \). Then
+   \[ 
+      x \in B(x_k, r/2) \subseteq B(x, r) \subseteq U,
+  \]
+  which implies
+  \[ 
+      f(x) \in f \left[ B(x_k, r/2) \right] \subseteq f[U]. 
+ \]
+ But, by definition of \( f \),
+ \[ 
+     f \left[ B(x_k, r/2) \right] = f[X] \cap \pi_k^{-1} (-\infty,\, r/2).
+\]
+Since \( x \) was an arbitrary element of \( U \), we have that \( f[U] \) is open, so \( f \) is a homeomorphism onto its image!
 \end{proof}
 
 You may wonder how this relates to the fact that all compact metrisable embed in the Hilbert Cube (as closed sets!). In turns out that compact metrisable spaces are \( \mathcal{SM} \). We only need separability, and compactness together with a covering by balls gives us a countable dense subset rather easily.
