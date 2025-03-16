@@ -1,1 +1,82 @@
 \chapter{Measures on Topological Spaces, Problemset 3}
+
+\section*{Problem 1}
+
+%TODO: separate into a lemma
+By transfinite induction, each \( B \in \Bor Y \) is of the form \( \widetilde{B} \cap Y \) for some \( \widetilde{B} \in \Bor X \). 
+
+The axiom \( \nu( \varnothing ) = 0 \) is immediate from \( \varnothing = \varnothing \cap Y \).
+
+For countable additivity, take a sequence of pairwise disjoint sets \( B_n \in \Bor Y \). By an earlier observation, we may represent them as \( Y \cap \widetilde{B}_n \) for a sequence \( \widetilde{B}_n \in \Bor X \). By Problem 2, we may in fact assume
+\[ 
+    \mu(\widetilde{B}_n) = \mu^*(Y \cap B_n)
+\]
+if we take \( \widetilde{B}_n \) to be measurable hulls. If \( B_n, B_m \) give disjoint sets in \( Y \), then we have
+\[ 
+    \widetilde{B}_n \cap \widetilde{B}_m \subseteq (\widetilde{B}_n \setminus Y) \cup (\widetilde{B}_m \setminus Y)
+\]
+so when we pass to outer measure we see that \( \mu(\widetilde{B}_n \cap \widetilde{B}_m) = 0. \) Note that \( B_n \cap Y = \widetilde{B}_n \cap Y \). We have
+\[ 
+    0 \leqslant \mu^* \left( \bigcup_{n=1}^\infty \widetilde{B}_{n} \setminus Y\right) \leqslant \sum_{n=1}^\infty \mu^*(\widetilde{B}_n \setminus Y) = 0,
+\]
+so
+\begin{align*}
+    \mu^* \left( \bigcup_{n=1}^\infty \widetilde{B}_n \cap Y \right) &= \mu^* \left( \bigcup_{n=1}^\infty \widetilde{B}_n \right) \\
+&= \mu \left( \bigcup_{n=1}^\infty \widetilde{B}_n \right) \\
+&= \sum_{n=1}^\infty \mu \left( \widetilde{B}_n \right) \\
+&= \sum_{n=1}^\infty \mu^* \left( \widetilde{B}_n \cap Y \right).
+\end{align*}
+\section*{Problem 2}
+
+By definition of outer measure (as an infimum), we can choose measurable sets \( H_n \supseteq Z \) such that
+\[ 
+    \mu^*(Z) \leqslant \mu(H_n) < \mu^*(Z) + \frac{1}{n}. 
+\]
+Take
+\[ 
+    H = \bigcap_{n=1}^\infty H_n. 
+\]
+This \( H \) contains \( Z \), so we have
+\[ 
+    \mu(H) = \mu^*(Z) 
+\]
+by squeezing. By regularity of borel measures (see \ref{FirstRegularityTheorem}), we can take a \( G_\delta \) upper approximation of \( H \) with the same measure.
+
+For the second part, take two measurable hulls \( H_1 \) and \( H_2 \). Since \( Z \subseteq H_1 \cap H_2 \), we have
+\[ 
+    H_1 \Delta H_2 \subseteq (H_1 \setminus Z) \cup (H_2 \setminus Z),
+\]
+and the RHS has (outer) measure \( 0 \), so the LHS does as well.
+
+\paragraph{Observation.} Hulls work well with set unions, i.e. for a countable union of \( Z_i \) with hulls \( H_i \), the union of \( H_i \) is a hull for that union. Intersections and complements are more problematic.
+
+\section*{Problem 3}
+
+By a \emph{base} I understand a family \( \mathcal{U} \) of subsets of \( X \) such that \( \sigma( \mathcal{U} ) = \Bor X \). Consider the family \( \mathcal{A} \) of borel subsets of \( X \) on much \( \mu \) and \( \nu \) agree. We will show that it is a \( \sigma \)-algebra.
+
+Because these are probability measures, the family \( \mathcal{A} \) is closed under complements. By upward continuity of measures, \( \mathcal{A} \) is closed under finite unions. Therefore it is a \( \sigma \)-algebra, so \( \mathcal{A} = \Bor X \) and \( \mu = \nu \).
+
+\subsection*{Cardinality}
+
+Since \( X \) has at least two distinct points \( x_1, x_2 \), we have at least \( \mathfrak{c} \) measures, as witnessed by
+\[ 
+    p\delta_{x_1} + (1-p)\delta_{x_2}. 
+\]
+On the other hand, we have
+\begin{lemma}
+\label{SMSpaceSecondCountable}
+\hypertarget{SMSpaceSecondCountable}
+If \( X \) is \( \mathcal{SM} \), then \( X \) is second countable.
+\end{lemma}
+
+\begin{proof}
+    By \ref{SMSpaceEmbedsInHilbertCube}, \( X \hookrightarrow [0,\,1]^{ \mathbb{N} } \) which is second countable, so \( X \) is second countable as well. 
+\end{proof}
+
+Since the values of a probability measure \( \mu \) are determined by its values on a countable basis, we know that there are at most as many measures as functions in \( [0,\,1]^{ \mathbb{N} } \). The cardinality of the Hilbert Cube is
+\[ 
+    \mathfrak{c}^{\aleph_0} = \left( 2^{\aleph_0} \right)^{\aleph_0} = 2^{\aleph_0 \cdot \aleph_0} = 2^{\aleph_0} = \mathfrak{c}, 
+\]
+which gives the upper bound.
+
+\paragraph{Question.} What is the finite union assumption needed for?
