@@ -74,6 +74,8 @@
 \DeclareMathOperator{\Lin}{Lin}
 
 % Analysis
+\DeclareMathOperator{\tg}{tg}
+\DeclareMathOperator{\ctg}{ctg}
 \DeclareMathOperator{\supp}{supp}
 
 % Topology

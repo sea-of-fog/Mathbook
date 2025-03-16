@@ -412,3 +412,22 @@ Returning to the example we have \( \nu(A_\beta) \in \left\{ 0,1 \right\} \). We
 \end{thm}
 
 \paragraph{Remark.} According to Billingsley, this theorem was the founding work of modern probability theorem, which is founded on limit theorems.
+
+\begin{proof}
+Denote for \( \alpha < \frac{1}{2} \)
+\[ 
+    B_n^\alpha =  \left\{ x \in \mathcal{C} : \frac{x_1 + x_2 + \ldots + x_n}{n} \leqslant \alpha \right\}.
+\]
+We claim that there exists a \( \theta \) such that
+\[ 
+ \nu \left( B_n^\alpha \right) \leqslant \theta^n.
+\]
+Then 
+\[ 
+    \nu \left( B_n^\alpha \right) = \frac{c_n}{2^n},
+\]
+where
+\[ 
+    c_n = \sum_{k=1}^{ \lfloor \alpha n \rfloor }.
+\]
+\end{proof}

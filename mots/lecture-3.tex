@@ -1,0 +1,299 @@
+\chapter{Measures on separable, metrisable topological spaces}
+
+\section{Basic properties.}
+
+For brevity, we will denote the class of separable and metrisable topological spaces by \( \mathcal{SM} \). A lot of the time, it is easier to work with such spaces in a \emph{common box}, i.e. use a universal space in which all of these spaces can be embedded. Luckily, we have such a space -- the Hilbert Cube.
+
+\begin{thm}
+\label{SMSpaceEmbedsInHilbertCube}
+\hypertarget{SMSpaceEmbedsInHilbertCube}
+Every SM topological space embeds in the Hilbet Cube.
+\end{thm}
+
+\begin{proof}
+    Fix a metric \( \rho \leqslant 1 \) and a countable dense subset \( x_n \in X \). We define the embedding as 
+    \[ 
+       f_n(x) := \rho(x, x_n). 
+   \]
+   This is a product of continuous functions, so it continuous. Why is it open?
+\end{proof}
+
+You may wonder how this relates to the fact that all compact metrisable embed in the Hilbert Cube (as closed sets!). In turns out that compact metrisable spaces are \( \mathcal{SM} \). We only need separability, and compactness together with a covering by balls gives us a countable dense subset rather easily.
+
+\begin{lemma}
+\label{CompactMetrisableIsSeparable}
+\hypertarget{CompactMetrisableIsSeparable}
+If a metrisable topological \( K \) is compact, then it is separable.
+\end{lemma}
+
+\begin{proof}
+For each \( n \), finitely many balls of radius \( 1/n \) cover \( K \) by compactness. Taking the centers of all such balls over all \( n \) yields a countable dense subset.
+\end{proof}
+
+The proof above can be trivially extended to totally bounded spaces and Lindel\"of spaces. In the second case, we have countably many centers of balls at each step.
+
+\begin{lemma}
+\label{GeneralisedCompactMetrisableIsSeparable}
+\hypertarget{GeneralisedCompactMetrisableIsSeparable}
+Let \( K \) be a metrisable topological space with is either
+\begin{enumerate}
+    \item compact,
+    \item Lindel\"of,
+    \item \( \sigma \)-compact,
+    \item or totally bounded.
+\end{enumerate}
+Then \( K \) is separable.
+\end{lemma}
+
+We will now investigate for a moment how properties of \( \mathcal{SM} \) spaces are reflected in functions on such spaces. Since we care about topology, we restrict our attention to continuous functions. Unfortunately, even continuous functions on an arbitrary \( \mathcal{SM} \) space can have an untame structure. Therefore we restrict our attention to bounded functions. 
+
+\begin{defn}
+\label{BoundedContinuous}
+\hypertarget{BoundedContinuous}
+The space of bounded, continuous functions from a topological space \( X \) to \( \mathbb{R} \) is denoted by
+\[ 
+    C_b(X).
+\]
+If we want bounded functions into \( \mathbb{C} \), we use the notation
+\[ 
+    C(X; \mathbb{C}). 
+\]
+\end{defn}
+
+This function space has the obvious structure of a linear space, and even an algebra with pointwise addition, scaling and multiplication. This space also has its own topology induced by the supremum norm.
+
+\begin{lemma}
+\label{BoundedContinousFunctionsBanachAlgebra}
+\hypertarget{BoundedContinousFunctionsBanachAlgebra}
+Let \( X \) be an arbitrary.
+\[ 
+    C_b(X) 
+\]
+is a Banach algebra under pointwise operations and the supremum norm.
+\end{lemma}
+
+\begin{proof}[Proof for compact spaces.]
+Take a Cauchy sequence \( f_n \). For each \( x \in X \), \( f_n(x) \) is Cauchy, so it converges. Therefore, the sequence of functions coverges pointwise to a limit function \( f \). Suppose the convergence is not uniform. Then for some \(\varepsilon > 0 \) we can take a sequence \( x_n \) such that
+\[ 
+    f_n(x_n) - f(x_n) \geqslant \varepsilon. 
+\]
+By the \(\varepsilon/3 \) trick, \( f \) is continous. By compactness of \( X \), \( x_n \) has a subsequence convergent to \( x_0 \). Since \( f_n(x_0) \to f(x_0) \) and \( f(x_n) \to f(x_0) \). TODO!
+\end{proof}
+
+\begin{proof}
+The only thing one need to check is that Cauchy sequences actually converge. Let \( f_n \) be a Cauchy sequence. For any \( x \in X \), \( f_n(x) \) is a Cauchy sequence of real numbers, so it converges. Therefore, \( f_n \) converges pointwise to a function \( f \). Note that so far we don't know if the convergence is uniform, or even if the function is continuous.
+
+Let \( N_{\varepsilon } \) be the point after which the sequence \( f_n \) is \(\varepsilon \)-close. Then for \( n, m > N_{\varepsilon } \) we have
+\[ 
+    \left| f_n - f_m \right| \leqslant \varepsilon
+\]
+uniformly on \( X \). Keeping \( n \) constant and passing with \( m \) to the limit we have
+\[ 
+    \left| f_n(x) - f(x) \right| = \lim_{m \to \infty} \left| f_n(x) - f_m(x) \right| \leqslant\varepsilon.
+\]
+%TODO: uniform convergence symbol
+Therefore, \( f_n  \) converges to \( f \) uniformly. In particular, \( f \) is continuous and bounded.
+\end{proof}
+
+We recall here a useful theorem, whose proof can be found in the literature.
+
+\begin{thm}[Stone-Weierstrass]
+\label{StoneWeierstrass}
+\hypertarget{StoneWeierstrass}
+Let \( K \) be a compact, Hausdorff space and let \( W \subseteq C_b(K) \) be a subalgebra. If the subalgebra distinguishes points, we have
+\[ 
+    \overline{W} = C_b(K). 
+\]
+\end{thm}
+\begin{proof}
+A classic proof due to Lebesgue can be found in Engelking (or prof. Szwarc's functional analysis notes).
+\end{proof}
+
+The first and so far only property we investigate for \( C_b(X) \) is separability. It turns out that this space is rarely separable, and an exact characterisation can be given in terms of \( X \).
+
+\begin{thm}
+\label{SMSpaceSeparableAlgebra}
+\hypertarget{SMSpaceSeparableAlgebra}
+Let \( X \) be an \( \mathcal{SM} \) topological space. Then \( C_b(X) \) is separable iff \( X \) is compact.
+\end{thm}
+
+\begin{proof}[Proof (\(\Leftarrow\)).]
+    We know by \ref{SMSpaceEmbedsInHilbertCube} that \( X \) can be regarded as a subspace of \( [0,\,1]^{ \mathbb{N} } \). Since \( X \) is compact, it is a closed subset of the cube. By the Stone-Weierstrass Theorem \ref{StoneWeierstrass}, the algebra generated by coordinate projections, which consists of finite linear combinations of finite products of coordinate projections, is dense in \( C_b(X). \)
+    This subalgebra is in general not countable, however. One small fix is required to find a countable dense subset of \( C_b(X) \) -- only take rational coefficients in linear combinations.
+\end{proof}
+
+\begin{proof}[Proof \(\Rightarrow\).]
+
+We'll mirror the proof of the nonseparability of \( C_b( \mathbb{R} ) \) -- we will find \( \mathfrak{C} \) many balls of radius \( \frac{1}{2} \).
+
+Since \( X \) is noncompact and metrisable, we have a discrete sequence of elements of \( X \). Call it \( a_n \) and let \( A = \left\{ x_n : n \in \mathbb{N} \right\} \). For a subset \( I  \) of the natural numbers, we define the function \( f_I: A \to [0,\,1] \) by
+\[ 
+    f_I (x_i) := \begin{cases}
+        1 &i \in I \\
+        0 &i \not\in I.
+    \end{cases}
+\]
+We can extend all these to function \( \widetilde{f}_I: A \to [0,\,1] \) with the Tietze Extension Theorem. %TODO: \ref{TietzeExtensionTheorem}.
+%TODO: make symdiff an operator so that the spacing works well
+Now, for \( I \neq J \), if we look at an element \( x_0 \in I \Delta J\) we get
+\[ 
+    \left \| \widetilde{f}_I - \widetilde{f}_J \right\|_\infty \geqslant \left| \widetilde{f}_I(x_0) - \widetilde{f}_J(x_0) \right| = 1. 
+\]
+\end{proof}
+
+\section{Polish spaces}
+We now turn to a subclass of \( \mathcal{SM} \) spaces which is particularly useful and important.
+
+\begin{defn}
+\label{PolishSpace}
+\hypertarget{PolishSpace}
+A \textbf{Polish space} is an \( \mathcal{SM} \) space \( X \), which is completely metrisable.
+\end{defn}
+
+Please note that this depends on the topology and not on any given metric for the space, as the example below shows.
+
+\paragraph{Example.} The space \( (0,1) \) is Polish, since it is homeomorphic to \( (0,\,\infty) \). However, it is definitely not complete with regards to its standard metric! An explicit complete metric can be given by 
+\[ 
+    d(x, y) := \left| \tg \frac{x\pi}{2} - \tg \frac{y\pi}{2} \right|,
+\]
+which is the pullback of the complete metric from \( (0,\,\infty) \) by a homeomorphism.
+
+\paragraph{Example.} An even weirder example is
+\[ 
+    \mathbb{R} \setminus \mathbb{Q} \cong \mathbb{N}^{ \mathbb{N} }.
+\]
+That this is completely metrisable can be seen from the following theorem.
+
+\begin{thm}[Alexandroff]
+\label{Alexandroff}
+\hypertarget{Alexandroff}
+A subspace \( Y \) of a Polish space \( X \) is itself Polish iff \( Y \) is a \( G_\delta \) subset of \( X \).
+\end{thm}
+
+\begin{proof}
+Let \( \rho' \) be a new metric on \( Y \) given by
+\[ 
+    \rho'(y_1, y_2) = \rho(y_1, y_2) + \sum_n \min \left( \frac{1}{2^n}, \left| \frac{1}{\rho(y_1, V_n^c)} - \frac{1}{\rho(y_2, V_n^c)} \right|  \right) 
+\]
+The rest of the details can be found in Kerchis' classical book on Descriptive Set Theory.
+\end{proof}
+
+\begin{defn}
+\label{BorelSets}
+\hypertarget{BorelSets}
+In a topological space \( X \), the \textbf{Borel subsets} of \( X \) are precisely the elements of \( \Bor X := \sigma( \tau_X ) \).
+\end{defn}
+
+\begin{defn}
+\label{ProbabilityMeasureSpace}
+\hypertarget{ProbabilityMeasureSpace}
+For a topological, but especially \( \mathcal{SM} \) or Polish space \( X \), we denote the set of \textbf{probability measures} on \( \Bor X \) by \( \mathbb{P}(X) \).
+\end{defn}
+
+We need a tool before stating proving the next theorem.
+\begin{lemma}
+\label{ClosedSetInMetricSpaceGDelta}
+\hypertarget{ClosedSetInMetricSpaceGDelta}
+A closed set in a metric space is \( G_\delta \). Conversely, any open set is \( F_\sigma \).
+\end{lemma}
+\begin{proof}
+We will use the \(\varepsilon \)-neighbourhoods of \( F \), i.e.
+\[ 
+    F_\varepsilon := \left\{ x \in X : d(x, F) <\varepsilon \right\},
+\]
+which are open. Since \( F \) is closed, we have
+\[ 
+    F = \bigcap_{n=1}^\infty F_{1/n}. 
+\]
+\end{proof}
+
+
+\begin{thm}[First Regularity Theorem]
+\label{FirstRegularityTheorem}
+\hypertarget{FirstRegularityTheorem}
+For any \( \mathcal{SM} \) space \( X \) and \( \mu \in \mathbb{P}(X) \), the measure \( \mu \) is \textbf{regular}, that is are for any \( B \in \Bor X \) and \(\varepsilon > 0 \) two sets \( F, V \) which are respectively closed and open such that
+\[ 
+    \mu \left( V \setminus F \right) <\varepsilon. 
+\]
+\end{thm}
+
+\begin{proof}
+    Let \( \mathcal{A} \) be the family of all sets with the given propety. We will prove that it is a \( \sigma \)-algebra and that it contains closed sets. By \ref{SigmaAlgebraGeneration}, we only have to check for complements and countable sums.
+
+    Closed sets are in \( \mathcal{A} \) because they are \( G_\delta \), see Lemma \ref{ClosedSetInMetricSpaceGDelta}, and because a probability measure is downward continuous.
+
+    Closure under complements is inherent in the definition. If \( F \subseteq B \subseteq V \), then 
+    \[ 
+      V^c \subseteq B^c \subseteq F^c,
+   \]
+   \( F^c \) is open, \( V^c \) is closed and
+   \[ 
+      F^c \setminus V^c = V \setminus F, 
+  \]
+  so the approximation still works.
+
+What about increasing countable sums? For an increasing sequence \( B_n \) take approximations \( F_n \subseteq B_n \subseteq V_n \) such that
+\[ 
+    \mu \left( V_n \setminus F_n \right) < \frac{\varepsilon }{2^n}
+\]
+and let \( B = \bigcup_n B_n \). By summing prefixes of \( F_n \), we may assume that \( F_n \) is an increasing sequence. Then
+\[ 
+    \bigcup_{n=1}^\infty F_n \subseteq \bigcup_{n=1}^\infty B_n \subseteq \bigcup_{n=1}^\infty V_n
+\]
+and
+\[ 
+    \bigcup_{n=1}^\infty V_n \setminus \bigcup_{n=1}^\infty F_n \subseteq \bigcup_{n=1}^\infty (V_n \setminus F_n) 
+\]
+(this is a general identity on sets). There is a slight problem -- an ascending sum of closed sets might not be closed. Fortunately, we work with a probability measure, so we can take an finite prefix of length \( N \) with
+\[ 
+    \mu \left( \bigcup_{n=1}^\infty F_n \setminus \bigcup_{n=1}^N F_n \right) < \delta
+\]
+and obtain an approximation
+\[ 
+    \bigcup_{n=1}^N F_n \subseteq B \subseteq \bigcup_{n=1}^\infty V_n 
+\]
+with
+\[ 
+    \mu \left( \bigcup_{n=1}^\infty V_n \setminus \bigcup_{n=1}^N F_n \right) <\varepsilon + \delta. 
+\]
+\end{proof}
+
+
+\paragraph{Remark.} This implies that we don't care much about Descriptive Set Theory. For \( X \in SM \) and \( \mu \in \mathbb{P}(X) \), we only care about \( F_\sigma \) and \( G_\delta \) sets. More formally, for any \( B \in \Bor X \), any set is up to a set of measure \( 0 \) an \( F_\sigma \) from below and \( G_\delta \) from above.
+
+\paragraph{Remark.} An analytical set is an image of a Polish space.
+
+\begin{thm}
+\label{PolishSpaceTight}
+\hypertarget{PolishSpaceTight}
+If \( X \) is a Polish space and \( \mu \in \mathbb{P}(X) \), then \( \mu \) is \textbf{tight}, i.e. for every \(\varepsilon > 0 \) there is a compact \( K \) such that
+\[ 
+    \mu (K) > 1 -\varepsilon. 
+\]
+\end{thm}
+
+\begin{proof}
+Let \( d(-,\, -) \) be a complete metric on \( X \) and let \( x_n \) be a countable dense set. 
+\[ 
+    X = \bigcup_{k = 1}^\infty B \left( x_k, \frac{1}{n} \right). 
+\]
+By upward continuity of measure, we can take a \( k_n \) such that the first \( k_n \) balls are large, i.e. larger than
+\[ 
+1 - \frac{\varepsilon}{2^n}. 
+\]
+Now denote
+\[ 
+    K_n := \bigcup_{k = 1}^{k_n} \overline{B \left( x_k, \frac{1}{n} \right)},\, K = \bigcap_{n = 1}^\infty K_n.
+\]
+To see that \( K \) is large in \( \mu \), use Lemma \ref{CuttingOutMeasure}. Note that \( K \) is closed.
+
+To prove compactness, we will find for a sequence \( x_k \) in \( K \) a convergent subsequence. We mirror the proof that \( [0,\,1] \) is sequentially compact. Infinitely many elements of \( x_k \) will belong to one of the (finitely many!) balls that make up \( K_1 \), and of those inifitely many will land in one of the balls that make up \( K_2 \) etc. Therefore, \( x_n \) has a Cauchy subsequence. Since \( X \) is Polish, this subsequence is convergent in \( X \), but as \( K \) is closed, the limit is actually in \( K \).
+\end{proof}
+
+\paragraph{Example.} Let \( X = \mathbb{N}^{ \mathbb{N} } \).
+
+\begin{thm}[Lusin]
+\label{LusinTheorem}
+\hypertarget{LusinTheorem}
+If \( X \in \mathcal{SM} \) and \( f: X \to \mathbb{R} \) is a borel function, then for any \( \mu \in \mathbb{P}(X) \) and \(\varepsilon > 0 \) there exists a closed set \( F \) of large measure such that \( f \) is continuous on \( F \).
+\end{thm}
