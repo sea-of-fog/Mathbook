@@ -47,7 +47,7 @@
 \titlespacing*{\section} {0pt}{3.5ex plus 1ex minus .2ex}{2.3ex plus .2ex}
 % Subsections
 \titleformat{\subsection}
-{\normalfont\large\bfseries}{\thesubsection}{1em}{}
+{\normalfont\large\bfseries}{\thesubsection}{1em}{\sffamily}
 \titlespacing*{\subsection} {0pt}{3.25ex plus 1ex minus .2ex}{1.5ex plus .2ex}
 % Subsubsections
 \titleformat{\subsubsection}
