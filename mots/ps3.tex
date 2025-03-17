@@ -52,9 +52,14 @@ and the RHS has (outer) measure \( 0 \), so the LHS does as well.
 
 \section*{Problem 3}
 
-By a \emph{base} I understand a family \( \mathcal{U} \) of subsets of \( X \) such that \( \sigma( \mathcal{U} ) = \Bor X \). Consider the family \( \mathcal{A} \) of borel subsets of \( X \) on much \( \mu \) and \( \nu \) agree. We will show that it is a \( \sigma \)-algebra.
+By a \emph{base} I understand a basis for the topology, in particular \( \sigma( \mathcal{U} ) = \Bor X \). First, we will show that \( \mu = \nu \) on open sets. Take an open set \( U \). It can be represented as
+\[ 
+    U = \bigcup_{n=1}^\infty U_n = \bigcup_{k=1}^\infty \bigcup_{n=1}^k U_n
+\]
+%TODO: pi-\lambda lemma
+for some \( U_n \in \mathcal{U} \). Since \( \mathcal{U} \) is closed under finite sums, the inner sums are also in \( \mathcal{U} \), so \( \mu \) and \( \nu \) agree on them. But since the outer sums on RHS are increasing, \( \mu(U) = \nu(V) \). Applying the \( \pi-\lambda \) Lemma shows that \( \mu \) and \( \nu \) agree on all Borel sets.
 
-Because these are probability measures, the family \( \mathcal{A} \) is closed under complements. By upward continuity of measures, \( \mathcal{A} \) is closed under finite unions. Therefore it is a \( \sigma \)-algebra, so \( \mathcal{A} = \Bor X \) and \( \mu = \nu \).
+Alternatively, since these are probability measures, they also agree on closed sets (by complements), so the regularity property \ref{FirstRegularityTheorem} does the job.
 
 \subsection*{Cardinality}
 
@@ -79,4 +84,17 @@ Since the values of a probability measure \( \mu \) are determined by its values
 \]
 which gives the upper bound.
 
-\paragraph{Question.} What is the finite union assumption needed for?
+\section*{Problem 4}
+
+% TODO: Egorov's Theorem
+Let \( \mathcal{F} \) be the family of functions which have this property. It is of course closed under uniform limits, but because of the regularity property of Borel measures (see \( \ref{FirstRegularityTheorem} \)) and Egorov's Theorem it is also closed under almost uniform limits, so also under pointwise limits.
+
+\section*{Problem 5}
+
+We will first state and prove useful propeties of the Baire space \( \omega^\omega \).
+
+\begin{lemma}
+\label{BaireSpaceSurjectsPolishSpace}
+\hypertarget{BaireSpaceSurjectsPolishSpace}
+Every Polish space is a continuous image of the Baire Space \( \omega^\omega \).
+\end{lemma}
