@@ -193,3 +193,37 @@ In reality you need a transfinite number of iterations. However, for a Kuratowsk
     \item Wikipedia, Kuratowski Closure Axioms
     \item Wikipedia, Preclosure operator
 \end{enumerate}
+
+\chapter{Metrisable spaces}
+
+\section{Countability properties}
+
+Many countability properties are equivalent for metrisable spaces. In particular
+\begin{thm}
+\label{MetrisableSpaceCountabilityProperties}
+\hypertarget{MetrisableSpaceCountabilityProperties}
+Let \( X \) be a metrisable topological space. The following are equivalent:
+\ankimark
+\begin{enumerate}
+    \item \( X \) is separable,
+    \item \( X \) is second countable,
+    \item \( X \) is Lindel\"of.
+\end{enumerate}
+\end{thm}
+
+% TODO: picture!
+\begin{proof}[Proof \( (1 \Leftrightarrow 2) \)]
+    Let \( x_n \) be a countable dense set. We will show that \( B(x_n, q) \) for \( n \in \mathbb{N} \) and \( q \in \mathbb{Q}_{+} \) is a basis. Take an open set \( U  \) and arbitrary \( x \in U \). Since \( U \) is open in a metric space, \( B(x,r) \subseteq U \) for some \( r > 0 \). Take an element \( x_n \) of the dense set such that \( d(x, x_n) < r/4 \). Then
+    \[ 
+       x \in B(x_n, q) \subseteq B(x, r) \subseteq U
+   \]
+   for any \( r/4 \leqslant q \leqslant r/2 \), so the given balls are indeed a basis.
+   
+   The other direction is trivial -- pick any element is each of the (countably many) basis sets.
+\end{proof}
+
+\begin{proof}[Proof \( (1 \Rightarrow 3) \)]
+    Take an open cover \( \mathcal{U} \). By an argument analogous as in the proof above, for all \( x \in X \) there is a ball \(x \in B(x_n, q) \subseteq U \) for some \( U \in \mathcal{U} \). Since there are only countably many such balls, countably many \( U \) from \( \mathcal{U} \) suffice to cover all of \( X \).
+\end{proof}
+
+\paragraph{Remark.} The proof of \( 3 \Rightarrow 1 \) is \ref{GeneralisedCompactMetrisableIsSeparable}.
