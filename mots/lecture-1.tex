@@ -74,20 +74,21 @@ For the proof of the \textbf{Lebesgue Density Theorem}, we will need a tool, whi
 \begin{thm}[Vitali Covering Theorem]
     \label{VitaliCoveringTheorem}
     \hypertarget{VitaliCoveringTheorem}
-    If \( \mathcal{J} \) is a Vitali cover of \( A \), there exists a sequence of pariwaise disjoint segments \( J_n \in \mathcal{J} \) such that
+    If \( \mathcal{J} \) is a Vitali cover of \( A \), there exists a (possibly finite) sequence of pariwaise disjoint segments \( J_n \in \mathcal{J} \) such that
     \ankimark
     \[ 
-      \lambda \left( A \setminus \bigcup_n J_n \right) = 0.
+      \lambda^* \left( A \setminus \bigcup_n J_n \right) = 0.
    \]
 \end{thm}
-
-\paragraph{Corollary.} If a set \( A \) has a Vitali Cover, then \( A \) is measurable. 
 
 \paragraph{Why is this theorem useful?} Vitali's theorem may not sound very smart on first glance. Its strength lies in the \emph{disjointness} of the cover. If we go about choosing the cover \( J_n \) without any guarantees, we can for example choose
 \[ 
     \bigcup_{q_n \in \mathbb{Q}} \left(q_n - \frac{\varepsilon}{2^{n+1}},\,q_n + \frac{\varepsilon }{2^{n+1}}\right) 
 \]
 and get stuck! We have only covered a subset of the reals of size \(\varepsilon \), but we cannot use any other segment by density of \( \mathbb{Q} \).
+
+\paragraph{Corllary.} If a set \( A \) has a Vitali cover consisting of its subsets (up to measure zero), then \( A \) is measurable.
+
 \begin{proof}[Proof of the Lebesgue Density Theorem]
     We represent
     \[ 
@@ -142,7 +143,7 @@ Since \(\varepsilon \) can be picked arbitrarily close to 0, we get
 \begin{proof}[Proof of the Vitali Covering Theorem.]
     The key to avoiding the \emph{trap} we wrote about after stating the \hyperlink{VitaliCoveringTheorem}{VCT} is to choose the segments to be as large as possible -- or at least not embarassingly small.
 
-    % Does this reduction work????
+    %TODO: Does this reduction work????
     Without loss of generality, \( A \) is bounded since we can sum the coverings of \( A \cap (n,n+1) \). The sequence of segments we pick is denoted \( J_n \). In that case we may also assume \( \bigcup \mathcal{J} \) is bounded. Its prefixes are
     \begin{align*}
         P_n &:= \bigcup_{i < n} J_i \\
@@ -162,12 +163,12 @@ Since \(\varepsilon \) can be picked arbitrarily close to 0, we get
     \[ 
        \diam J_n \geqslant \frac{1}{2}\gamma_n,
    \]
-   or we stop if \( \gamma_n = 0 \) at some point.
+   or we stop if \( \gamma_n = 0 \) at some point. If indeed \( \gamma_n = 0 \), then by the definition of a Vitali cover, each \( a \in A \setminus \mathcal{J}_{n-1} \) is an accumulation point of \( \mathcal{J}_{n-1} \), but as a finite sum of closed intervals \( \mathcal{J}_{n-1} \) is actually closed, so \( a \in \mathcal{J}_{n-1} \).
 \paragraph{Claim 1.} The sequence \( \gamma_n \) converges monotonically to \( 0 \).
-\begin{proof}[Proof of Claim 1.] Being the supremum of ever decreasing sets, \( \gamma_n \) is decreasing. It is also nonnegative, so the sequence converges and \( \lim_n \gamma_n \geqslant 0 \). Suppose that \( \lim_n \gamma_n = c > 0 \). Then in the construction, we would almost always choose disjoint intervals of diameter at least \( c/2 \). This is impossible, since \( \bigcup \mathcal{J} \) was assumed to be bounded, so it has finite measure!
+\begin{proof}[Proof of Claim 1.] Being the supremum of ever decreasing sets, \( \gamma_n \) is decreasing. It is also positive, so the sequence converges and \( \lim_n \gamma_n \geqslant 0 \). Suppose that \( \lim_n \gamma_n = c > 0 \). Then in the construction, we would almost always choose disjoint intervals of diameter at least \( c/2 \). This is impossible, since \( \bigcup \mathcal{J} \) was assumed to be bounded, so it has finite measure!
 \end{proof}
 
-   The key to proving that the choice procedure is correct will be the \textbf{blowup}, which we define for \( J = [x-r,x+r] \) as
+   If finitely many steps of the choice procedure are enough, there is nothing left to The key to proving that the choice procedure is correct will be the \textbf{blowup}, which we define for \( J = [x-r,x+r] \) as
    \[ 
        \widetilde{J} :=  [x - 5r,\, x + 5r]
   \]
