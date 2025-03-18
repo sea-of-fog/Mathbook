@@ -226,4 +226,24 @@ Let \( X \) be a metrisable topological space. The following are equivalent:
     Take an open cover \( \mathcal{U} \). By an argument analogous as in the proof above, for all \( x \in X \) there is a ball \(x \in B(x_n, q) \subseteq U \) for some \( U \in \mathcal{U} \). Since there are only countably many such balls, countably many \( U \) from \( \mathcal{U} \) suffice to cover all of \( X \).
 \end{proof}
 
-\paragraph{Remark.} The proof of \( 3 \Rightarrow 1 \) is \ref{GeneralisedCompactMetrisableIsSeparable}.
+\paragraph{Remark.} The proof of \( 3 \Rightarrow 1 \) is \ref{GeneralisedCompactMetrisableIsSeparable}. 
+
+\paragraph{Remark.} The presented proof of \( (1 \Rightarrow 3) \) is \emph{de facto} a composition of the proof of \( (1 \Rightarrow 2) \) and a proof that \emph{any}, not only metrisable, secound countable space is Lindel\"of.
+
+\begin{lemma}
+\label{SecondCountableIsLindeloef}
+\hypertarget{SecondCountableIsLindeloef}
+A second countable topological space \( X \) is Lindel\"of.
+
+\end{lemma}
+
+\begin{proof}
+Take an open cover \( \mathcal{U} \) and a countable basis \( \mathcal{B} = \left\{ B_i : i \in \mathbb{N} \right\} \). For any \( x \in U \in \mathcal{U} \), there is a basis set \( B_i \in \mathcal{B}\) such that
+\[ 
+    x \in B_i \subseteq U.
+\]
+
+For each \( B_i \) that \emph{appears} in this way we can pick just one \( U \in \mathcal{U} \) containing \( B_i \), so there is a countable subcover of \( \mathcal{U} \).
+
+In more abstract terms, \( \mathcal{U} \) has an inscribed cover which is a subfamily of \( \mathcal{B} \). This inscribed cover is countable, and therefore there is a countable subcover of \( \mathcal{U} \).
+\end{proof}
