@@ -3,7 +3,7 @@ all: main mots
 main: main.tex
 	latexmk -pdf -pdflatex main.tex
 
-mots: mots.tex
+mots: mots.tex mots/*
 	latexmk -pdf -pdflatex mots.tex
 
 clean:
