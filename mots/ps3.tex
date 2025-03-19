@@ -91,6 +91,29 @@ Let \( \mathcal{F} \) be the family of functions which have this property. It is
 
 \section*{Problem 5}
 
+Think of \( \omega^{ \omega } \) as an infinite product. There is a number \( n \) such that
+\[ 
+    A_1 := \mu \left( \pi_0^{-1} \left[ k,\, n \right] \right) > 1 - \frac{\varepsilon }{2}.
+\]
+The intervals denote finite subsets of \( \omega \). Analogously, define
+\[ 
+    A_k := \mu \left( \pi_k^{-1} \left[ 0,\, n_k \right] \right) > 1 - \frac{\varepsilon }{2^k}.
+\]
+By upward continuity of \( \mu \), for each \( k \) such an \( n_k \) exists. Then
+\[ 
+    \mu \left( \bigcap_{k=1}^\infty A_k \right) > 1 - \sum_{k=1}^\infty \frac{\varepsilon }{2^k} = 1 -\varepsilon.
+\]
+On the other hand,
+\[ 
+    K := \bigcap_{k=1}^\infty A_k = \prod_{k=1}^\infty [0, n_k],
+\]
+%TODO: add reference to the Tychonoff theorem
+which is a product of compact sets, so compact by Tychonoff.
+
+\section*{Problem 6}
+
+\subsection*{Forward}
+
 We will first state and prove useful propeties of the Baire space \( \omega^\omega \).
 
 \begin{lemma}
@@ -98,3 +121,60 @@ We will first state and prove useful propeties of the Baire space \( \omega^\ome
 \hypertarget{BaireSpaceSurjectsPolishSpace}
 Every Polish space is a continuous image of the Baire Space \( \omega^\omega \).
 \end{lemma}
+An idea that may pop into your head is to pick a countable dense subset \( x_n \in X \) and define
+\[ 
+    f: \omega^\omega \to X 
+\]
+via
+\[ 
+    f(s) = \lim_n x_{s_n}. 
+\]
+% TODO: make this a lemma
+This is sort of the right idea, but runs into the problem that there are nonconvergent sequences, to its only a partial function. By analogy with the Cantor set, the Baire space retracts onto any of its closed subspaces. This does not save us, since \( \dom f \) is not closed -- the convergence of the sequence depends only on a tail set of indices, and the metric of \( \omega^\omega \) is defined via prefixes. There is a solution.
+
+\begin{proof}
+    Define the set \( D \subseteq \omega^\omega \) as
+    \[ 
+        D := \left\{ s \in \omega^\omega : d(x_{s_n}, \lim_n x_{s_n}) < \frac{1}{n} \right\}.
+   \]
+   This set is closed, so there is a retraction \( r: \omega^{ \omega } \to D\). The function is uniformly continuous on \( D \), so \( f \circ r \) surjects \( X \).
+\end{proof}
+
+We now proceed to try and surject the Souslin scheme result with the Baire Space. Assume the result is nonempty.
+For a sequence \( \sigma \in \omega^{ < \omega } \) denote by \( [ \sigma ] \) the cylinder of sequences beginning with \( \sigma \). These are clopen sets. Moreover, the sets \( [ n ] \) for \( n \in \omega \) form a partition of \( \omega^{ \omega } \) into disjoint open sets. For each \( n \), take a function
+\[ 
+    f_n : \omega^\omega \to F_n 
+\]
+and \emph{merge} them using the disjoint sets \( S_n \). That is, we put down \( g_1 = f_n \) on \( S_n \).
+Now, we can do this for prefixes of any arbitrary (finite) length \( k \), giving us a function \( g_k \). The key insight is that \emph{surjects the Souslin scheme up to level \( k \)}. More concretely
+\[ 
+    g_k( \sigma ) \in F_{\sigma|k}.
+\]
+If we could take a pointwise limit \( g = \lim\limits_{k=1} g_k \), we would have \( g(\sigma) \in \)
+\[ 
+    g( \sigma ) \in \bigcap_{k=1}^\infty F_{\sigma | k}. 
+\]
+We run into three problems
+\begin{enumerate}
+    \item we may happen upon an empty set \( F_{\sigma | k} \) somewhere in the scheme,
+    \item the limit might not exist,
+    \item the infinite intersection may be empty or contain more than one point, in which case \( g \) may not be a surjection.
+\end{enumerate}
+
+\paragraph{Removing empty sets.} If some set in the Souslin scheme is empty, we replace its subtree with on of its siblings. This does not change the result of the whole operation. If all siblings are empty, we travel up a level and treat the parent as though it was empty. Since the set we are trying to surject is nonempty, at some point we will be able to use a nonempty sibling. This fixes the first problem. Turns out the other two have a rather elegant solution, which I stole from Kechris. 
+
+\paragraph{Ensuring nonemptiness.} 
+If we have that \( \diam F_\sigma < 1/l \), where \( l \) is the length of \( \sigma \), then each intersection of \( F_{\sigma | k} \) is a singleton.
+We can easily do this, since \( X \) can be covered by finitely many closed balls of radius \( 1/n \) for any \( n \), since it is separable. Now insert a new level of the Souslin scheme tree in between two existing ones, where we take an \( F_\sigma \) and subdivide it into
+\[ 
+    F_{\sigma} \cap B \left( x_i, \frac{1}{|\sigma |} \right),
+\]
+where \( \left\{ x_i \right\} \) is a countable dense set.
+
+\paragraph{Mopping up.} Take the initial Souslin scheme, insert the levels needed to have diameters tending to zero along every path and remove empty sets. Not that removing empty sets does not move any set downward in the tree, so the diameter bound is maintained. Then do the \( g_k \) construction. Because of the diameter bound, the convergence is now uniform, so we get a continuous function.
+
+\paragraph{Formalisms.} There are some issues with the constructions I used. They have to be done level-by-level to work, and an induction principle is needed!
+
+\section*{Problem 9}
+
+The pushforward operator \( f[ - ] \) is a covariant functor from the category of measurable spaces and Borel maps into an appropriate category (even the forgetful {\sffamily Set} will suffice, though we could take sth like measure algebras). The function \( f \) has a Borel section \( s \), so the operator \( f[ - ] \) has a section \( s[ - ] \), and in particular it must be surjective.
