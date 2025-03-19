@@ -227,7 +227,7 @@ which are open. Since \( F \) is closed, we have
 \begin{thm}[First Regularity Theorem]
 \label{FirstRegularityTheorem}
 \hypertarget{FirstRegularityTheorem}
-For any \( \mathcal{SM} \) (in fact, any metrisable) space \( X \) and \( \mu \in \mathbb{P}(X) \), the measure \( \mu \) is \textbf{regular}, that is for any \( B \in \Bor X \) and \(\varepsilon > 0 \) there are two sets \( F, V \), respectively closed and open, such that
+For any \( \mathcal{SM} \) (in fact, any metrisable) space \( X \) and \( \mu \in \mathbb{P}(X) \), the measure \( \mu \) is \textbf{regular}, that is for any \( B \in \Bor X \) and \(\varepsilon > 0 \) there are two sets \( F \subseteq B \subseteq V \), respectively closed and open, such that
 \ankimark
 \[ 
     \mu \left( V \setminus F \right) <\varepsilon. 
@@ -235,7 +235,7 @@ For any \( \mathcal{SM} \) (in fact, any metrisable) space \( X \) and \( \mu \i
 \end{thm}
 
 \begin{proof}
-    Let \( \mathcal{A} \) be the family of all sets with the given propety. We will prove that it is a \( \sigma \)-algebra and that it contains closed sets. By \ref{SigmaAlgebraGeneration}, we only have to check for complements and countable sums (and the empty set, but this is trivial).
+    Let \( \mathcal{A} \) be the family of all sets with the given propety. We will prove that it is a \( \sigma \)-algebra and that it contains closed sets. By \ref{SigmaAlgebraGeneration}, we only have to check for complements, finite sums and ascending countable sums.
 
     Closed sets are in \( \mathcal{A} \) because they are \( G_\delta \), see Lemma \ref{ClosedSetInMetricSpaceGDelta}, and because a probability measure is downward continuous.
 
@@ -249,9 +249,26 @@ For any \( \mathcal{SM} \) (in fact, any metrisable) space \( X \) and \( \mu \i
   \]
   so the approximation still works.
 
-What about increasing countable sums? For an increasing sequence \( B_n \) take approximations \( F_n \subseteq B_n \subseteq V_n \) such that
+Finite sums are easy. If \( F_i \subseteq B_i \subseteq V_i \) for \( 1 \leqslant i \leqslant n \) with
 \[ 
-    \mu \left( V_n \setminus F_n \right) < \frac{\varepsilon }{2^n}
+    \nu \left( V_i \setminus F_i \right) \leqslant \frac{\varepsilon }{n}, 
+\]
+then
+\[ 
+\bigcup_{i=1}^n F_i \subseteq \bigcup_{i=1}^n B_i \bigcup_{i=1}^n V_i
+\]
+and 
+\[ 
+    \bigcup_{i=1}^n V_i \setminus \bigcup_{i=1}^n F_i \subseteq \bigcup_{i=1}^n (V_i \setminus F_i).
+\]
+Passing to measure
+\[ 
+    \nu \left( \bigcup_{i=1}^n V_i \setminus \bigcup_{i=1}^n F_i \right) \leqslant n \cdot \frac{\varepsilon }{n} =\varepsilon. 
+\]
+
+This works, because we have implicitly used that finite sums of closed sets are closed, and the same for open sets. However, this fails for countable sums in the \emph{closed} part. How do we repair this? Let's do the setup first. For an increasing sequence \( B_n \) take approximations \( F_n \subseteq B_n \subseteq V_n \) such that
+\[ 
+    \mu \left( V_n \setminus F_n \right) < \frac{\varepsilon }{2^{n+1}}
 \]
 and let \( B = \bigcup_n B_n \). By summing prefixes of \( F_n \), we may assume that \( F_n \) is an increasing sequence. Then
 \[ 
@@ -261,9 +278,9 @@ and
 \[ 
     \bigcup_{n=1}^\infty V_n \setminus \bigcup_{n=1}^\infty F_n \subseteq \bigcup_{n=1}^\infty (V_n \setminus F_n) 
 \]
-(this is a general identity on sets). There is a slight problem -- an ascending sum of closed sets might not be closed. Fortunately, we work with a probability measure, so we can take an finite prefix of length \( N \) with
+(this is a general identity on sets). We are now facing the closed set problem again. Fortunately, all measures are upward continuous, so we can take a really good approximation by a prefix! Namely,
 \[ 
-    \mu \left( \bigcup_{n=1}^\infty F_n \setminus \bigcup_{n=1}^N F_n \right) < \delta
+    \mu \left( \bigcup_{n=1}^\infty F_n \setminus \bigcup_{n=1}^N F_n \right) < \frac{\varepsilon }{2},
 \]
 and obtain an approximation
 \[ 
@@ -271,10 +288,11 @@ and obtain an approximation
 \]
 with
 \[ 
-    \mu \left( \bigcup_{n=1}^\infty V_n \setminus \bigcup_{n=1}^N F_n \right) <\varepsilon + \delta. 
+    \mu \left( \bigcup_{n=1}^\infty V_n \setminus \bigcup_{n=1}^N F_n \right) < \sum_{n=1}^\infty \frac{\varepsilon }{2^{n+1}} + \frac{\varepsilon }{2} =\varepsilon.
 \]
 \end{proof}
 
+\paragraph{Remark.} This proof does not use separability at all, and only uses metrisability to obtain the supplementary lemma \ref{ClosedSetInMetricSpaceGDelta}. Similarly, we only need that \( \mu \) is a probability measure to get downward continuity. Therefore, the proof lifts immediately to \( \sigma \)-finite measures on spaces where closed sets are \( G_\delta \).
 
 \paragraph{Remark.} This implies that we don't care much about Descriptive Set Theory. For \( X \in \mathcal{SM} \) and \( \mu \in \mathbb{P}(X) \), we only care about \( F_\sigma \) and \( G_\delta \) sets. More formally, for any \( B \in \Bor X \), any set is up to a set of measure \( 0 \) an \( F_\sigma \) from below and \( G_\delta \) from above.
 
