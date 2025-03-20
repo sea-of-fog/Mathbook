@@ -328,11 +328,11 @@ To prove compactness, we will find for a sequence \( x_k \) in \( K \) a converg
 
 \paragraph{Example.} Let \( X = \mathbb{N}^{ \mathbb{N} } \).
 
-\begin{thm}[Lusin]
-\label{LusinTheorem}
-\hypertarget{LusinTheorem}
-If \( X \in \mathcal{SM} \) and \( f: X \to \mathbb{R} \) is a borel function, then for any \( \mu \in \mathbb{P}(X) \) and \(\varepsilon > 0 \) there exists a closed set \( F \) of large measure such that \( f \) is continuous on \( F \).
-\end{thm}
+\paragraph{Corollary.} Every Borel set can be approximated by a compact set.
+
+\paragraph{Remark.} This works for some non-Polish spaces, for example \( \mathbb{Q} \). This also sometimes \emph{almost fails} for Polish spaces.
+
+\paragraph{Remark.} There is an uncountable \( X \subseteq \mathbb{R} \) such that no uncountable closed set in contained in \( X \). Note that it can't be Borel. By \textbf{List 3.1.}, there is a measure on \( X \) that vanishes on points. In particular, all compact subsets are countable and therefore have measure 0. This is the Baire space.
 
 \begin{lemma}
 \label{ClosedSetsInCompleteSpace}
@@ -344,3 +344,108 @@ Let \( (X,d) \) be a complete metric space and \( F_n \subseteq X \) be a descen
 then the intersection \( \bigcap_{n=1}^\infty F_n \) is nonempty.
 
 \end{lemma}
+
+\begin{thm}[Lusin]
+\label{LusinTheorem}
+\hypertarget{LusinTheorem}
+If \( X \in \mathcal{SM} \) and \( f: X \to \mathbb{R} \) is a Borel function, then for any \( \mu \in \mathbb{P}(X) \) and \(\varepsilon > 0 \) there exists a closed set \( F \) of large measure such that \( f \) is continuous on \( F \). If \( X \) is Polish, the set \( F \) can even be compact.
+\end{thm}
+
+\begin{proof}[Characteristic functions.]
+Let \( f = \chi_B \) for \( B \in \Bor X \). By regularity of measure, we can find a closed \( F \) and open \( U \) such that \( F \subseteq A \) and \( \mu(U \setminus F) < \varepsilon \). The function is constant on \( F \) and constant on \( U^c \).
+\end{proof}
+
+\begin{proof}[Simple functions.]
+    Let \( f = \sum_i a_i \chi_{B_i} \). Take good sets \( F_i \) for \( \chi_{B_i} \). Then \( f \) is continuous on
+    \[ 
+       F_1 \cap F_2 \cap \ldots \cap F_n. 
+   \]
+\end{proof}
+
+\begin{proof}[Bounded functions.]
+    They are uniform limits of simple functions, and the thesis is preserved by uniform limits. Let \( f_i \to f \). Then find sets \( F_i \), on which \( f_i \) is continuous and
+    \[ 
+       \mu(F_i) > 1 - \frac{\varepsilon }{2^i}. 
+   \]
+\end{proof}
+
+% TODO: add reference
+\begin{proof}[General functions.]
+    For some large \( M \), \( f^{-1}[-M, M] \) has measure larger than \(\varepsilon/2 \). Approximate it from below by a closed set by regularity.
+\end{proof}
+
+\section*{Function spaces}
+
+We have that \( L_1(\mu) \cong \ell_1(\kappa) \).
+
+\begin{defn}[Separable of measures]
+\label{SeparableMeasure}
+\hypertarget{SeparableMeasure}
+A measure \( \mu \in \mathbb{P}(X) \) is \textbf{separable} iff the function space \( L_1(X, \mu) \) is separable.
+\end{defn}
+
+This definition is external in a way. Can we characterise this property is terms of the measure itself?
+
+\begin{lemma}
+\label{SeparableMeasureSpace}
+\hypertarget{SeparableMeasureSpace}
+Let \( (X, \mathcal{B}, \mu) \) be a probabilistic measure space. If there is a countable subcollection \( \mathcal{A} \subseteq \mathcal{B} \) such that
+\[ 
+    \inf_{A \in \mathcal{A}} B \Delta A = 0.
+\]
+\end{lemma}
+
+\begin{proof} Take rational finite linear combinations of \( \chi_{A_i} \). The closure of this set contains. The closure of this set contains all charactestic functions, then all simple functions, and then all integrable functions.
+\end{proof}
+
+\begin{thm}
+\label{????}
+\hypertarget{????}
+If \( X \in \mathcal{SM} \) and \( \mu \in \mathbb{P}(X) \), then \( L^1(\mu) \) is separable.
+\end{thm}
+
+%TODO: add reference for regularity.
+\begin{proof}
+    Note that \( X \) is second countable. There is a countable basis \( \mathcal{B} \) closed under finite unions. Then we can approximate any open \( U \) approximated well by a set in \( \mathcal{B} \), and any \( B \in \Bor X \) can be approximated by open \( U \), and use the triangle inequality for symmetric difference. Then use Lemma \ref{SeparableMeasureSpace}.
+\end{proof}
+
+\begin{lemma}
+\label{???}
+\hypertarget{???}
+A continous linear functional is bounded.
+\end{lemma}
+
+\begin{proof}
+Take \( v_n \) of length \( 1 \), such that \( f(v_n) \leqslant n \). Then \( v_n/n \to 0 \), but \( f(v_n)/n \not\to 0 \).
+\end{proof}
+
+For any probability measure \( \mu : X \to \mathbb{R} \), we can interpret it as a functional
+\[ 
+    \hat{mu}: C_b(X) \to \mathbb{R}.
+\]
+This functional has norm one, but is the \( \hat{\cdot} \) operator injective?
+
+\begin{lemma}
+\label{SameMeasureSameFunctional}
+\hypertarget{SameMeasureSameFunctional}
+For \( X \in \mathcal{SM} \) and \( \mu, \nu \in \mathbb{P}(X) \). If \( \hat(\mu) = \hat(\nu) \), then \( \mu = \nu \).
+\end{lemma}
+
+\begin{proof}
+    We prove that the measures agree on open sets, the general thesis follows by regularity. Pick \( U \) and an increasing sequence of clopsed sets \( F_n \). By Urysohn's Lemma, there are functions \( f_n: X \to [0,1] \) that are 1 on \( F_n \) and 0 on \( U^c \). Use LDCT to finish.
+\end{proof}
+
+Are all functionals measure? No, for sign reasons. A functional can send the constant function \( 1 \) to -13 or 7. What about functionals of norm 1?
+
+\begin{thm}[Riesz representation theorem]
+\label{RieszRepresentationCompactSpace}
+\hypertarget{RieszRepresentationCompactSpace}
+Let \( K \) be a compact metrisable (and hence also separable!) space, and let
+\[ 
+    \varphi: C_b(K) \to \mathbb{R} 
+\]
+be a linear functional which is positive and of norm 1. Then there is a probability measure \( \mu \) such that
+\[ 
+    \varphi(f) = \int\limits_{K}^{} f(x) \,\mathrm{d} \mu(x). 
+\]
+\end{thm}
