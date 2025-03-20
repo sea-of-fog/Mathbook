@@ -247,3 +247,18 @@ For each \( B_i \) that \emph{appears} in this way we can pick just one \( U \in
 
 In more abstract terms, \( \mathcal{U} \) has an inscribed cover which is a subfamily of \( \mathcal{B} \). This inscribed cover is countable, and therefore there is a countable subcover of \( \mathcal{U} \).
 \end{proof}
+
+\paragraph{What about first countability?} You might wonder if first countability together with separability are enough to ensure second countability. I have a feeling that this fails, however. In the proof for metrisable spaces we not only use that the balls form a symmetric local basis, but this \emph{system} of local bases is \emph{symmetric}, i.e.
+\[ 
+    x \in B(y, r) \iff d(x,y) < r \iff d(y, x) < r \iff y \in B(x, r).
+\]
+Local connectedness is enough to ensure that a system of symmetric first-countable bases can be built via the chain trick \ref{FiniteChainTrick}. Oops, this is not true XD.
+
+There is a counterexample: the Sorgenfrey line \( \mathbb{S} \). It has a countable local basis \( [x,\, x + 1/n) \), countable dense set \( Q \), but no countable basis.
+
+\begin{lemma}[Finite chain trick]
+\label{FiniteChainTrick}
+\hypertarget{FiniteChainTrick}
+In a connected space \( X \) with a connected/open (CHECK) cover \( \mathcal{S} \), every element \( x \) can be reached from any other element \( y \) through a finite chain of intersecting \( S_i \in \mathcal{S} \).
+
+\end{lemma}
