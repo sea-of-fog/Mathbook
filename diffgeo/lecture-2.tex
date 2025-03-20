@@ -339,7 +339,7 @@ Now, we can measure the distance by
 % \]
 \end{proof}
 
-\section{The shape operator.}
+\section{The shape operator}
 
 In th previous lecture we saw how to find the principal curvatures in terms of a Taylor approximations. Now we shall try and see how to find these invariants in a more general way.
 
@@ -409,4 +409,116 @@ For an orthonormal (in the sense of the \( \mathbb{R}^3 \) dot product) basis \(
 The Gaussian curvature \( \kappa_p \) can be calculated from the Levi-Civita connection.
 \end{thm}
 
-\paragraph{Corollary.} 
+\paragraph{Corollary.} Take an open Riemannian subset \( (U, g) \) of \( \mathbb{R}^2 \) and two embeddings
+\[ 
+    \Sigma_1, \Sigma_2 : U \to \mathbb{R}^3. 
+\]
+Then the curvature \( \kappa_p \) does not depend on the embedding!
+
+\begin{proof}
+    We want to express the determinant of \( \mathrm{I\!I} \) using only the connection. By the definition of the Lie bracket,
+    % TODO: colors
+    \begin{align*}
+        0 &= D_X D_Y Z - D_Y D_X Z - D_{[X, Y]}Z \\
+          &= D_X ( \nabla_X Z + \mathrm{I\!I}(Y, Z)n ) - D_Y (\nabla_X Z + \mathrm{I\!I}(X, Z)n) \\ &- \nabla_{[X,Y]}Z - \mathrm{I\!I} \left( [X, Y], Z \right)n \\
+          &= \nabla_X \nabla_y Z + \mathrm{I\!I}(X, \nabla_Y Z)n + (X \mathrm{I\!I}(Y, Z))n - \mathrm{I\!I}(Y, Z)SX \\
+          &- (\text{ the same for \( Y \) }) \\
+          &- \nabla_{[X, Y]} Z - \mathrm{I\!I}( [X, Y], Z )n.
+    \end{align*}
+\end{proof}
+Taking the tangent part of this we obtain
+\[ 
+    \nabla_X \nabla_Y Z - \nabla_Y \nabla_X Z - \nabla_{[X, Y]} Z = \mathrm{I\!I}(Y,Z)SX - \mathrm{I\!I}(X,Z)SY.
+\]
+We denote the value of either side by \( R(X,Y)Z \), and call it the \textbf{Riemann curvature tensor}. We expand this to
+\[ 
+    \left\langle R(X,Y)Z, W \right\rangle = \mathrm{I\!I} ...
+\]
+\paragraph{Remarks.} This value depends only on \( X_p, Y_p, Z_p, W_p \), and in a linear way! Also \( R_p \) depends on \( g_{ij} \) and the first and second derivaties of \( g_{ij} \).
+
+\section{Tensor bundles}
+
+Recall the definition of the \textbf{tensor product} (over \( \mathbb{R} \)). Let \( V, W \) be linear spaces. We first use the \emph{multilinear space interpretation}.
+\[ 
+    V \otimes W = \Lin \left\{ v \otimes w : v \in V, w \in W \right\}/N,
+\]
+where the subspace \( N \) is the linear closure \( \Lin \) given by the relations
+\begin{align*}
+    (\alpha v_1 + \beta v_2 \otimes w) &= \alpha (v_1 \otimes w) + \beta (v_2 \otimes w) \\ 
+   %TODO: reflect 
+    (\alpha v_1 + \beta v_2 \otimes w) &= \alpha (v_1 \otimes w) + \beta (v_2 \otimes w) \\ 
+\end{align*}
+We know that
+\[ 
+    \dim V \otimes W = \dim V \dim W.
+\]
+In particular, if we have bases \( e_i, f_j \) of \( V \) and \( W \), the tensors \( e_i \otimes f_j \). There is a universal propety, and also 
+\[ 
+    Mult(V,W; \mathbb{R} ) \cong (V \otimes W)^* \cong V^\star \otimes W^\star.
+\]
+If we have a pure tensor \( t = \alpha \otimes \beta \) for \( \alpha \in V^\star \), \( \beta \in W^* \), wehave a binilear functional
+\[ 
+    (\alpha \otimes \beta) (v, w) = \alpha(v) \beta(w). 
+\]
+
+\paragraph{Excercise.} 
+\[ 
+    Mult(V_1, V_2, \ldots, V_n; V_{n+1})  \cong Mult(V_1, V_2, \ldots, V_n, V_{n+1}^*; \mathbb{R}) \cong \ldots \cong V_1^* \otimes V_2^* \otimes \ldots \otimes V_{n+1},
+\]
+where all the mappings are natural.
+
+\paragraph{What does it mean that the maps are natural?} If we have linear operators \( A_i: V_i \to W_i \), then we have a tensor product of these
+\[ 
+    A_1 \otimes A_2 \otimes \ldots A_n : \otimes V_i \to \otimes_{i=1}^n W_i 
+\]
+defined by
+\[ 
+    \left( \otimes_{i=1}^n A_i \right) (v_1 \otimes \ldots \otimes v_n) = A_i(v_i) \otimes \ldots \otimes A_n(v_n). 
+\]
+In patricular there is a diagram, between \( W^* \otimes W^* \).
+
+\begin{defn}[Linear bundle]
+\label{LinearBundle}
+\hypertarget{LinearBundle}
+A \( k \)-dimensional \textbf{linear bundle} on a smooth manifold \( M \) is a map
+\[ 
+    \pi : E \to M, 
+\]
+where \( E \) is a manifold, with the properties
+\begin{enumerate}
+    \item \( \pi \) is onto,
+    \item for all \( p \in M \), the fiber \( E_p := \pi^{-1}[p] \) is a \( k \)-dimensional linear space,
+    \item for all \( p \in M \) there is an open \( U \ni p \) and a \textbf{local trivialization}
+        \[ 
+            \varphi: \pi^{-1} [U] \to U \times \mathbb{R}^k
+       \]
+       such that
+       \[ 
+          \varphi_q: E_q \to \left\{ q \right\} \times \mathbb{R}^k 
+      \]
+      is a linear isomorphism ( \( \varphi_q \) is the restriction of \( \varphi \) to \( E_q \) ).
+\end{enumerate}
+\end{defn}
+
+\paragraph{Examples.}
+\begin{enumerate}
+    \item The trivial bundle \(\varepsilon^k_M := M \times \mathbb{R}^k \).
+    \item The tangent bundle \( TM \).
+    \item Let \( M \subseteq \mathbb{R}^k \). Then we have
+        \[ 
+           T \mathbb{R}^k |_M = TM \times (TM)^\perp. 
+       \]
+    \item Let \( M \subseteq N \). There is a quotient bundle
+        \[ 
+           TN|_M / TM 
+       \]
+       given by
+       \[ 
+          E_p = T_pN/T_pM. 
+      \]
+      This is called the \textbf{normal bundle}.
+    \item For linear bundles \( E, F \) there is also a fiber product bundle \( E \oplus F \).
+    \item There is also a tensor a tensor product bundle \( E \otimes F \) for any linear bundles \( E, F \).
+    \item There is also a dual bundle \( E^* \) for any linear bundle \( E \).
+    \item Tautological bundle.
+\end{enumerate}
