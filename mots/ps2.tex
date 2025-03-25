@@ -21,8 +21,6 @@ and
 
 \section*{Problem 2}
 
-
-
 \section*{Problem 3}
 
 Any \( A, B \in \Clop \mathcal{C} \) can be written as disjoint sums of the basis cylinders \( \left[ \varphi \right] \) by \ref{CantorClopen}. Since the condition distributes over disjoint sums, we will prove the statement for \( A = \left[ \varphi \right] \) and \( B = \left[ \psi \right] \) with
@@ -80,6 +78,24 @@ so by the first subproblem
     \nu(C_n) = \nu(A_n \cap B_n) = \nu(A_n) \cdot \nu(B_n).
 \]
 Since the measure \( \nu \) is probabilistic, and hence continuous, by passing to the limit \( n \to \infty \) we get what we need.
+
+\subsection*{The general case, by Dominik}
+
+We use the \( \pi -\lambda \) Lemma \ref{} twice. Fix disjoint \( I \) and \( J \). First, we make \( A \sim I \) a clopen. The family of Borel sets \( B  \) determined by \( J \) such that
+\[ 
+    \nu ( A \cap B ) = \nu(A) \cdot \nu(B)
+\]
+is a \(\lambda\)-system containing all clopens determined by \( J \), so it contains all Borel sets betermined by \( J \).
+
+For the second step, now take an arbitrary Borel \( A \sim I \). By the previous step, the family of Borel sets \( B \sim J \) that work contains all clopens determined by \( J \) and is a \(\lambda \)-system, so it contains all Borel sets.
+
+\subsection*{The general case, shown by dr Celiz}
+
+Fix \( A \sim I \), wlog \( J = I^c \). Now take an open \( U \supseteq A \).
+
+\paragraph{Claim.} Let \( A \) be Borel, \( A \sim I \) and \( a \in A \) and an open set \( U \supseteq A \). Then there is a finite set \( F \subseteq I \) such that \( [a|_F] \subseteq U \).
+
+\paragraph{After the Claim.} Once the Claim is proved, we can prove the thesis for arbitrary open sets, and thus for any open sets by approximation.
 
 \section*{Problem 4}
 
@@ -200,8 +216,16 @@ By \ref{PositionalSystemPrefix}, modulo a point this corresponds to the cylinder
 \section*{Problem 11}
 
 %TODO: add a lemma about measurability of functions
-Just do what's in the hint :). For measurability of \( f \), it is enough to check that \( f^-1[C] \) is measurable for a basis cylinder \( C = \left[ \varphi \right] \). But
+Just do what's in the hint :). For measurability of \( f \), it is enough to check that \( f^{-1}[C] \) is measurable for a basis cylinder \( C = \left[ \varphi \right] \). But
 \[ 
     f^{-1} [ C ] = A_\varphi,
 \]
-which is measurable.
+which is measurable. Also, the identity
+\[ 
+    f[\mu] = \nu 
+\]
+contains all finite cylinders, so also all clopens, so also all Borel sets, because the family
+\[ 
+    \left\{ \mu( f^{-1} B ) = \nu(B) \right\} 
+\]
+is a \(\lambda \)-system.
