@@ -1,0 +1,92 @@
+\chapter{The Gauss-Bonnet Theorem}
+
+\begin{lemma}[Cartan's Formula]
+\label{CartanFormula}
+\hypertarget{CartanFormula}
+For any \( \omega \in \Omega^1 M \) and vector fields \( v, w \)
+\[ 
+    \mathrm{d}\, \omega(v, w) = v \omega(w) - w \omega(v) - \omega( [v, w] ). 
+\]
+\end{lemma}
+
+\paragraph{Triangulability.} Not all topological manifolds are triangulable. Turns out the for \( 4 \)-manifolds, 
+
+\paragraph{Corollaries} On \( S^2 \) there are no nonvanishing vector fields. (hairy ball)
+
+\paragraph{Corollary.} For any Riemman metric \( g \) on the torus \( T^2 \)
+\[ 
+    \int\limits_{T^2} \kappa \,\mathrm{d} S = 0.
+\]
+
+\begin{proof}[(1)]
+Ad absurdum, take a nonvanishing vector field \( X \in \Xi(S^2) \), take
+\[ 
+    e_1 = \frac{ X }{ \left| X \right|  } 
+\]
+and pick \( e_2 \) so that \( e_1 \perp e_2 \) and \( (e_1, e_2) \) is positively oriented. Now we have
+\[ 
+    0 < \int\limits_{S} \kappa \,\mathrm{d} S = \int\limits_{S^2}^{} \mathrm{d}\, \omega \,\mathrm{d} S = \int\limits_{ \partial S^2 }^{} \omega = 0,
+\]
+since \( \kappa = 1 \).
+\end{proof}
+
+\begin{proof}[(2)]
+On the \( 2 \)-torus there is a global reper (from the product representation).
+\end{proof}
+
+\paragraph{Flat metric on the torus.} You can get a flat torus metric from the fundamental polygon (or product). 
+
+\begin{proof}[Proof (Gauss-Bonnet).]
+Let us take an area \( F \) bounded by \( \gamma \) and a reper \( e_1, e_2 \). Then we have
+\[ 
+    \int\limits_{F} \kappa \mathrm{d}\,S =  \int\limits_{F} \mathrm{d}\,\omega = \int\limits_{ \partial F} \omega = \int\limits_{0}^{1} \omega( \gamma' (t) ) \,\mathrm{d} t =
+\]
+\[ 
+    = \int\limits_{0}^{1} - \left\langle \nabla_{\gamma'(t)}e_1, e_2 \right\rangle  \,\mathrm{d} t = \int\limits_{0}^{1} - \left\langle \nabla_t \widetilde{e_1}, \widetilde{e_2} \right\rangle  \,\mathrm{d}t,
+\]
+where
+\[ 
+    \widetilde{e_i} = e_i \circ \gamma.
+\]
+\end{proof}
+
+\begin{lemma}[Integrating repers]
+\label{ReperIntegral}
+\hypertarget{ReperIntegral}
+Let \( \gamma \) be a curve in \( \Sigma \), \( e_i \)and \( f_i \) be two orthonormal repers, and \( f_i \) be parallel to the curve. Then the value of
+\[ 
+    \int\limits_{0}^{1} \left\langle \nabla_t e_1, e_2 \right\rangle  \,\mathrm{d} t 
+\]
+is equal to the change of angle between \( f_1 \) and \( e_1 \). This is a way of measuring how much \( e_1 \) rotates around \( \gamma \).
+\end{lemma}
+\begin{proof}
+We have
+\[ 
+    e_1 = \cos\alpha(t) f_1 + \sin\alpha(t)f_2
+\]
+and
+\[ 
+    e_2 = -\sin\alpha(t) f_1 + \cos\alpha(t)f_2. 
+\]
+Then (by properties of connection and the connection being parallel)
+\[ 
+    \left\langle \nabla_t e_1, e_2 \right\rangle = \left\langle \alpha'(t) (-\sin \alpha(t))f_1 + \cos\alpha(t) f_2, e_2 \right\rangle  = \alpha'(t) \left\langle e_2, e_2 \right\rangle = \alpha'(t).
+\]
+So we have
+\[ 
+    \int\limits_{0}^{1} \left\langle \nabla_t e_1, e_2 \right\rangle  \,\mathrm{d} t = \alpha(1) - \alpha(0).
+\]
+\end{proof}
+
+Let us take a triangle \( \Delta \subseteq \Sigma \) bounded by
+\[ 
+    \gamma : [0, 3] \to U \subseteq \Sigma.
+\]
+Consider three repers:
+\begin{enumerate}
+    \item \( (e_1, e_2) \) with \( e_1 = \lambda \partial x_1 \)
+    \item \( (f_1, f_2) \) parallel to \( \gamma \)
+    \item \( (\tau, n) \) -- the Frenet frame of \( \gamma \).
+\end{enumerate}
+
+Because \( \gamma \) need not be smooth at the vertices, the Frenet reper will have jumps.
