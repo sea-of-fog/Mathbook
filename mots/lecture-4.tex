@@ -1,0 +1,179 @@
+\chapter{Boolean algebras}
+
+\begin{thm}
+\label{MeasureAlgebraIsomorphic}
+\hypertarget{MeasureAlgebraIsomorphic}
+Let \( (X, \Sigma, \mu) \) be a nonatomic Borel probability space and \( \mu \) be separable (or, more scientifically, of countable type). Then there exists a Borel isomorphism
+\[ 
+    h: \Sigma/ \mathcal{N}(\mu) \to \Bor [0,1]/ \mathcal{N}(\lambda )
+\]
+that preserves the measure, i.e.
+\[ 
+    \lambda \circ h = \mu. 
+\]
+A measure is of countable type iff there is a countable family \( \mathcal{C}_1 \subseteq \Sigma \) such that for all \( A \in \Sigma \) and \(\varepsilon > 0 \) there is a \( C \in \mathcal{C}_1 \) such that
+\[ 
+    \mu \left( C \Delta A \right) <\varepsilon,
+\]
+i.e. the algebra with the Frechet-Nikodym metric is separable.
+\end{thm}
+
+\begin{proof}
+    This will be a back-and-forth proof. Denote the algebras by \( \mathbb{A}, \mathbb{B} \). We shall endeavour to find the countable dense sets \( \mathbb{A}_0, \mathbb{B}_0 \) which are isomorphic via an isomorphism \( h_0 \). Fix \( \mathcal{C}_1, \mathcal{C}_2 \) -- countable dense subsets of \( \Sigma_1, \Sigma_2 \). We will express them as 
+    \[ 
+        \mathbb{A}_0 = \bigcup_{n=1}^\infty \mathbb{A}_n
+   \]
+   and we will have isomorphisms \( h_n: \mathbb{A}_n \to \mathbb{B}_n \) that extent one another. When picking a new set, some atoms will split in two and we will extend the isomorphism using the Darboux property of nonatomic measures.
+\end{proof}
+
+\paragraph{Corollary.} Informally said, there is only one nonatomic probability measure on \( \mathcal{SM} \) spaces. 
+
+\begin{thm}
+\label{LpAlgebrasIsomorphic}
+\hypertarget{LpAlgebrasIsomorphic}
+Let \( X \) be \( \mathcal{SM} \), \( \mu \in \mathbb{P}(X) \). Then
+\[ 
+    L^p(\mu) \cong L^p [0,1],
+\]
+i.e. they are \textbf{linearly isometric}. In particular, the first space is Banach!
+\end{thm}
+\begin{proof}
+    % TODO: add abstraction classes in L^p
+We do the standard thing. Put down
+\[ 
+    T( \chi ) = T (\chi_B), 
+\]
+where \( h(\dot{A}) = \dot{B} \). By linearity, we extend \( T \) to simple functions, i.e. it is a linear isometry between the normed spaces
+\[ 
+    Simp( \Sigma )  \to Simp( \Bor [0,1] ).
+\]
+We have a linear isometry between dense subspaces, so we have a dense isometry between whole spaces. Explicitly
+\[ 
+    \left \| \sum c_i \chi_{A_i} \right\|^p_p = \sum \left| c_i \right|^p \mu(A_i).
+\]
+\end{proof}
+
+\paragraph{Remark.} For Polish spaces, we even have a whole isomorphisma, not only between algebras!
+
+\paragraph{Questions we yet have to answer.} 
+\begin{enumerate}
+    \item There is an \( \mathcal{SM} \) space \( X \) and \( \mu \in \mathbb{P}(X) \) such that \( \mu(K) = 0 \) for all compact \( K \subseteq X \). This is the Bernstein set.
+    \item The existance of an \( \mathcal{SM} \) space such that all probability measures are purely atomic.
+    \item Interesting measures on nonseparable metric spaces.
+    \item Does \(\lambda \) extend to all subsets of \( [0,1] \).
+\end{enumerate}
+
+\section{Recap of set theory.} An ordinal number is a set well-ordered by the 
+
+\begin{lemma}[Ordinal number ordering]
+\label{OrdinalNumberEmbedding}
+\hypertarget{OrdinalNumberEmbedding}
+Any two well-ordered sets are either isomorphic or one embeds as an initial segment of the other.
+\end{lemma}
+
+The set \( \omega \) is the only inifite well-ordered set without a maximal element whose all initial segments are finite.
+
+\begin{thm}[Bernstein Set Theorem]
+\label{BernsteinSetTheorem}
+\hypertarget{BernsteinSetTheorem}
+There exists a set \( Z \subseteq [0,\,1] \) such that for all uncountable compact sets \( K \)
+\[ 
+    Z \cap K \neq \varnothing \neq Z^c \cap K. 
+\]
+\end{thm}
+\begin{proof}
+There are \( \mathfrak{c} \)-many such sets \( K \) and they all have an embedded Cantor set (every uncountable Polish space does), so they are of size \( \mathfrak{c} \). Now for \( \alpha < \mathfrak{c} \) we can take
+\[ 
+    x_\alpha, y_\alpha \in K_\alpha \setminus \left\{ x_\beta, y_\beta : \beta < \alpha  \right\} 
+\]
+and
+\[ 
+     Z := \left\{ x_\alpha \right\}.
+\]
+\end{proof}
+
+\begin{lemma}[Measure of the Bernstein Set]
+\label{BernsteinSetMeasure}
+\hypertarget{BernsteinSetMeasure}
+We have
+\[ 
+   \lambda^*(Z) =\lambda^*(Z^c) = 1. 
+\]
+\end{lemma}
+\begin{proof}
+    If \(\lambda^*(Z) < 1 \), then there is a \( B \in \Bor [0,\,1] \) such that \(\lambda(B) < 1 \), so \( B^c \subseteq Z^c \) contains a compact set of positive measure, contradiction.
+\end{proof}
+
+\begin{thm}[Non-tight measure]
+\label{NonTightMeasureBernsteinSet}
+\hypertarget{NonTightMeasureBernsteinSet}
+The Lebesgue measure restricted to the Bernstein set is not tight.
+\end{thm}
+
+\begin{proof}
+The Borel substs of \( Z \) are restriction of Borel subsets. The
+\[ 
+    \mu(B \cap Z) =\lambda(B) 
+\]
+defines a measure. The Bernstein set has only countable compact subsets, and on them 
+\[ 
+    \mu(K) = 0. 
+\]
+\end{proof}
+
+\paragraph{Remark.} The Bernstein set is even more nonmeasurable. In fact, for all nonatomic measures
+\[ 
+    \nu^* (Z) = \nu^* (Z^c) = 1. 
+\]
+
+We not turn to the Continuum Hypothesis.
+\begin{thm}[Lusin set]
+\label{LusinSet}
+\hypertarget{LusinSet}
+Suppose the Continuum Hypothesis. Then there exists a \textbf{Lusin set}, i.e. an uncountable \( L \subseteq [0,\,1] \) such that \( L \cap P \) for all closed nowhere dense sets \( P \).
+\end{thm}
+
+\begin{proof}
+Let \( \left\{ F_\alpha : \alpha < \omega_1 \right\} \) be a list of all closed nowhere dense sets. Then we define
+\[ 
+    L = \left\{ x_\alpha : \alpha < \omega_1 \right\}, 
+\]
+where
+\[ 
+    x_\alpha \in [0,\,1] \setminus \left( \bigcup_{\beta < \alpha} F_\beta \cup \left\{ x_\beta : \beta < \alpha \right\} \right) \neq \varnothing.
+\]
+\end{proof}
+
+The consequences of that for measure theory.
+
+\begin{thm}
+\label{LusinMeasureZero}
+\hypertarget{LusinMeasureZero}
+Let \( L \) be a Lusin set. Then
+\begin{enumerate}
+    \item Every nonatomic \( \mu \in \mathbb{P}[0,1] \) has \( \mu^*(L) = 0. \)
+    \item Every \( \nu \in \mathbb{P}(L) \) is nonatomic.
+\end{enumerate}
+\end{thm}
+
+\begin{proof}[Proof of (1).] Let \( \mu \in \mathbb{P}[0,1] \) be nonatomic. Then there is a sequence of nowhere dense \( F_n \subseteq [0,1] \) such that
+    \[ 
+       \mu \left( \bigcup F_n \right) = 1. 
+   \]
+Dually, \( \mu(G) = 0 \) for a dense \( G_\delta \) set \( G \). This follows from regularity -- take a measurable hull of a countable dense set.
+\end{proof}
+
+\begin{proof}[Proof of (2).]
+    Ad absurdum, a measure \( \nu \in \mathbb{P}(L) \) extends to a measure on \( \mathbb{P}[0,\,1] \) which is still nonatomic, contraqdicting \( (1) \).
+\end{proof}
+
+\paragraph{Remark.} This gives that measure and category are quite orthogonal with what is understood as \emph{small}.
+
+\begin{thm}
+\label{LusinSetLebesgueqNonExtensible}
+\hypertarget{LusinSetLebesgueqNonExtensible}
+If there exists a Lusin set \( L \subseteq [0,\,1] \) then there are sets \( E_n \subseteq [0,\,1] \) such that \(\lambda \) does not admit an extension to a measure on
+\[ 
+    \sigma \left( \Bor [0,\,1], E_1, \ldots \right) 
+\]
+\end{thm}
