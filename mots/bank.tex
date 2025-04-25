@@ -1,5 +1,37 @@
 \chapter{Measure Theory Bank of Lemmas}
 
+\begin{defn}[Outer measure]
+\label{OuterMeasureDefinition}
+\hypertarget{OuterMeasureDefinition}
+A nonnegative set function \( \mu^*: \mathcal{P}(X) \to \mathbb{R} \) is called an \textbf{outer measure} when it satisfies the following three properties:
+\begin{enumerate}
+    \item it is null on the empty set: \( \mu^* (\varnothing) = 0 \),
+    \item it is monotone: \( A \subseteq B \implies \mu^*(A) \leqslant \mu^*(B) \),
+    \item is countably subadditive:
+        \[ 
+            \mu^* \left( \bigcup_{j=1}^\infty A_j \right) \leqslant \sum\limits_{j=1}^\infty \mu^* (A_j)
+       \]
+\end{enumerate}
+\end{defn}
+
+\begin{lemma}[Generating an outer measure]
+\label{OuterMeasureFromMeasure}
+\hypertarget{OuterMeasureFromMeasure}
+Let \( \mu \) be a measure on the measurable space \( (X, \Sigma) \) and \( \mu^* \) be the function
+\[ 
+    \mu^* : \mathcal{P}(X) \to \mathbb{R}
+\]
+defined by
+\[ 
+    \mu^* (A) := \inf \left\{ \mu (B) : B \in \Sigma, A \subseteq B \right\}.
+\]
+Then \( \mu^* \) is the unique outer measure which extends \( \mu \). Moreover, the infimum may be taken over any \( \sigma \)-ring of sets (AM I SURE OF THIS?) that generates \( \Sigma \).
+\end{lemma}
+
+\begin{proof}
+    TODO.
+\end{proof}
+
 \begin{lemma}[Generating a \( \sigma \)-algebra]
 \label{SigmaAlgebraGeneration}
 \hypertarget{SigmaAlgebraGeneration}
