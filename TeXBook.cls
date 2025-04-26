@@ -26,8 +26,11 @@
 
 % AMSthm environments
 \RequirePackage{amsthm}
+\theoremstyle{plain}
 \newtheorem{lemma}{Lemma}[chapter]
 \newtheorem{thm}[lemma]{Theorem}
+
+\theoremstyle{definition}
 \newtheorem{defn}[lemma]{Definition}
 \newtheorem{example}[lemma]{Example}
 \newtheorem{problem}{Problem}[chapter]
