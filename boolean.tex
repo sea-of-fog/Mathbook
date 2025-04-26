@@ -69,7 +69,18 @@ Observe that for the examples we've seen so far -- the truth value algebra \( \m
 \[ 
     x \vee z \wedge x \wedge z = x 
 \]
-holds in all Boolean algebras iff it holds in the Boolean algebra \( \mathbb{B} \). One direction is trivial since \( \mathbb{B} = \mathcal{P}( \left\{  x_0 \right\} ) \). The other direction is not much difficult, since we can check identities on sets element-wise. Of course, this does not mean that one specific algebra can't have its own identities -- we're talking about \emph{laws of Boolean algebra}. A natural question to ask is whether this extends to all abstract Boolean algebras.
+holds in all Boolean algebras iff it holds in the Boolean algebra \( \mathbb{B} \). One direction is trivial since \( \mathbb{B} = \mathcal{P}( \left\{  x_0 \right\} ) \). The other direction is not much difficult, since we can check identities on sets element-wise. Of course, this does not mean that one specific algebra can't have its own identities -- we're talking about \emph{laws of Boolean algebra}. A natural question to ask is whether this extends to all abstract Boolean algebras. And in fact it does! That is, we have the following theorem
+\begin{thm}
+\label{BooleanAlgebraLaws}
+\hypertarget{BooleanAlgebraLaws}
+Let \( f(\overline{x}), g(\overline{x}) \) be two terms of Boolean connectives. Then the sentence
+\[ 
+    \forall \overline{x}. f(\overline{x}) = g(\overline{x}) 
+\]
+holds in all Boolean algebras iff it holds in the truth value algebra \( \mathbb{B} \).
+\end{thm}
+
+We will prove this theorem in logical terms. First, we restate it.
 \paragraph{Observation.} In a Boolean algebra \( \mathcal{B} \)
 \[ 
     b_1 = b_2 
@@ -83,10 +94,48 @@ is equivalent to
 \hypertarget{BooleanAlgebraSemantics}
 We write \( \mathcal{B}, v \models \varphi \) if 
 \[ 
-    \left[ \left[ \varphi \right] \right]_b = 1 
+    \left[ \left[ \varphi \right] \right]_v = 1 
 \]
 and  \( \mathcal{B} \models \varphi \) if \( \mathcal{B}, v \models \varphi \) regardless of the valuation \( v \).
 \end{defn}
+So, to prove our theorem we actually want to prove that \( \mathbb{B} \models (f \leftrightarrow g) \) iff for all algebras \( \mathcal{B} \models (f \leftrightarrow g) \). It turns out that this is true for an arbitrary formula! For a proof, see the section on filters in Boolean algebras.
+
+\section{Filters in Boolean algebras}
+
+Consider the Boolean algebra \( \mathcal{P}( \mathbb{N} ) \). Its members are sets of various cardinality, and there is a very sharp divide between two kinds of cardinalities -- finite and infinite. However, an inifite set may not be \emph{that large}. Consider the set of powers of \( 2 \). One might be tempted to say that although it is infinite, it is quite small for an infinite sets, as it has a lot of gaps.
+
+Within the sets of infinite cardinality there is a collection of especially large sets -- those that contain all but finitely many numbers. Since this means they have finite complement, we call them \textbf{cofinite}. Observe that for any two cofinite sets \( A, B \) we have
+\[ 
+    (A \cap B)^c = A^c \cup B^c,
+\]
+so \( A \cap B \) is also cofinite, which is not at all true if we replace the word \emph{cofinite} with \emph{infinite}. This motivates the following definition.
+
+\begin{defn}[Filter]
+\label{BooleanAlgebraFilter}
+\hypertarget{BooleanAlgebraFilter}
+Fix a Boolean algebra \( \mathcal{B} \). A collection \( F \subseteq \mathcal{B}\) of subsets of \( X \) is called a \textbf{filter} if the two following conditions are met
+\begin{enumerate}[label=(\arabic*)]
+    \item if \( a \in F \) and \( a \leqslant b \), then \( b \in F \),
+    \item if \( a, b \in F \) then \( a \wedge b \in F \).
+\end{enumerate}
+In the case \( \mathcal{B} = \mathcal{P}(X) \) we refer to \( F \) as a \emph{filter on } \( X \).
+\end{defn}
+
+This definition is actually satisfied by \( F = \mathcal{P}(X) \) in the powerset algebra \( \mathcal{P}(X) \), so our notion of \emph{family of very large sets} also contains the empty set, which is not ideal.
+
+\begin{defn}[Proper filter]
+\label{BooleanAlgebraProperFilter}
+\hypertarget{BooleanAlgebraProperFilter}
+    Fix a Boolean algebra \( \mathcal{B} \). A filter \( F \) is \textbf{proper} if \( 0 \not\in F \). Equivalently, \( F \neq \mathcal{B} \).
+\end{defn}
+
+\begin{example}[Fréchet filter]
+    Fix an infinite set \( X \). Then the family \( \acute F \) of all cofinite subsets of \( X \) is a proper filter in \( \mathcal{P}(X) \), this has already been verified in the text at the beginning of the section. We call this filter the \emph{Fréchet filter} on \( X \).
+\end{example}
+
+\begin{example}[Conull filter]
+    Fix a complete measure space \( (X, \Sigma, \mu) \). The family of all conull members of \( \Sigma \) forms a filter on \( X \).
+\end{example}
 
 \begin{lemma}[Filter extension]
 \label{BooleanFilterExtension}
@@ -143,5 +192,12 @@ For the upward implication, \( F \ni 1 = a \vee \neg a \), so at least one of \(
         \item \( \mathcal{B} \models \varphi \) for all Boolean algebras \( \mathcal{B} \).
     \end{enumerate}
 \end{problem}
+
+\begin{proof}[Solution]
+   %TODO: maybe make the subalgebra stuff a lemma?
+    The lower upward implication is trivial. The second upward implication follows from that fact that \( \mathbb{B} \) embeds into \( \mathcal{B}_0 \) as a subalgebra. The interesting implication is \( (i) \Rightarrow (iii) \). It follows immediately from Stone's Theorem \ref{}, since equalities of sets can be checked element-wise. 
+
+    For a proof without Stone's Theorem, use the previous problem. That is, suppose \( \mathcal{B} \not\models \varphi \) for some Boolean algebra \( \varphi \), so \( \mathcal{B}, v \not\models \varphi \) for some valuation \( v: \mathsf{Var} \to \mathcal{B} \). By the previous problem there exists a binary valuation \( w: \mathsf{Var} \to \left\{ 0_{ \mathcal{B} }, 1_{ \mathcal{B} } \right\} \) which gives \( \left[ \left[ \varphi \right] \right]_w = 0_{ \mathcal{B} } \). Since the subalgebra \( \left\{ 0_{ \mathcal{B} }, 1_{ \mathcal{B} } \right\}  \) is isomorphic to \( \mathbb{B} \), we get \( \mathbb{B}, \widetilde{w} \not\models \varphi \), so \( \mathbb{B} \not\models \varphi \).
+\end{proof}
 
 % \section{Order properties of Boolean algebras}
