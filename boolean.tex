@@ -1,0 +1,91 @@
+\chapter{Boolean algebras}
+
+To study Boolean algebras it is best to see them in action. There are two most basic uses for Boolean algebras:
+\begin{enumerate}
+    \item the algebra of truth values \( \left\{ 0, 1 \right\} \) of (classical, propositional) logic.
+    \item the algebraic structure of \( \mathcal{P} \) with set-theoretic operations.
+\end{enumerate}
+
+\begin{defn}[Propositional formulas]
+\label{PropositionalFormulaDefinition}
+\hypertarget{PropositionalFormulaDefinition}
+Fix a set \( \mathsf{Var} \). We call its members propositional variables. Then a \textbf{(propositional) formula} over built using the variables from \( \mathsf{Var} \) and connectives \( \wedge, \vee, \neg, \to, \leftrightarrow \).
+\end{defn}
+
+\section{Axioms of Boolean algebras}
+
+We will now define a Boolean algebra in earnest as an algebraic structure. All the axioms are taken from Wikipedia.
+
+\begin{defn}[Axioms of Boolean algebras]
+\label{BooleanAlgebraAxioms}
+\hypertarget{BooleanAlgebraAxioms}
+A Boolean algebra is an algebraic structure \( \mathcal{B} = (B, 0, 1, \wedge, \vee, \neq) \) satisfying the following axioms \\
+\\
+\begin{minipage}[t]{0.05\textwidth}
+    \phantom{asdf}
+\end{minipage}
+\begin{minipage}[t]{.35\textwidth}
+    \( a \vee (b \vee c) = (a \vee b) \vee c \) \\
+    \( a \vee b = b \vee a \) \\
+    \( a \vee (a \wedge b) = a \) \\
+    \( a \vee 0 = a \) \\
+    \( a \vee (b \wedge c) = (a \vee b) \wedge (a \vee c) \) \\
+    \( a \vee (\neg a) = 1 \)
+\end{minipage}%
+\begin{minipage}[t]{.35\textwidth}
+    \( a \wedge (b \wedge c) = (a \wedge b) \wedge c \) \\
+    \( a \wedge b = b \wedge a \) \\
+    \( a \wedge (a \vee b) = a \) \\
+    \( a \wedge 0 = a \) \\
+    \( a \wedge (b \vee c) = (a \wedge b) \vee (a \wedge c) \) \\
+    \( a \wedge (\neg a) = 0 \)
+\end{minipage}%
+\begin{minipage}[t]{.2\textwidth}
+        associativity \\
+        commutativity \\
+        absorption \\
+        identity \\
+        distributivity \\
+        complement
+\end{minipage}
+\end{defn}
+
+\paragraph{Terminology.} It is a good practice to use different terms for Boolean algebras and logical terms, and even use different symbols if possible. Thus the algebraic operations are called \textbf{bottom}, \textbf{top}, \textbf{meet}, \textbf{join}, \textbf{complement} and not false, true, disjunction etc.
+
+\begin{thm}[NAND axiomatisation]
+\label{NANDAxioms}
+\hypertarget{NANDAxioms}
+An algebraic structure \( \mathcal{B} = (B, |) \) with the following axiom
+%TODO: make this an operator
+\[ 
+    ((a|b)|c)|(a|((a|c)|a)) = c 
+\]
+is a Boolean algebra, when \( | \) is interpreted as the NAND operator.
+\end{thm}
+
+Source: \url{https://en.wikipedia.org/wiki/Minimal_axioms_for_Boolean_algebra}.
+
+Observe that for the examples we've seen so far -- the truth value algebra \( \mathbb{B} \) and powerset algebras \( \mathcal{P}(X) \) have exactly the same identities. That is, an equation like
+\[ 
+    x \vee z \wedge x \wedge z = x 
+\]
+holds in all Boolean algebras iff it holds in the Boolean algebra \( \mathbb{B} \). One direction is trivial since \( \mathbb{B} = \mathcal{P}( \left\{  x_0 \right\} ) \). The other direction is not much difficult, since we can check identities on sets element-wise. Of course, this does not mean that one specific algebra can't have its own identities -- we're talking about \emph{laws of Boolean algebra}. A natural question to ask is whether this extends to all abstract Boolean algebras.
+\paragraph{Observation.} In a Boolean algebra \( \mathcal{B} \)
+\[ 
+    b_1 = b_2 
+\]
+is equivalent to
+\[ 
+    b_1 \leftrightarrow b_2 = 1. 
+\]
+\begin{defn}
+\label{BooleanAlgebraSemantics}
+\hypertarget{BooleanAlgebraSemantics}
+We write \( \mathcal{B}, v \models \varphi \) if 
+\[ 
+    \left[ \left[ \varphi \right] \right]_b = 1 
+\]
+and  \( \mathcal{B} \models \varphi \) if \( \mathcal{B}, v \models \varphi \) regardless of the valuation \( v \).
+\end{defn}
+
+% \section{Order properties of Boolean algebras}
