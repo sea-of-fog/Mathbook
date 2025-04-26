@@ -137,6 +137,22 @@ This definition is actually satisfied by \( F = \mathcal{P}(X) \) in the powerse
     Fix a complete measure space \( (X, \Sigma, \mu) \). The family of all conull members of \( \Sigma \) forms a filter on \( X \).
 \end{example}
 
+There is also a second intuition behind the idea of a filter, coming more directly from logic. One can think of a liter as a \emph{state of knowledge}. The following example is one of the ways of making this notion precise. (I learned this intuition from section 2.5 of Urzyczyn)
+
+\begin{example}[Filters of propositional formulas]
+    The set of propositional formulas on a set \( \mathsf{Var} \), quotiented by equivalence of formulas, is a Boolean algebra with operations given by logical connectives. For a formula \( \varphi \) we can define a filter
+    \[ 
+        F_\varphi := \left\{ \psi \mid \varphi \to \psi \text{ is a tautology} \right\}. 
+   \]
+   This filter is proper iff \( \varphi \) is satisfiable. In fact, for any (possible infinte set) \( \Gamma \) of propositional formulas we can define a filter
+   \[ 
+       F_\Gamma := \left\{ \psi \mid \varphi_1 \wedge \varphi_2 \ldots \wedge \varphi_n \to \psi \text{ is a tautology for some } \varphi_i \in \Gamma \right\}. 
+  \]
+  This, too, is a proper filter iff \( \varphi \) is satisfiable, but the proof of this requires compactness of propositional logic.
+\end{example}
+
+%TODO: compactness of propositional logic!
+
 \begin{lemma}[Filter extension]
 \label{BooleanFilterExtension}
 \hypertarget{BooleanFilterExtension}
