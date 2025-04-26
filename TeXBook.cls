@@ -30,6 +30,7 @@
 \newtheorem{thm}{Theorem}[chapter]
 \newtheorem{defn}{Definition}[chapter]
 \newtheorem{example}{Example}[chapter]
+\newtheorem{Problem}{Problem}[chapter]
 
 % Colors
 \RequirePackage{xcolor}
