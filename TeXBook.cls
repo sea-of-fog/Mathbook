@@ -27,9 +27,9 @@
 % AMSthm environments
 \RequirePackage{amsthm}
 \newtheorem{lemma}{Lemma}[chapter]
-\newtheorem{thm}{Theorem}[chapter]
-\newtheorem{defn}{Definition}[chapter]
-\newtheorem{example}{Example}[chapter]
+\newtheorem{thm}[lemma]{Theorem}
+\newtheorem{defn}[lemma]{Definition}
+\newtheorem{example}[lemma]{Example}
 \newtheorem{problem}{Problem}[chapter]
 
 % Colors
