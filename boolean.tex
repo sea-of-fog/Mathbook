@@ -137,7 +137,7 @@ This definition is actually satisfied by \( F = \mathcal{P}(X) \) in the powerse
     Fix a complete measure space \( (X, \Sigma, \mu) \). The family of all conull members of \( \Sigma \) forms a filter on \( X \).
 \end{example}
 
-There is also a second intuition behind the idea of a filter, coming more directly from logic. One can think of a liter as a \emph{state of knowledge}, i.e. all the facts derivable from a set of base facts. The following example is one of the ways of making this notion precise. (I learned this intuition from section 2.5 of Urzyczyn)
+There is also a second intuition behind the idea of a filter, coming more directly from logic. One can think of a liter as a \emph{state of knowledge}, i.e. all the facts derivable from a set of base facts. The following example is one of the ways of making this notion precise. (I learned this intuition from section 2.5 of \cite{SU06})
 
 \begin{example}[Filters of propositional formulas]
     The set of propositional formulas on a set \( \mathsf{Var} \), quotiented by equivalence of formulas, is a Boolean algebra with operations given by logical connectives. For a formula \( \varphi \) we can define a filter
@@ -187,7 +187,7 @@ For the upward implication, \( F \ni 1 = a \vee \neg a \), so at least one of \(
 
 \paragraph{Terminology.} By the extension lemma \ref{BooleanFilterExtension}, a filter satisfying \( (1) \) or   \( (2) \) is a maximal proper filter. The term \emph{prime filter} is best ascribed to a filter satisfying either of the conditions \( (3) \) or \( (4) \). The reason we introduce these different words is twofold: firstly, the notions are not equivalent in slightly different algebras (e.g. the Heyting algebras of intuitionistic propositional logic). Secondly, we want to tease the relationship with ring theory.
 
-\begin{problem}[P2.13 from Urzyczyn]
+\begin{problem}[P2.13 from \cite{SU06}]
     Suppose \( \mathcal{B}, v \not\models \varphi \). Then there exists a prime filter \( F \subseteq B \) with \( \left[ \left[ \neg\varphi \right] \right]_v \in F\). Secondly, the binary valuation given by \( w(p) = 1 \) iff \( v(p) \in F \) satisfies \( \left[ \left[ \varphi \right] \right]_w = 0 \).
 \end{problem}
 
@@ -200,7 +200,7 @@ For the upward implication, \( F \ni 1 = a \vee \neg a \), so at least one of \(
     Finally, since \( \neg f \in F \), we have that \( \left[ \left[ \neg\varphi \right] \right] \in F \), so \( \left[ \left[ \neg\varphi \right] \right]_w = 1 \) and \( \left[ \left[ \varphi \right] \right]_w = 0 \).
 \end{proof}
 
-\begin{problem}[P2.14 from Urzyczyn]
+\begin{problem}[P2.14 from \cite{SU06}]
     Let \( \mathcal{B}_0 \) denote any nondegenerate Boolean algebra, \( \mathbb{B} \) be the algebra of truth values and \( \varphi \) be a propositional formula. TFAE:
     \begin{enumerate}[label=(\roman*)]
         \item \( \mathbb{B} \models \varphi \),
