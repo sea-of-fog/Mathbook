@@ -35,6 +35,9 @@
 % Colors
 \RequirePackage{xcolor}
 
+% Control over enumerations
+\RequirePackage{enumitem}
+
 %%%%%%%%%%%%%% Headings
 % I copied the default from the titlesec documentation and changed them slightly
 \RequirePackage{titlesec}
