@@ -98,9 +98,9 @@ Suppose that \( a, \neg a \not \in F \). Then there exists a filter \( F_a \sups
 TODO.
 \end{proof}
 
-\begin{defn}[Ultrafilter]
-\label{BooleanAlgebraUltrafilter}
-\hypertarget{BooleanAlgebraUltrafilter}
+\begin{defn}[Prime filter]
+\label{BooleanAlgebraPrimeFilter}
+\hypertarget{BooleanAlgebraPrimeFilter}
 A proper filter F is an \textbf{ultrafilter} if it satisfies any of the following equivalent conditions:
 \begin{enumerate}
     \item \( a \in F \) or \( \neg a \in F \),
@@ -120,7 +120,7 @@ For the downward implication, see that since \( a \vee b \in F \) then \( F \not
 For the upward implication, \( F \ni 1 = a \vee \neg a \), so at least one of \( a, \neg a \) is in \( F \).
 \end{proof}
 
-\paragraph{Terminology.} By the extension lemma \ref{BooleanFilterExtension}, a filter satisfying \( (1) \) or   \( (2) \) is a maximal proper filter. The term \emph{prime filter} is best ascribed to a filter satisfying either of the conditions \( (3) \) or \( (4) \). The reason we introduce these different words is twofold: firstly, the notions are not equivalent in slightly different algebras (e.g. the Heyting algebras of intuitionistic propositional logic). Secondly, we want to tease the relationship with ring theory.
+\paragraph{Terminology.} By the extension lemma \ref{BooleanFilterExtension}, a filter satisfying \( (1) \) or   \( (2) \) is a maximal proper filter. The term \emph{prime filter} is best ascribed to a filter satisfying either of the conditions \( (3) \) or \( (4) \). The reason we introduce these different words is twofold: firstly, the notions are not equivalent in slightly different algebras (e.g. the Heyting algebras of intuitionistic propositional logic). Secondly, we tease the relationship with ring theory and algebra.
 
 \begin{problem}[P2.13 from Urzyczyn]
     Suppose \( \mathcal{B}, v \not\models \varphi \). Then there exists a prime filter \( F \subseteq B \) with \( \left[ \left[ \neg\varphi \right] \right]_v \in F\). Secondly, the binary valuation given by \( w(p) = 1 \) iff \( v(p) \in F \) satisfies \( \left[ \left[ \varphi \right] \right]_w = 0 \).
@@ -131,17 +131,7 @@ For the upward implication, \( F \ni 1 = a \vee \neg a \), so at least one of \(
 
     Taking the valuation \( w \) from the statement, we turn to computing \( \left[ \left[ \varphi \right] \right]_w \). By induction on subformulas, \( \left[ \left[ \psi \right] \right]_w \) is either \( 0 \) or \( 1 \) for any propositional formula \( \psi \) (we can also just note that \( \left\{ 0,1 \right\} \) is a subalgebra of \( \mathcal{B} \) and \( \mathcal{B} \) is nontrivial since \( \mathcal{B}, v \not\models \varphi \)).
     
-    Also by structural induction on \( \psi \) we prove that \( \left[ \left[ \psi \right] \right]_w = 1 \) iff \( \left[ \left[ \psi \right] \right]_v \in F \). For variables this follows from the definition. For negation, this follows from the filter \( F \) being prime, so also maximal -- \( F \) contains either \( \left[ \left[ \psi \right] \right]_v \) or \( \left[ \left[ \neg\psi \right] \right]_v = \neg \left[ \left[ \psi \right] \right]_v \). The inductive step for disjunction follows from property \( (4) \) is \ref{BooleanAlgebraUltrafilter}, and for conjunction from the remark after \ref{BooleanAlgebraUltrafilter}.
-    Finally, since \( \neg f \in F \), we have that \( \left[ \left[ \neg\varphi \right] \right] \in F \), so \( \left[ \left[ \neg\varphi \right] \right]_w = 1 \) and \( \left[ \left[ \varphi \right] \right]_w = 0 \).
+    Also by structural induction on \( \psi \) we prove that \( \left[ \left[ \psi \right] \right]_w = 1 \) iff \( \left[ \left[ \psi \right] \right]_v \in F \). For variables this follows from the definition. For negation, this follows from the filter \( F \) being prime, so also maximal -- \( F \) contains either \( \left[ \left[ \psi \right] \right]_v \) or \( \left[ \left[ \neg\psi \right] \right]_v = \neg \left[ \left[ \psi \right] \right]_v \).
 \end{proof}
-
-\begin{problem}[P2.14 from Urzyczyn]
-    Let \( \mathcal{B}_0 \) denote any nondegenerate Boolean algebra, \( \mathbb{B} \) be the algebra of truth values and \( \varphi \) be a propositional formula. TFAE:
-    \begin{enumerate}[label=(\roman*)]
-        \item \( \mathbb{B} \models \varphi \),
-        \item \( \mathcal{B}_0 \models \varphi \),
-        \item \( \mathcal{B} \models \varphi \) for all Boolean algebras \( \mathcal{B} \).
-    \end{enumerate}
-\end{problem}
 
 % \section{Order properties of Boolean algebras}
