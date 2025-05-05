@@ -1,0 +1,120 @@
+\chapter{Algebraic semantics of intuitionistic logic}
+
+This chapter will introduce intuitionistic logic and two ways to give it semantics: Heyting algebras and Kripke models.
+
+\begin{problem}[Problem 2.1. from \cite{SU06}]
+    At least one of the numbers \( e + \pi, e\pi \) is transcendental.
+\end{problem}
+
+\begin{proof}[Solution]
+If both these numbers were algebraic, then so would be the two roots of the polynomial
+\[ 
+    X^2 - (e + \pi)X + e\pi = (X - e)(X - \pi),
+\]
+which would imply that both \( e \) and \( \pi \) are algebraic numbers. It is, however, well-known that they are transcendental.
+\end{proof}
+
+\begin{defn}[Lattice as a poset]
+\label{PosetLattice}
+\hypertarget{PosetLattice}
+A partially ordered set \( (A, \leqslant) \) is called a \textbf{lattice} if for every pair \( a, b \in A \) the bounds \( \sup \left\{ a, b \right\} \) and \( \inf \left\{ a, b \right\} \) can be defined. These are then called \textbf{join} and \textbf{meet}, respectively, and are denoted \( a \sqcup b \) and \( a \sqcap b \).
+\end{defn}
+
+\begin{defn}[Lattice, algebraic]
+\label{AlgebraicLattice}
+\hypertarget{AlgebraicLattice}
+A \textbf{lattice} is an algebraic structure \( (A, \sqcap, \sqcup) \) satisfying the following four pairs of dual axioms: \\
+\\
+\begin{minipage}[t]{0.05\textwidth}
+    \phantom{asdf}
+\end{minipage}
+\begin{minipage}[t]{.35\textwidth}
+    \( a \sqcup (b \sqcup c) = (a \sqcup b) \sqcup c \) \\
+    \( a \sqcup b = b \sqcup a \) \\
+    \( a \sqcup (a \sqcap b) = a \) \\
+    \( a \sqcup a = a \)
+\end{minipage}%
+\begin{minipage}[t]{.35\textwidth}
+    \( a \sqcap (b \sqcap c) = (a \sqcap b) \sqcap c \) \\
+    \( a \sqcap b = b \sqcap a \) \\
+    \( a \sqcap (a \sqcup b) = a \) \\
+    \( a \sqcap a = a \)
+\end{minipage}%
+\begin{minipage}[t]{.2\textwidth}
+        associativity \\
+        commutativity \\
+        absorption \\
+        idempotency
+\end{minipage}
+\end{defn}
+
+\begin{problem}[Problem 2.6. from \cite{SU06}]
+    Prove that a lattice defined algebraically as in \ref{AlgebraicLattice} can be given a poset structure with the ordering given by
+    \[ 
+       a \leqslant b \Leftrightarrow a \sqcup b = b. 
+   \]
+   Show that this is a lattice in the sense of \ref{PosetLattice} and that joins and meets in this lattice are given by \( \sqcup, \sqcap \).
+\end{problem}
+
+\begin{proof}[Solution]
+    First, we check the conditions for order. The relation is reflexive since \( a \sqcup a = a \). For transitivity, suppose \( a \leqslant b \) and \( b \leqslant c \), so that we have
+    \begin{align*}
+        a \sqcup b &= b, \\
+        b \sqcup c &= c.
+    \end{align*}
+    Then we use the associativity axiom to compute
+    \[ 
+    a \sqcup c = a \sqcup (b \sqcup c) = (a \sqcup b) \sqcup c = b \sqcup c = c,
+    \]
+    so \( a \leqslant c \). Now we prove that \( \leqslant \) is antisymmetric. Suppose \( a \leqslant b \) and \( b \leqslant a \). By commutativity we have
+    \[ 
+        a = b \sqcup a = a \sqcup b = b.
+    \]
+    Let us now prove that \( a \sqcup b = \sup \left\{ a, b \right\} \). By idempotency and associativity we have
+    \[ 
+       a \sqcup (a \sqcup b) = (a \sqcup a) \sqcup b = a \sqcup b, 
+   \]
+   so \( a \sqcup b \geqslant a \), and of course the same for \( b \), so \( a \sqcup b \) is an upper bound of \( \left\{ a, b \right\} \). Take any other upper bound \( c \geqslant \left\{ a, b \right\} \). Then by associativity
+   \[ 
+   (a \sqcup b) \sqcup c = a \sqcup (b \sqcup c) = a \sqcup c = c, 
+  \]
+  so \( a \sqcup b \leqslant c \) and \( a \sqcup b \) is the least upper bound. For the infimum use Lemma \ref{AlgebraicLatticeOrderingsEquivalent} and retread the proof for \( \sup \). 
+\end{proof}
+
+\paragraph{Remark.} A dual (with \( \sqcup \) and \( \sqcap \) switched) proof would work if we defined the order as
+\[ 
+    a \leqslant b \Leftrightarrow a \sqcap b = a. 
+\]
+In face, we have the following.
+
+\begin{lemma}[Dual definitions of order in algebraic lattices]
+\label{AlgebraicLatticeOrderingsEquivalent}
+\hypertarget{AlgebraicLatticeOrderingsEquivalent}
+In an algebraic lattice \( (A, \sqcap, \sqcup) \) the conditions
+\[ 
+    a \sqcup b = b 
+\]
+and
+\[ 
+    a \sqcap b = a 
+\]
+are equivalent, and both define an order relation.
+\end{lemma}
+
+\begin{proof}
+The \emph{order} part of the statement is the previous problem. For equivalency, suppose now that \( a \sqcap b = a \). Then
+\[ 
+    a \sqcup b = (a \sqcap b) \sqcup b = b 
+\]
+by the absorption axiom. The upward implication is dual.
+\end{proof}
+
+\begin{lemma}[Monotnicity proerties of lattices]
+\label{LatticeOperationsMonotonic}
+\hypertarget{LatticeOperationsMonotonic}
+The lattice operations \( \sqcap, \sqcup \) are increasing in each of their arguments.
+\end{lemma}
+
+\begin{proof}
+TODO.
+\end{proof}
