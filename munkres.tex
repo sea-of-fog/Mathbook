@@ -39,18 +39,40 @@ A space \( X \) is called \textbf{Lindel\"of} if every open cover of \( X \) adm
 
 \subsection{Theorems}
 
+\begin{thm}[Continuity in first-countable spaces]
+\label{FirstCountableContinuousFunctions}
+\hypertarget{FirstCountableContinuousFunctions}
+If \( f: X \to Y \) is continuous, then for all sequences \( x_n \to x \) we have \( f(x_n) \to f(x) \). If additionally \( X \) is first-countable, then then converse is also true. 
+\end{thm}
+
+\begin{proof} 
+    For the forward implication, pick any \( U \in N_{f(x)} \). Then \( V := f^{-1}[U] \) is open, so, for all but finitely many indices \( n \), \( x_n \in V \). Then for the same indices \( f(x_n) \in U \).
+
+    For the backward, let \( B_n \) be a countable basis of X at \( x \) and suppose without loss of generality that \( B_n \) is decreasing. Pick again an open neighbourhood \( U \in N_{f(x)} \). If \( f^{-1}[U] \) is not open, then choose a sequence \( x_n \in B_n \setminus f^{-1}[U] \). This means that \( f(x_n) \not\in U \) for all \( n \), but \( f(x_n) \to f(x) \), a contradiction.
+\end{proof}
+
 \subsection{Chapter review questions}
 
 \begin{enumerate}
     \item What is the significance of first-countability for closures?
     \item What is the significance of first-countability for continuous function?
+
+    \textbf{Answer:} If \( X \) is first-countable, then a function \( f: X \to Y \) is continuous iff for all sequences \( x_n \to x \) we have \( f(x_n) \to f(x) \). In general, only the forward implication holds. Prove \hyperlink{FirstCountableContinuousFunctions}{this}.
+    
     \item What examples does Munkres give for a first-countable space that is not second-countable?
+
+        \textbf{Answer:} \( \mathbb{R}^\omega \) is first-countable as it is a metric space, but is not second-countable, because it has a discrete set \( \{ 0,\,1 \}^\omega \) of size \( \mathfrak{c} \).
     \item How large can a discrete subspace of a second-countable space be?
     
     \textbf{Answer:} At most countable. A discrete subspace can be injected into the basis, so it has a smaller size.
     \item What are the relations between countability propeties?
+
+    \textbf{Answer:} Second-countability implies all other properties. See \hyperlink{MetrisableSpaceCountabilityProperties}{here} for a proof. Not even a conjuction of the three others implies second-countability, as shown by the Sorgenfrey line \( \mathbb{S} \).
     \item What is the significance of the Sorgenfrey line \( \mathbb{S} \) for countability axioms? Which countability properties does it have?
     \item What is the significance of the Sorgenfrey plane \( \mathbb{S}^2 \) for countability axioms? Which countability properties does it have?
+
+        \textbf{Answer:}  The Sorgenfrey plane is first-countable, separable, but neither second-countable nor Lindel\"of. Thus it is a product of Lindel\"of spaces which is not Lindel\"of, establishing that Lindel\"ofness is not productive. The proof uses the fact that the antidiagonal is a discrete subspace.
+
     \item What is the significance of the ordered square \( I_o^2 \) for countability axioms? Which countability properties does it have?
     \item How can you make it easier to check the Lindel\"of property?
     \item Under what conditions do the relations between countability axioms reverse, i.e. what can you use to conclude that a space is second-countable from the other axioms?
