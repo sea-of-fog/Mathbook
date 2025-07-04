@@ -31,7 +31,7 @@ A subset \( D \subseteq X \) is said to be \textbf{dense} if
 \]
 \end{defn}
 
-\begin{defn}[Lindel\"of]
+\begin{defn}[Lindel\"of property]
 \label{Lindelof}
 \hypertarget{Lindelof}
 A space \( X \) is called \textbf{Lindel\"of} if every open cover of \( X \) admits a countable subcover.
@@ -50,6 +50,51 @@ If \( f: X \to Y \) is continuous, then for all sequences \( x_n \to x \) we hav
 
     For the backward, let \( B_n \) be a countable basis of X at \( x \) and suppose without loss of generality that \( B_n \) is decreasing. Pick again an open neighbourhood \( U \in N_{f(x)} \). If \( f^{-1}[U] \) is not open, then choose a sequence \( x_n \in B_n \setminus f^{-1}[U] \). This means that \( f(x_n) \not\in U \) for all \( n \), but \( f(x_n) \to f(x) \), a contradiction.
 \end{proof}
+
+\subsection{Problems}
+
+\begin{problem}[P30.18 from \cite{Mun14}]
+\label{MunkresP30.18}
+\hypertarget{MunkresP30.18}
+    Let \( G \) be a first-countable topological group. Show that if \( G \) is either separable or Lindel\"of, then \( G \) is also second-countable.
+\end{problem}
+
+\begin{proof}[Solution (for separable spaces)]
+    Let \( D = \left\{ d_1, d_2, \ldots \right\} \) be the countable dense subset and \( \mathcal{B} = \left\{ B_1, B_2 \ldots \right\} \) a basis at \( e \). We will use the dense subset to \emph{spread} the local basis over the group. Concretely, we claim that the countable basis can be given by
+    \[ 
+       d_m B_n,
+   \]
+   i.e. left translations of the basis at \( e \). Pick any open set \( U \subseteq G \) and its element \( g \in U \subseteq G \). The left-transalted set \( g^{-1}U \) contains \( e = g^{-1}g \), so we can pick a neighbourhood \( B_n \subseteq g^{-1}U \) or, equivalently, \( g \in gB_n \subseteq U \).
+   At this point it might be true that for some \( d_m \) we will have \( g \in d_mB_n \subseteq U \). However, by continuity of the group operations we can shrink \( B_n \) to \( B_k \) such that \( B_k \cdot B_k \subseteq B_m \). Then, pick a \( d_m \in gB_k \). We can now compute that
+\begin{align*}
+    d_m &\in gB_k  \\
+    g^{-1}d_m &\in B_k \\
+    e \in g^{-1}d_mB_k &\subseteq B_kB_k \subseteq B_m \\
+    g \in d_mB_k &\subseteq gB_m \subseteq U, \\
+\end{align*}
+which completes the proof.
+\end{proof}
+
+\begin{proof}[Solution (for Lindel\"of spaces)]
+    Let \( \mathcal{B} = \left\{ B_1, B_2, \ldots \right\} \) be a countable basis at \( e \). For a given \( B_k \), consider the cover
+    \[ 
+       \mathcal{A_k} = \left\{ gB_k : g \in G \right\}.
+   \]
+   By the Lindel\"of property, we can pick a countable subset \( G_k \subseteq G \) such that the family \( \left\{ gB_k : g \in G_k \right\} \)is a subcover of \( \mathcal{A_k} \). Now do this for all \( k \in \mathbb{N} \) and, for convenince, take
+   \[ 
+       %TODO: upward sum
+       G_0 := \bigcup_{k=1}^\infty G_k. 
+  \]
+  We claim that sets of the form
+  \[ 
+     g_0B_k 
+ \]
+ for \( g_0 \in G_0 \) and \( B_k \in \mathcal{B} \) form a countable basis. Pick any open set and its element \( g \in U \subseteq G \). We repeat the solution of the previous subproblem. To be explicit, we can find an \( m \) such that \( gB_m \subseteq U \). Now pick a \( B_k \) with the property that \( B_k \cdot B_k \subseteq B_m \). Since the family \( \left\{ gB_k : g \in G_0 \right\} \), we can find some \( g_0 \) s. that \( g \in g_0B_k \subseteq gB_m \subseteq U \).
+\end{proof}
+
+\paragraph{Remark.} The set \( G_0 \) is actually a dense set for the topology of \( G \).
+
+\paragraph{Remark.} This is one of the situations in which the relationships between countability axioms can be reversed, that is a subset of weaker axioms implies second-countability.
 
 \subsection{Chapter review questions}
 
@@ -76,6 +121,8 @@ If \( f: X \to Y \) is continuous, then for all sequences \( x_n \to x \) we hav
     \item What is the significance of the ordered square \( I_o^2 \) for countability axioms? Which countability properties does it have?
     \item How can you make it easier to check the Lindel\"of property?
     \item Under what conditions do the relations between countability axioms reverse, i.e. what can you use to conclude that a space is second-countable from the other axioms?
+    
+        \textbf{Answer:} (1) metrisable spaces are all first-countable, but either the Lindel\"of property or separability imply second-countability (\hyperlink{MetrisableSpaceCountabilityProperties}{proof}) (2) a first-countable topological group satisfying either the Lindel\"of property or separability is second-countable (\hyperlink{MunkresP30.18}{proof}).
 \end{enumerate}
 
 \subsection{Questions about property preservation}
