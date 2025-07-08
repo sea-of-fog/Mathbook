@@ -53,6 +53,66 @@ is a decreasing inscribed basis at \( X \).
     All of these sets contain \( x \). Since any neighbourhood of \( U \ni x \) contains some \( B_k \), it will also contain the set \( B_1 \cap B_2 \cap \ldots \cap B_k \).
 \end{proof}
 
+\begin{lemma}[Local basis in a topological group]
+\label{TopGroupLocalBasis}
+\hypertarget{TopGroupLocalBasis}
+Let \( \mathcal{B} = \left\{ B_1, B_2, \ldots \right\} \) be a basis for a first-countable topological group \( G \) at the identity \( e \). Then, the basis sets \( B_k \) can be shrunk to sets \( C_k \) such that:
+\begin{enumerate}
+    \item \( C_k \subseteq B_k \),
+    \item \( C_k^{-1} = C_k \),
+    \item \( C_{k+1} \cdot C_{k+1} \subseteq C_{k-1} \),
+    \item \( e \in C_k \).
+\end{enumerate}
+In particular, the family \( \mathcal{C} = \left\{ C_1, C_2, \ldots \right\} \) is a decreasing basis for the topology of \( G \) at \( e \). 
+\end{lemma}
+
+\begin{proof}
+    The first trick we'll use is that since the inverse operation \( \iota \) is a homeomorphism and its own inverse, the set 
+    \[ 
+        U \cap U^{-1} 
+   \]
+   is open, contains \( e \) and is closed under taking inverses. So, for \( C_1 \) we pick \( B_1 \cap B_1^{-1} \). Now suppose we have already chosen \( C_1, C_2, \ldots, C_k \). Since the group operation is continuous on the product, we can choose an open set \( U \ni e \) such that \( U \cdot U \subseteq C_k \). Now the set
+   \[ 
+       U \cap B_{k+1} 
+  \]
+  satisfies all the conditions apart from (2), so we perform on it the inverse trick mentioned at the beginning. Explicitly, we set
+  \[ 
+      C_{k+1} = (U \cap B_{k+1}) \cap (U \cap B_{k+1})^{-1}.
+ \]
+\end{proof}
+
+\begin{lemma}[Lindel\"of by basis]
+\label{LindelofByBasis}
+\hypertarget{LindelofByBasis}
+A topological space \( X \) is Lindel\"of iff a countable cover can be chosed from any cover by elements of a given basis \( \mathcal{B} \).
+\end{lemma}
+
+\begin{proof}
+    In one direction, a basis is a cover, so the Lindel\"of basis lets one pick a countable subcover.
+
+    In the other direction, suppose \( \mathcal{U} \) is a cover. Then, for each \( x \in X \) pick a \( U_x \in \mathcal{U} \) and basis element \( B_x \in \mathcal{B} \) such that \( x \in B_x \subseteq U_x \). The chosen basis elements form a cover by basis elements, and if we extract a countable subcover by \( B_{x_n} \), we can also extract a countable subcoer from the corresponding \( U_{x_n} \). 
+\end{proof}
+
+\begin{lemma}[Lindel\"of property of the Sorgenfrey line]
+\label{SorgenfreyLineLindelof}
+\hypertarget{SorgenfreyLineLindelof}
+The Sorgenfrey line \( \mathbb{S} \) has the Lindel\"of property.
+\end{lemma}
+
+\begin{proof}
+    Using \ref{LindelofByBasis} we reduce to the case of a cover by basis elements \( [a_\alpha, b_\alpha) \). Since it is a cover, we have
+    \[ 
+        \mathbb{R} = \bigcup_{\alpha} [a_\alpha, b_\alpha).
+   \]
+   We will that the set
+   \[ 
+       C := \mathbb{R} \setminus \bigcup_{\alpha} (a_\alpha, b_\alpha) 
+  \]
+  is countable, which will finish the proof, because we will then be able to pick one element from the original cover for each element of the difference and the fact that \( \mathbb{R} \setminus C \) in the Euclidean topology is second countable by \ref{FirstSecondCountabilityHereditary}, and so also Lindel\"of.
+
+  Let \( c \in C \). Then, \( c = a_\alpha \) for some \( \alpha \). Choosing a rational number \( q \in [a_\alpha, b_\alpha) \) we get a function \( f: C \to \mathbb{Q} \). This is an injection, since if \( c_1 \neq c_2 \), then without loss of generality \( c_1 < c_2 \). The cover intervals with left endpoints \( c_1, c_2 \) have to be disjoint, so \( f(c_1) < f(c_2) \) and \( f \) is in particular injective.
+\end{proof}
+
 \subsection{Theorems}
 
 \begin{thm}[Continuity in first-countable spaces]
@@ -98,23 +158,24 @@ Let \( X \) be second- or first-countable space. Then, if \( Y \) is subspace of
 \end{problem}
 
 \begin{proof}[Solution (for separable spaces)]
-    Let \( D = \left\{ d_1, d_2, \ldots \right\} \) be the countable dense subset and \( \mathcal{B} = \left\{ B_1, B_2 \ldots \right\} \) a basis at \( e \). We will use the dense subset to \emph{spread} the local basis over the group. Concretely, we claim that the countable basis can be given by
+    Let \( D = \left\{ d_1, d_2, \ldots \right\} \) be the countable dense subset and \( \mathcal{B} = \left\{ B_1, B_2 \ldots \right\} \) a basis at \( e \). Suppose without loss of generality, that \( \mathcal{B} \) satisfies the hypothesis of \hyperlink{TopGroupLocalBasis}{the topological group basis lemma}. We will use the dense subset to \emph{spread} the local basis over the group. Concretely, we claim that the countable basis can be given by
     \[ 
        d_m B_n,
    \]
    i.e. left translations of the basis at \( e \). Pick any open set \( U \subseteq G \) and its element \( g \in U \subseteq G \). The left-transalted set \( g^{-1}U \) contains \( e = g^{-1}g \), so we can pick a neighbourhood \( B_n \subseteq g^{-1}U \) or, equivalently, \( g \in gB_n \subseteq U \).
-   At this point it might be true that for some \( d_m \) we will have \( g \in d_mB_n \subseteq U \). However, by continuity of the group operations we can shrink \( B_n \) to \( B_k \) such that \( B_k \cdot B_k \subseteq B_m \). Then, pick a \( d_m \in gB_k \). We can now compute that
+
+   At this point it might not be true that for some \( d_m \) we will have \( g \in d_mB_n \subseteq U \). However, we can shrink \( B_n \) to \( B_{n+1} \) and get that \( B_{n+1} \cdot B_{n+1} \subseteq B_m \). Then, pick a \( d_m \in gB_{n+1} \). We can now compute that
 \begin{align*}
-    d_m &\in gB_k  \\
-    g^{-1}d_m &\in B_k \\
-    e \in g^{-1}d_mB_k &\subseteq B_kB_k \subseteq B_m \\
-    g \in d_mB_k &\subseteq gB_m \subseteq U, \\
+    d_m &\in gB_{n+1}  \\
+    g^{-1}d_m &\in B_{n+1} \\
+    e \in g^{-1}d_mB_{n+1} &\subseteq B_{n+1}B_{n+1}\subseteq B_n \\
+    g \in d_mB_{n+1} &\subseteq gB_n \subseteq U, \\
 \end{align*}
-which completes the proof.
+which completes the proof. The identity belongs to \( g^{-1}d_mB_{n+1} \) because \( g^{-1}d_m \in B_{n+1} \) and \( B_{n+1} \) is closed under inverses.
 \end{proof}
 
 \begin{proof}[Solution (for Lindel\"of spaces)]
-    Let \( \mathcal{B} = \left\{ B_1, B_2, \ldots \right\} \) be a countable basis at \( e \). For a given \( B_k \), consider the cover
+    Let \( \mathcal{B} = \left\{ B_1, B_2, \ldots \right\} \) be a countable basis at \( e \) and again suppose it satisfies the properties of \hyperlink{TopGroupLocalBasis}{a nice topological group basis}. For a given \( B_k \), consider the cover
     \[ 
        \mathcal{A}_k = \left\{ gB_k : g \in G \right\}.
    \]
@@ -127,7 +188,7 @@ which completes the proof.
   \[ 
      g_0B_k 
  \]
- for \( g_0 \in G_0 \) and \( B_k \in \mathcal{B} \) form a countable basis. Pick any open set and its element \( g \in U \subseteq G \). We repeat the solution of the previous subproblem. To be explicit, we can find an \( m \) such that \( gB_m \subseteq U \). Now pick a \( B_k \) with the property that \( B_k \cdot B_k \subseteq B_m \). Since the family \( \left\{ gB_k : g \in G_0 \right\} \), we can find some \( g_0 \) s. that \( g \in g_0B_k \subseteq gB_m \subseteq U \).
+ for \( g_0 \in G_0 \) and \( B_k \in \mathcal{B} \) form a countable basis. Pick any open set and its element \( g \in U \subseteq G \). We repeat the solution of the previous subproblem. To be explicit, we can find an \( n \) such that \( gB_n \subseteq U \). Now \( B_{n+1} \cdot B_{n+1} \subseteq B_{n} \). Since the family \( \left\{ gB_{n+1} : g \in G_0 \right\} \) is a cover, we can find some \( g_0 \) s. that \( g \in g_0B_{n+1} \subseteq gB_n \subseteq U \).
 \end{proof}
 
 \paragraph{Remark.} The set \( G_0 \) is actually a dense set for the topology of \( G \).
@@ -139,7 +200,7 @@ which completes the proof.
 \begin{enumerate}
     \item What is the significance of first-countability for closures?
 
-    \textbf{Answer:} In a first-countable space closures are determined by sequences. That is, \( x \in \Cl A \)iff there is a sequence \( x_n \in A \) s. that \( x_n \to x \). In general only the backward implication holds. See \hyperlink{FirstCountableClosures}{here} for a proof.
+    \textbf{Answer:} In a first-countable space closures are determined by sequences. That is, \( x \in \Cl A \) iff there is a sequence \( x_n \in A \) s. that \( x_n \to x \). In general only the backward implication holds. See \hyperlink{FirstCountableClosures}{here} for a proof.
 
     \item What is the significance of first-countability for continuous function?
 
@@ -155,6 +216,9 @@ which completes the proof.
 
     \textbf{Answer:} Second-countability implies all other properties. See \hyperlink{MetrisableSpaceCountabilityProperties}{here} for a proof. Not even a conjuction of the three others implies second-countability, as shown by the Sorgenfrey line \( \mathbb{S} \).
     \item What is the significance of the Sorgenfrey line \( \mathbb{S} \) for countability axioms? Which countability properties does it have?
+
+        \textbf{Answer: } The Sorgenfrey line has all three weaker countability properties, but is not second countable, establishing that even a conjunction of all three weaker axioms does not give second-coutnability. It is separable with dense set \( \mathbb{Q} \), first countable by choice of \( [x, x + \frac{1}{n}) \) at each \( x \), and Lindel\"of. For the last one see \hyperlink{SorgenfreyLineLindelof}{here}.
+
     \item What is the significance of the Sorgenfrey plane \( \mathbb{S}^2 \) for countability axioms? Which countability properties does it have?
 
         \textbf{Answer:}  The Sorgenfrey plane is first-countable, separable, but neither second-countable nor Lindel\"of. Thus it is a product of Lindel\"of spaces which is not Lindel\"of, establishing that Lindel\"ofness is not productive. The proof uses the fact that the antidiagonal is a closed discrete subspace.
@@ -199,4 +263,88 @@ which completes the proof.
     \item How does separability behave under quotients?
     
     \textbf{Answer:} Since separability is surjective, it is preserved under quotients.
+\end{enumerate}
+
+\section{The separation axioms}
+
+\subsection{Definitions}
+
+\begin{defn}[Hausdorff vel \( T_2 \)]
+\label{Hausdorff}
+\hypertarget{Hausdorff}
+A topological space \( X \) is called \emph{Hausdorff} or \( T_2 \) iff for every two points \( x_1, x_2 \in X \) there are disjoint open neighbourhoods containing them.
+\end{defn}
+
+\begin{defn}[Regularity vel \( T_3 \)]
+\label{RegularSpace}
+\hypertarget{RegularSpace}
+A topological space \( X \) is called \emph{regular} or \( T_3 \) iff every singleton is closed and for any point \( x \in X \) and closed subset \( F \subseteq X \) there are disjoint open neighbourhoods \( U \ni x, V \supseteq F \).
+\end{defn}
+
+\begin{defn}[Normality vel \( T_3 \)]
+\label{NormalSpace}
+\hypertarget{NormalSpace}
+A topological space \( X \) is called \emph{normal} or \( T_4 \) iff every singleton is closed and for any two closed subsets \( F, G \subseteq X \) there are disjoint open neighbourhoods \( U \supset F, V \supseteq G \).
+\end{defn}
+\subsection{Lemmas}
+
+\begin{lemma}[Regularity via shrinking]
+\label{RegularityShrinking}
+\hypertarget{RegularityShrinking}
+Let \( X \) be a space with closed singletons. Then \( X \) is \( T_3 \) iff for every point \( x \) and its neighbourhood \( U \ni x \) we can find a smaller neighbourhood \( V \ni x \) such that \( \Cl V \subseteq U \).
+\end{lemma}
+
+\begin{proof}
+Empty for now.
+\end{proof}
+
+\begin{lemma}[Normality via shrinking]
+\label{NormalityShrinking}
+\hypertarget{NormalityShrinking}
+Let \( X \) be a space with closed singletons. Then \( X \) is \( T_3 \) iff for every subset \( A \subset X \) and its neighbourhood \( U \supset A \) we can find a smaller neighbourhood \( V \supset A \) such that \( \Cl V \subseteq U \).
+\end{lemma}
+
+\begin{proof}
+Empty for now.
+\end{proof}
+\subsection{Theorems}
+
+\subsection{Problems}
+
+\subsection{Chapter review questions}
+
+\begin{enumerate}
+    \item Why do the axioms \( T_3 \) and \( T_4 \) have assumptions about closed singletons?
+
+    \item What is the shrinking neighbourhood characterisation of regularity?
+
+    \item What is the shrinking neighbourhood characterisation of normality?
+
+    \item What are the relations between the axioms \( T_2, T_3, T_4 \)?
+
+    \item What separation axioms does the Sorgenfrey line satisfy?
+
+    \item What is the significance of the Sorgenfrey plane for separation axioms? Which separations axioms does is satisfy?
+
+    \item What is the significance of the space \( \mathbb{R}_K \) for separation axioms? Which separation axioms does is satisfy?
+\end{enumerate}
+
+\subsection{Questions about property preservation}
+
+\begin{enumerate}
+    \item How does the \( T_2 \) axiom behave under taking subspaces?
+    \item How does the \( T_2 \) axiom behave under products?
+    \item How does the \( T_2 \) axiom behave under coproducts?
+    \item How does the \( T_2 \) axiom behave under surjections?
+    \item How does the \( T_2 \) axiom behave under quotients?
+    \item How does the \( T_3 \) axiom behave under taking subspaces?
+    \item How does the \( T_3 \) axiom behave under products?
+    \item How does the \( T_3 \) axiom behave under coproducts?
+    \item How does the \( T_3 \) axiom behave under surjections?
+    \item How does the \( T_3 \) axiom behave under quotients?
+    \item How does the \( T_4 \) axiom behave under taking subspaces?
+    \item How does the \( T_4 \) axiom behave under products?
+    \item How does the \( T_4 \) axiom behave under coproducts?
+    \item How does the \( T_4 \) axiom behave under surjections?
+    \item How does the \( T_4 \) axiom behave under quotients?
 \end{enumerate}
