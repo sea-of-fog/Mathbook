@@ -93,6 +93,20 @@ A topological space \( X \) is Lindel\"of iff a countable cover can be chosed fr
     In the other direction, suppose \( \mathcal{U} \) is a cover. Then, for each \( x \in X \) pick a \( U_x \in \mathcal{U} \) and basis element \( B_x \in \mathcal{B} \) such that \( x \in B_x \subseteq U_x \). The chosen basis elements form a cover by basis elements, and if we extract a countable subcover by \( B_{x_n} \), we can also extract a countable subcoer from the corresponding \( U_{x_n} \). 
 \end{proof}
 
+\begin{lemma}[Lindel\"of property by inscribed cover]
+\label{LindelofByInscription}
+\hypertarget{LindelofByInscription}
+Fix an open covering \( \mathcal{V} \) of a topological space \( X \). Then \( X \) has the Lindel\"of property iff every cover \( \mathcal{U} \) inscribed in \( \mathcal{V} \) has a countable subcover.
+\end{lemma}
+
+\begin{proof}
+    Only the backward implication is nontrivial. Suppose \( \mathcal{V} = \left\{ V_\alpha \right\} \) and \( \mathcal{U} = \left\{ U_{\beta} \right\} \) is an arbitrary cover. Then we can form an \emph{intersection covering} by
+    \[ 
+       \mathcal{W} := \left\{ V_\alpha \cap U_\beta \right\}.
+   \]
+   The cover \( \mathcal{W} \) is definitely open and inscribed in \( \mathcal{V} \), so we may choose a countable subcover from it. But if the subcover is \( V_{\alpha_n} \cap U_{\beta_n} \), then \( U_{\beta_n} \) also is a cover, so \( \mathcal{U} \) has a countable subcover.
+\end{proof}
+
 \begin{lemma}[Lindel\"of property of the Sorgenfrey line]
 \label{SorgenfreyLineLindelof}
 \hypertarget{SorgenfreyLineLindelof}
@@ -179,7 +193,7 @@ which completes the proof. The identity belongs to \( g^{-1}d_mB_{n+1} \) becaus
     \[ 
        \mathcal{A}_k = \left\{ gB_k : g \in G \right\}.
    \]
-   By the Lindel\"of property, we can pick a countable subset \( G_k \subseteq G \) such that the family \( \left\{ gB_k : g \in G_k \right\} \)is a subcover of \( \mathcal{A_k} \). Now do this for all \( k \in \mathbb{N} \) and, for convenince, take
+   By the Lindel\"of property, we can pick a countable subset \( G_k \subseteq G \) such that the family \( \left\{ gB_k : g \in G_k \right\} \)is a subcover of \( \mathcal{A}_k \). Now do this for all \( k \in \mathbb{N} \) and, for convenince, take
    \[ 
        %TODO: upward sum
        G_0 := \bigcup_{k=1}^\infty G_k. 
@@ -225,6 +239,8 @@ which completes the proof. The identity belongs to \( g^{-1}d_mB_{n+1} \) becaus
 
     \item What is the significance of the ordered square \( I_o^2 \) for countability axioms? Which countability properties does it have?
     \item How can you make it easier to check the Lindel\"of property?
+
+        \textbf{Answer: } You can restrict your attention to \hyperlink{LindelofByBasis}{covers by basis elements}, or to \hyperlink{LindelofByInscription}{covers inscribed in an arbitrary cover}.
     \item Under what conditions do the relations between countability axioms reverse, i.e. what can you use to conclude that a space is second-countable from the other axioms?
     
         \textbf{Answer:} (1) metrisable spaces are all first-countable, but either the Lindel\"of property or separability imply second-countability (\hyperlink{MetrisableSpaceCountabilityProperties}{proof}) (2) a first-countable topological group satisfying either the Lindel\"of property or separability is second-countable (\hyperlink{MunkresP30.18}{proof}).
@@ -245,6 +261,8 @@ which completes the proof. The identity belongs to \( g^{-1}d_mB_{n+1} \) becaus
     \textbf{Answer: } Second-countability is preserved under taking subspaces. See \hyperlink{FirstSecondCountabilityHereditary}{here}.
     \item How does second-countability behave under products?
     \item How does second-countability behave under coproducts?
+
+    \textbf{Answer: } Second countability is preserved under countable coproducts, but not larger nontrivial coproducts.
     \item How does second-countability behave under surjections?
     \item How does second-countability behave under quotients?
     \item How does being Lindel\"of behave under taking subspaces?
@@ -295,17 +313,21 @@ Let \( X \) be a space with closed singletons. Then \( X \) is \( T_3 \) iff for
 \end{lemma}
 
 \begin{proof}
-Empty for now.
+    In the forward direction, \( U^c \) is a closed set disjoint from \( x \), to there by the \( T_3 \) axiom there are open neighbourhoods \( V \in x \) and \( W \supseteq U^c \). In particular, every point of \( U^c \) is separated from \( V \) by the neighbourhood \( W \), so \( \Cl V \cap U^c = \varnothing \) or, equivalently, \( \Cl V \subseteq U \).
+
+    In the backward direction, for every closed set \( F \not\ni x \), \( F^c \) is a neighbourhood of \( x \). If we shrink it to a \( V \) with \( \Cl V \subseteq F^c \), we get an open neighbourhood \( (\Cl V)^c \supseteq F \) disjoint with V.
 \end{proof}
 
 \begin{lemma}[Normality via shrinking]
 \label{NormalityShrinking}
 \hypertarget{NormalityShrinking}
-Let \( X \) be a space with closed singletons. Then \( X \) is \( T_3 \) iff for every subset \( A \subset X \) and its neighbourhood \( U \supset A \) we can find a smaller neighbourhood \( V \supset A \) such that \( \Cl V \subseteq U \).
+Let \( X \) be a space with closed singletons. Then \( X \) is \( T_3 \) iff for every closed subset \( F \subset X \) and its neighbourhood \( U \supset F \) we can find a smaller neighbourhood \( V \supset F \) such that \( \Cl V \subseteq U \).
 \end{lemma}
 
 \begin{proof}
-Empty for now.
+In the forward direction, \( U^c \) is a closed set disjoint from \( A \), to there by the \( T_4 \) axiom there are open neighbourhoods \( V \supseteq F \) and \( W \supseteq U^c \). In particular, every point of \( U^c \) is separated from \( V \) by the neighbourhood \( W \), so \( \Cl V \cap U^c = \varnothing \) or, equivalently, \( \Cl V \subseteq U \).
+
+In the backward direction, for every two closed sets \( G \cap F = \varnothing \), \( G^c \) is a neighbourhood of \( F \). If we shrink it to a \( V \) with \( \Cl V \subseteq G^c \), we get an open neighbourhood \( (\Cl V)^c \supseteq G \) disjoint with V.
 \end{proof}
 \subsection{Theorems}
 
