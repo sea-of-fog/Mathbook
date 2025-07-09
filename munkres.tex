@@ -127,6 +127,18 @@ The Sorgenfrey line \( \mathbb{S} \) has the Lindel\"of property.
   Let \( c \in C \). Then, \( c = a_\alpha \) for some \( \alpha \). Choosing a rational number \( q \in [a_\alpha, b_\alpha) \) we get a function \( f: C \to \mathbb{Q} \). This is an injection, since if \( c_1 \neq c_2 \), then without loss of generality \( c_1 < c_2 \). The cover intervals with left endpoints \( c_1, c_2 \) have to be disjoint, so \( f(c_1) < f(c_2) \) and \( f \) is in particular injective.
 \end{proof}
 
+\begin{lemma}[Sorgenfrey line is not second-countable]
+\label{SorgenfreyLineNotSecondCountable}
+\hypertarget{SorgenfreyLineNotSecondCountable}
+The Sorgenfrey line \( \mathbb{S} \) is not second-countable.
+\end{lemma}
+
+\begin{proof}
+    Let \( \mathcal{B} \) be a basis. Then, for each \( s \in \mathbb{S} \), the open set \( [x,\,x+1) \) is the sum of some basis elements. In particular, among them there is a \( B_x \in \mathcal{B} \) which contains \( x \). Since \( \inf B_x = x \), the assignment \( x \mapsto B_x \) is injective, so \( \left| \mathcal{B} \right| \geqslant \left| \mathbb{S} \right| = \mathfrak{c} \).
+\end{proof}
+
+\paragraph{Remark.} In general, in a second-countable space, any basis contains a countable basis.
+
 \subsection{Theorems}
 
 \begin{thm}[Continuity in first-countable spaces]
@@ -164,6 +176,20 @@ Let \( X \) be second- or first-countable space. Then, if \( Y \) is subspace of
 \end{proof}
 
 \subsection{Problems}
+
+\begin{problem}[P30.11 from \cite{Mun14}]
+\label{MunkresP30.11}
+\hypertarget{MunkresP30.11}
+    Let \( f: X \to Y \) be continuous. Show that if \( X \) is Lindel\"of, or if \( X \) has a countable dense subset, then \( f[X] \) satisfies the same condition.
+\end{problem}
+
+\begin{proof}[Lindel\"of]
+    Let \( \mathcal{U} = \left\{ U_\alpha \right\} \) be an open cover of \( f[X] \) (in the subspace topology). Then, since preimges preserve set-theoretic operations, \( f^{-1} \mathcal{U} := \left\{ f^{-1}[U_\alpha] \right\} \) is an open over of \( X \), which has a countable subcover \( f^{-1}[U_n] \) since \( X \) is Lindel\"of. As preimages preserve set-theoretic operations, \( U_n \) is a subcover of \( \mathcal{U} \).
+\end{proof}
+
+\begin{proof}[Separability]
+    Let \( D \subseteq X\) be a countable dense subset and choose an arbitrary open set \( U \subseteq f[X] \). Since \( D \) is dense, there is an element \( d \in D \cap f^{-1}[U] \), so \( f(d) \in U \). This proves that \( f[D] \) is a countable dense subset of \( f[X] \).
+\end{proof}
 
 \begin{problem}[P30.18 from \cite{Mun14}]
 \label{MunkresP30.18}
@@ -231,7 +257,7 @@ which completes the proof. The identity belongs to \( g^{-1}d_mB_{n+1} \) becaus
     \textbf{Answer:} Second-countability implies all other properties. See \hyperlink{MetrisableSpaceCountabilityProperties}{here} for a proof. Not even a conjuction of the three others implies second-countability, as shown by the Sorgenfrey line \( \mathbb{S} \).
     \item What is the significance of the Sorgenfrey line \( \mathbb{S} \) for countability axioms? Which countability properties does it have?
 
-        \textbf{Answer: } The Sorgenfrey line has all three weaker countability properties, but is not second countable, establishing that even a conjunction of all three weaker axioms does not give second-coutnability. It is separable with dense set \( \mathbb{Q} \), first countable by choice of \( [x, x + \frac{1}{n}) \) at each \( x \), and Lindel\"of. For the last one see \hyperlink{SorgenfreyLineLindelof}{here}.
+        \textbf{Answer: } The Sorgenfrey line has all three weaker countability properties, but is not second countable (\hyperlink{SorgenfreyLineNotSecondCountable}{proof}), establishing that even a conjunction of all three weaker axioms does not give second-coutnability. It is separable with dense set \( \mathbb{Q} \), first countable by choice of \( [x, x + \frac{1}{n}) \) at each \( x \), and Lindel\"of. For the last one see \hyperlink{SorgenfreyLineLindelof}{here}.
 
     \item What is the significance of the Sorgenfrey plane \( \mathbb{S}^2 \) for countability axioms? Which countability properties does it have?
 
@@ -269,6 +295,8 @@ which completes the proof. The identity belongs to \( g^{-1}d_mB_{n+1} \) becaus
     \item How does being Lindel\"of behave under products?
     \item How does being Lindel\"of behave under coproducts?
     \item How does being Lindel\"of behave under surjections?
+
+    \textbf{Answer: } The Lindel\"of property is preserved under surjections. See \ref{MunkresP30.11}.
     \item How does being Lindel\"of behave under quotients?
 
     \textbf{Answer:} Since the Lindel\"of property is surjective, it is also preserved under quotients.
@@ -278,6 +306,8 @@ which completes the proof. The identity belongs to \( g^{-1}d_mB_{n+1} \) becaus
     \item How does separability behave under products?
     \item How does separability behave under coproducts?
     \item How does separability behave under surjections?
+
+    \textbf{Answer:} Separability is preserved under surjections, see \hyperlink{MunkresP30.11}{this Munkres problem}.
     \item How does separability behave under quotients?
     
     \textbf{Answer:} Since separability is surjective, it is preserved under quotients.
