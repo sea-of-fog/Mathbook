@@ -1,0 +1,19 @@
+\chapter{Measures on Topological Spaces, Problemset 7}
+
+\section*{Problem 1}
+
+We construct two sets with density \( \frac{1}{2} \), whose intersection has no density. Let \( A \) be the set of even natural numbers. The set \( B \) will contain exactly one of the numbers \( 2k, 2k + 1 \) for each \( k \in \mathbb{N} \), so it will also have density one half, but whether the numbers are odd or even will change so that the density of \( A \cap B \) fluctuates.
+
+The changes will occur at power of two. Denote
+\[ 
+    d_n := \frac{ \left| A \cap B \cap \left\{ 1, 2, \ldots, n \right\} \right|  }{n}. 
+\]
+We will keep \( d_n \) always above \( \frac{1}{4} \). It is always below \( \frac{1}{2} \) since \( A \) only contains even numbers. If we switch from odd to even numbers in \( B \), we have
+\[ 
+    d_{2n} = \frac{n \cdot d_n + n/2}{2n} = \frac{d_n + 1/2}{2}
+\]
+On the other hand, if we switch from even to odd numbers, we have
+\[ 
+    d_{2n} = \frac{n \cdot d_n + 0}{2n} = \frac{d_n}{2},
+\]
+so by switching at the right times we can bring \( d_{2^k} \) arbitrarily close to \( 0 \), and then arbitrarily close to \( \frac{1}{2} \). The different kinds of switches halve the distance from \( d_{2^k} \) to either \( 0 \) or \( \frac{1}{2} \).
