@@ -162,7 +162,7 @@ If \( x_n \in A \) and \( x_n \to x \), we can conclude that \( x \in \Cl A \). 
 \begin{proof}
     For the forward implication, every neighbourhood \( U \ni x \) contains a point of \( A \), and even infinitely many of them, so \( x \in \Cl A \).
 
-    For the backward implication, suppose \( x \in \Cl A \) and \( \mathcal{B} = \left\{ B_1, B_2, \ldots \right\} \) is a countable basis at \( x \), without loss of generality decreasing. Then every set \( B_n \) contains a point of \( A \), so we can for a sequence \( x_n \in A \cap B_n \). Since \( B_i \searrow \), for any neighbourhood \( U \ni x \), \( B_N \subseteq U \) for some \( N \), and so \( U \) contains all \( x_n \) for \( n \geqslant N \). Therefore \( x_n \to x \) is a sequence of elements of \( A \) convergent to \( x \).
+    For the backward implication, suppose \( x \in \Cl A \) and \( \mathcal{B} = \left\{ B_1, B_2, \ldots \right\} \) is a countable basis at \( x \), \hyperlink{PointBasisDecreasing}{without loss of generality decreasing}. Then every set \( B_n \) contains a point of \( A \), so we can for a sequence \( x_n \in A \cap B_n \). Since \( B_i \searrow \), for any neighbourhood \( U \ni x \), \( B_N \subseteq U \) for some \( N \), and so \( U \) contains all \( x_n \) for \( n \geqslant N \). Therefore \( x_n \to x \) is a sequence of elements of \( A \) convergent to \( x \).
 \end{proof}
 
 \begin{thm}[First- and second-countability are hereditary]
@@ -177,6 +177,24 @@ Let \( X \) be second- or first-countable space. Then, if \( Y \) is subspace of
 
 \subsection{Problems}
 
+\begin{problem}[P30.9 from \cite{Mun14}]
+    \label{MunkresP30.9}
+    \hypertarget{MunkresP30.9}
+    Let \( F \subseteq X \) be a closed subspace. Show that if \( X \) is Lindel\"of, then so is \( F \). Show also that even if \( X \)is separable, \( F \) need not be separable.
+\end{problem}
+
+\begin{proof}[Lindel\"of]
+    Take a cover \( \mathcal{U} = \left\{ U_\alpha \right\} \) of \( F \) in the subspace topology. Then \( U_\alpha = V_\alpha \cap F \) for some \( V_\alpha \) open in \( X \). The family \( \left\{ F^c \right\} \cup \left\{ V_\alpha \right\} \) forms an open cover of \( X \), so by the Lindel\"of axiom we may extract a countable subcover \( \left\{ F^c \right\} \cup \left\{ V_n \right\} \). Then, \( F \subseteq \bigcup_n V_n \), so the corresponding \( U_n \) form a countable subcover of \( \mathcal{U} \) in the subspace \( F \).
+\end{proof}
+
+\begin{proof}[Separability]
+The Sorgenfrey \( \mathbb{S}^2 \) is separable with dense set \( \mathbb{Q}^2 \). Consider the \emph{antidiagonal}, i.e. the subspace given by
+\[ 
+    \Delta^- := \left\{ (x, -x) : x \in \mathbb{R} \right\}.
+\]
+Since \( \Delta^- \cap [x,\, x+1) \times [-x,\, -x + 1) \cap \left\{ (x,-x) \right\} \) for all \( x \in \mathbb{R} \), the subspace \( \Delta^- \) is discrete uncountable, so it cannot have a countable dense set by a \hyperlink{MunkresP30.13}{Munkres problem}.
+\end{proof}
+
 \begin{problem}[P30.11 from \cite{Mun14}]
 \label{MunkresP30.11}
 \hypertarget{MunkresP30.11}
@@ -189,6 +207,29 @@ Let \( X \) be second- or first-countable space. Then, if \( Y \) is subspace of
 
 \begin{proof}[Separability]
     Let \( D \subseteq X\) be a countable dense subset and choose an arbitrary open set \( U \subseteq f[X] \). Since \( D \) is dense, there is an element \( d \in D \cap f^{-1}[U] \), so \( f(d) \in U \). This proves that \( f[D] \) is a countable dense subset of \( f[X] \).
+\end{proof}
+
+\begin{problem}[P30.12 from \cite{Mun14}]
+    \label{MunkresP30.12}
+    \hypertarget{MunkresP30.12}
+    Let \( f: X \to Y \) be continuous and open. If \( X \) is first- or second-countable, then \( f[X] \) is respectively first- or second-countable.
+\end{problem}
+
+\begin{proof}
+    We prove that if \( f \) is continous and open and \( \mathcal{B} = \left\{ B_\alpha \right\} \) is a basis of \( X \), then \( \mathcal{C} = \left\{ f[B_\alpha] \right\} \) is a basis of \( f[X] \).
+
+    First of all, since \( f \) is open, every set \( f[B_\alpha] \) is open in \( f[X] \). Choose now an arbitrary \( y \in f[X] \) and an open neighbourhood \( U \ni y \). Then there is an \( x \in X \) wand a basis element \( x \in B_\alpha \subseteq f^{-1}[U] \), so \( y \in f[B_\alpha] \subseteq U \), which is what we need from a basis.
+
+    For first-countability, there is an analogous claim (with an analogous proof): if \( B_n \ni x \) is a basis at some \( x \in X \), then \( f[B_n] \) is a basis at \( f(x) \).
+\end{proof}
+
+\begin{problem}[P30.13 from \cite{Mun14}]
+    \label{MunkresP30.13}
+    \hypertarget{MunkresP30.13}
+    Show that if \( X \) is separable, then every collection of disjoint open sets in \( X \) is at most countable.    
+\end{problem}
+\begin{proof}
+    Let \( \mathcal{U} = \left\{ U_\alpha \right\} \) be the collection of disjoint open sets and \( D \) a countable dense set. Then, every \( U_\alpha \) contains a \( d \in D \). Since the sets \( U_\alpha \) are disjoint, then the function \( U_\alpha \mapsto d \in U_\alpha \) is injective, so the cardinality of \( \mathcal{U} \) is at most \( \left| D \right| \leqslant \aleph_0 \).
 \end{proof}
 
 \begin{problem}[P30.18 from \cite{Mun14}]
@@ -276,12 +317,14 @@ which completes the proof. The identity belongs to \( g^{-1}d_mB_{n+1} \) becaus
 \begin{enumerate}
     \item How does first-countability behave under taking subspaces?
 
-    \textbf{Answer: } First-countability is preserved under taking subspaces. See \hyperlink{FirstSecondCountabilityHereditary}{here}.
+    \textbf{Answer: } First-countability is preserved under taking subspaces. See \hyperlink{FirstSecondCountabilityHereditary}{the relevant theorem}.
     \item How does first-countability behave under products?
     \item How does first-countability behave under coproducts?
 
     \textbf{Answer: } Since first-countability only concerns what happens around a point, it is preserved under arbitrary coproducts.
     \item How does first-countability behave under surjections?
+
+    \textbf{Answer: } First countability is preserved under open, continuous surjections. See \hyperlink{MunkresP30.12}{the relevant Munkres problem}.
     \item How does first-countability behave under quotients?
     \item How does second-countability behave under taking subspaces?
     \textbf{Answer: } Second-countability is preserved under taking subspaces. See \hyperlink{FirstSecondCountabilityHereditary}{here}.
@@ -294,6 +337,8 @@ which completes the proof. The identity belongs to \( g^{-1}d_mB_{n+1} \) becaus
     \item How does being Lindel\"of behave under taking subspaces?
     \item How does being Lindel\"of behave under products?
     \item How does being Lindel\"of behave under coproducts?
+
+    \textbf{Answer: } The Lindel\"of property is preserved under only countable coproducts if the summands are nontrivial, i.e. nonempty.
     \item How does being Lindel\"of behave under surjections?
 
     \textbf{Answer: } The Lindel\"of property is preserved under surjections. See \ref{MunkresP30.11}.
@@ -302,7 +347,7 @@ which completes the proof. The identity belongs to \( g^{-1}d_mB_{n+1} \) becaus
     \textbf{Answer:} Since the Lindel\"of property is surjective, it is also preserved under quotients.
     \item How does (topological) separability behave under taking subspaces?
     
-    \textbf{Answer:} Separability is not preserved under taking subspaces, not even closed ones. This is shown by the antidiagonal subspace \( \Delta^- \) of the Sorgenfrey line.
+    \textbf{Answer:} Separability is not preserved under taking subspaces, not even closed ones. This is shown by the antidiagonal subspace \( \Delta^- \) of the Sorgenfrey line. See \hyperlink{MunkresP30.9}{the relevant Munkres problem}.
     \item How does separability behave under products?
     \item How does separability behave under coproducts?
     \item How does separability behave under surjections?
