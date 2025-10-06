@@ -1,0 +1,54 @@
+\chapter{Logika R, Problemset I}
+
+\section*{Zadanie 9}
+
+\begin{proof}[\( (\Leftarrow) \)]
+    Skoro \( X \vdash \varphi \to \psi \), to tym bardziej \( X \cup \{\varphi\} \vdash \varphi \to \psi \). Niech \( \alpha_1, \alpha_2, \ldots, \alpha_n = \varphi \to \psi \) będzie dowodem świadczącym, że \( X \cup \{ \varphi \} \vdash \varphi \to \psi \). Korzystając z reguły \textbf{MP} możemy rozszerzyć ten dowód do dowodu formalnego \( \alpha_1, \alpha_2, \ldots, \alpha_n = \varphi \to \psi, \psi \), więc \( X \cup \{\varphi\} \vdash \psi \).
+
+    \paragraph{Claim.} Dla każdego \( i \), \( X \cup \left\{ \varphi \right\} \vdash \alpha_i \).
+
+    Powyższy \textbf{claim} udowodnimy, rozważając przypadki w zależności od tego, jak \( \alpha_i \) zostało wprowadzone do dowodu \( X \cup \left\{ \varphi \right\} \vdash \psi\).
+
+    \begin{enumerate}
+        \item Przesłanka \( \varphi \). Ponieważ \( v \to v \) jest tautologią KRZ, możemy skorzystać z aksjomatu \( \varphi \).
+        \item Przesłanka \( \eta \in X \). Ponieważ wyprowadzamy dowód z \( X \), możemy użyć tej samej przesłanki.
+        \item Aksjomat. Zauważmy, że dalej możemy uzyskać \( \alpha_i \) jako aksjomat. Ponadto, schemat \( v \to (w \to v) \) jest tautologią KRZ, możemy więc jako przykład tautologii uzyskać formułę \( \alpha_i \to (\varphi \to \alpha_i) \), po czym skorzystać z reguły \textbf{MP}, by uzyskać dowód \( \varphi \to \alpha_i \).
+        \item Modus ponens. Załóżmy, że \( \alpha_i \) wyprowadziliśmy z \( \alpha_j \) i \( \alpha_k \equiv \alpha_j \to \alpha_i \). Z założenia indukcyjnego \( X \vdash \varphi \to \alpha_j \) i \( X \vdash \varphi \to (\alpha_j \to \alpha_i) \). Schemat \( (v \to w) \to ((v \to (w \to u)) \to (v \to u)) \) jest tautologią KRZ, więc możemy jako jego przykład uzyskać TODO, a potem zasotoswać dwukrotnie regułę \textbf{MP}.
+        \item \( \forall \)-reguła. Załóżmy, że \( \alpha_i \) wyprowadziliśmy z \( \alpha_j \) za pomocą \( \forall \)-reguły. Wtedy, zzałożenia indukcyjnego \( X \vdash \varphi \to \alpha_j \). Korzystając z \( \forall \)-reguły, możemy udowodnić \( X \vdash \forall v\,\,\varphi \to \alpha_j \), a potem z aksjomatu \textbf{A1} oraz reguły \textbf{MP} uzyskać \( \varphi \to \forall v\,\,\alpha_j \equiv \varphi \to \alpha_i \).
+    \end{enumerate}
+\end{proof}
+
+\begin{proof}[\( (\Rightarrow) \)]
+    Niech \( \alpha_1, \alpha_2, \ldots, \alpha_n = \psi \) będzie dowodem formalnym poświadczającym, \( X \cup \left\{ \varphi \right\} \vdash \psi \). Pokażemy, że z \( X \) można udowodnić \( \varphi \to \psi \) poprzez dowód \( \varphi \to \alpha_1, \varphi \to \alpha_2, \ldots, \varphi \to \psi \).
+\end{proof}
+
+\section*{Zadanie 10}
+
+\begin{proof}[\((\Leftarrow)\)]
+    Jeśli \( \mathrm{Cn(X)} = \mathrm{Form}_L \), to \( X \vdash \varphi \wedge \neg\varphi \) dla dowolnego zdania \( \varphi \in \mathrm{Prop}_L \), w szczególności np. dla zdania \( \varphi = \forall x. x = x \). Zatem \( X \) jest sprzeczny.
+\end{proof}
+
+\begin{proof}[\( (\Rightarrow) \)]
+Załóżmy, że \( X \vdash \varphi \wedge \neg \varphi \) i rozważmy dowolną formułę \( \psi \in \mathrm{Form}_L \).
+Zauważmy, że \( \alpha \wedge \neg \alpha \to \beta \) jest tautologią KRZ. Korzystając z aksjomatu \textbf{A0} oraz podstawiając \( \varphi, \psi \) pod \( \alpha, \beta \) otrzymujemy
+\[ 
+    X \vdash \varphi \wedge \neg \varphi \to \psi.
+\]
+Ponieważ \( X \vdash \varphi \wedge \neg \varphi \), możemy dowód formalny powyższego osądu rozszerzyć, korzystając z reguły \textbf{MP}, do dowodu
+\[ 
+    X \vdash \psi. 
+\]
+Ponieważ \( \psi \) było wybrane dowolnie, teza jest udowodniona.
+\end{proof}
+
+\section*{Zadanie 11}
+
+Skonstruujemy szukane rozszerzenie korzystają z \textbf{lematu Kuratowskiego-Zorna}. 
+
+\paragraph{Claim 1.} Niech \( X \) będzie niezupełną, niesprzeczną teorią w języku \( L \), w szczególności niech \( \varphi \) będzie zdaniem takim, że \( X \not\vdash \varphi \) oraz \( X \not\vdash \neg\varphi \). Wtedy \( \mathrm{Cn}(X \cup \left\{ \varphi \right\}) \) jest niesprzeczną teorią.
+
+Załóżmy nie wprost, że \( X \cup \left\{ \varphi \right\} \) jest sprzeczne. Istnieje zatem zdanie \( \alpha \in \mathrm{Prop}_L \) t. że \( X \cup \left\{ \varphi \right\} \vdash \alpha \wedge \neg \alpha \). Ponieważ \( \alpha \wedge \neg \alpha \to \beta \) jest tautologią KRZ, możemy skorzystać z aksjomatu \textbf{A0} oraz reguły \textbf{MP} możemy udowodnić (podstwiając \( \alpha \) za \( \alpha \) oraz \( \neg\varphi \) za \( \beta \)), że \( X \cup \left\{ \varphi \right\} \vdash \neg\varphi\). Z tw. o dedukcji wnioskujemy zatem, że \( X \vdash \varphi \to \neg\varphi \). Ponieważ \( (\alpha \to \neg\alpha) \to \neg\alpha \) jest tautologią KRZ, korzystając z \textbf{A0} oraz \textbf{MP}, że \( X \vdash \neg\varphi \), co jest sprzeczne z założeniami. 
+
+\paragraph{Claim 2.} Niech \( \left\{ X_\alpha \right\} \) będzie wstępujących łańcuchem niesprzecznych teorii języka \( L \). Wtedy suma \( \bigcup_\alpha X_\alpha \) też jest niesprzeczną teorią.
+
+Wynika z finitarnego charakteru dowodliwości (zarówno bycie teorią, jak i niesprzeczność).
