@@ -7,6 +7,10 @@
 
 Obicnamy \( f \) do \( \mathbb{C} \subseteq \overline{ \mathbb{C} } \). Ponieważ \( \overline{ \mathbb{C} } \) jest zwarta, to \( f \) obcięta do \( \mathbb{C} \) jest ograniczona, więc z \textbf{Tw. Liouville'a} \( f \) jest stała. Niestałą funkcją \( g: \overline{ \mathbb{C} } \to \overline{ \mathbb{C} } \) jest identyczność.
 
+\section*{Zadanie 4}
+
+Wyrzucamy z dziedziny \( \infty \) oraz \( f^{-1}(\infty) \), otrzymująć nakłute \( \mathbb{C} \), a więc otwarty region w płaszczyźnie zespolonej (po obu stronach!). Do nich stosujemy tw. o odwzorowaniu odwrotnym, natomiast pozostałe punkty są osobliwościami usuwalnymi.
+
 \section*{Zadanie 6}
 
 Definiujemy
@@ -14,8 +18,13 @@ Definiujemy
     \varphi_w(z) = \frac{z - w}{1 - \overline{w}z}.
 \]
 
+% Patrz: Fornaess
 
-\paragraph{Uwaga.} Łatwiej to rozwiązać po sprowadzeniu rotacją \( w \) na dodatnią półoś rzeczywistą.
+\paragraph{Uwaga.} Łatwiej to rozwiązać po sprowadzeniu rotacją \( w \) na dodatnią półoś rzeczywistą. Dokładniej: podkładamy funkcję \( z \mapsto \frac{\overline{w}}{ \left| w \right|  }z \).
+
+\section*{Zadanie 7}
+
+Korzystając z poprzedniego zadania możemy rozważyć \( g = \varphi_{f(0)} \circ f \), zatem b.s.o. \( f(0) = 0 \).
 
 \section*{Zadanie 8}
 
@@ -59,4 +68,19 @@ skąd wyliczamy
 
 \section*{Zadanie 11}
 
-Niech \( g: \mathbb{C} \to \mathbb{C} \) będzie biholomorfizmem. Określamy \( \overline{g}: \overline{ \mathbb{C} } \to \overline{ \mathbb{C} } \), rozszerzając \( g \) i kładąc \( \overline{g}(\infty) = \infty \).
+Niech \( g: \mathbb{C} \to \mathbb{C} \) będzie biholomorfizmem. Określamy \( \overline{g}: \overline{ \mathbb{C} } \to \overline{ \mathbb{C} } \), rozszerzając \( g \) i kładąc \( \overline{g}(\infty) = \infty \). Holomorficzność tej funkcji opiera się na następującym lemacie.
+
+\begin{lemma}[Holomorficzna funkcja wybucha w nieskończoności]
+\label{BiholomorphismExplodesAtInfinity}
+\hypertarget{BiholomorphismExplodesAtInfinity}
+Niech \( f: \mathbb{C} \to \mathbb{C} \) będzie biholomorfizmem. Wtedy
+\[ 
+    \lim\limits_{z \to \infty} f(z) = \infty.
+\]
+\end{lemma}
+
+\begin{proof}[Dowód (lematu)]
+    Załóżmy nie wprost, że teza nie zachodzi. Wtedy istnieje \( R > 0 \) i ciąg \( z_n \) uciekający do nieskończoności (\( \left| z_k \right| \to \infty  \)) taki, że \( \left| f(z_n) \right| < R \) dla wszystkich \( n \). Ponieważ \( \overline{B}(0, R) \) jest zwartym zbiorem, ciąg \( f(z_n) \) ma punkt skupienia. Ale wtedy także \( z_n \) ma punkt skupienia, bo \( f \) ma inwers, co daje sprzeczność (bo \( z_n \) ucieka do \( \infty \)).
+\end{proof}
+
+Sprawdzenie holomorficzności na \( \overline{g}^{-1}[ \mathbb{C} ] \) jest trywialne (tam \( \overline{g} = g \)). W otoczeniu \( \overline{g}^{-1}(\infty) = \infty \) sprawdzamy \textit{zwykłą} holomorficzność funkcji \( 1/g(1/z) \) wokół \( 1/\infty = 0 \). Z lematu wyżej wynika, że jest ona tam ciągła, więc ma osobliwość usuwalną.
