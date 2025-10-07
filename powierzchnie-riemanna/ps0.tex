@@ -1,0 +1,62 @@
+\chapter{Powierzchnie Riemanna, Problemset 0}
+
+% TODO: tw. Liouville'a
+% TODO: rodzaje osobliwości
+
+\section*{Zadanie 2}
+
+Obicnamy \( f \) do \( \mathbb{C} \subseteq \overline{ \mathbb{C} } \). Ponieważ \( \overline{ \mathbb{C} } \) jest zwarta, to \( f \) obcięta do \( \mathbb{C} \) jest ograniczona, więc z \textbf{Tw. Liouville'a} \( f \) jest stała. Niestałą funkcją \( g: \overline{ \mathbb{C} } \to \overline{ \mathbb{C} } \) jest identyczność.
+
+\section*{Zadanie 6}
+
+Definiujemy
+\[ 
+    \varphi_w(z) = \frac{z - w}{1 - \overline{w}z}.
+\]
+
+
+\paragraph{Uwaga.} Łatwiej to rozwiązać po sprowadzeniu rotacją \( w \) na dodatnią półoś rzeczywistą.
+
+\section*{Zadanie 8}
+
+\begin{enumerate}
+    \item
+    % TODO: przypadek c = 0
+    % TODO: sprawdzenie
+    Określamy \( \psi_A(-d/c) = \infty \) oraz \( \psi_A(\infty) = a/c \). 
+
+    \item
+\end{enumerate}
+
+\section*{Zadanie 9}
+
+Licznik otrzymanej homografii \( \psi_A(x) \) musi być krotnością \( x - z \), ponieważ \( \psi_{cA} = \psi{A} \), to b.s.o.
+\[ 
+    A =  
+    \begin{pmatrix}
+        1 & -z \\
+        \alpha & \beta
+    \end{pmatrix}.
+\]
+Z równań \( A.u = 1 \) oraz \( A.w = \infty \) otrzymujemy
+\begin{align}
+    u - z &= \alpha u + \beta \\
+    \alpha w + \beta &= 0, \\
+\end{align}
+skąd wyliczamy
+\begin{align}
+    \alpha &= \frac{u-z}{u - w} \\ 
+    \beta &= -w\frac{u-z}{u-w}.
+\end{align}
+
+\section*{Zadanie 10}
+
+\begin{enumerate}
+    \item Można skorzystać z poprzedniego zadania dla \( f(0), f(1), f(\infty) \).
+
+    \item Rozszerzamy \( h(z) = g(z)/z \) o \( h(0) = g'(0) \) oraz \( h(\infty) = 1 \). Wtedy \( h: \overline{\mathbb{C}} \to \mathbb{C} \) jest ciągłą funkcją, jest więc ograniczona. Holomorficzność na \( \mathbb{C} \) daje \textbf{TODO: twierdzenie o holomorficznej dziurze}.
+\end{enumerate}
+
+\section*{Zadanie 11}
+
+Niech \( g: \mathbb{C} \to \mathbb{C} \) będzie biholomorfizmem. Określamy \( \overline{g}: \overline{ \mathbb{C} } \to \overline{ \mathbb{C} } \), rozszerzając \( g \) i kładąc \( \overline{g}(\infty) = \infty \).
