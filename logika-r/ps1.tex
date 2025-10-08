@@ -1,5 +1,67 @@
 \chapter{Logika R, Problemset 1}
 
+\section*{Zadanie 1}
+
+\paragraph{Zdania skwantyfikowane.} Jeśli zdanie ma na początku/górze kwantyfikator, to jest fałszywe, jeśli jest to kwantyfikator egzystencjalny, a jest prawdziwe, jeśli jest to kwantyfikator uniwersalny (tzw. puste spełnienie, \textit{vacuous truth}).
+
+\paragraph{Zdania nieskwantyfikowane.} Jeśli zdanie jest formułą złożoną, ale na górze drzewa rozbioru nie ma kwantyfikatora, to jest ono przykładem pewnego schematu KRZ przez podstawienie doń zdań z kwantyfikatorami na górze. Z definicji prawdy Tarskiego wynika, że możemy \textit{wyliczyć} prawdziwość tego zdania podstawiając wartości zdań skantyfikowanych.
+
+\paragraph{Formuły ze zmiennymi wolnymi.}  Jeśli formuła ma zmienne wolne, to jej prawdziwość jest równoważna prawdziwości uniwersalnego domknięcia, które jest zdaniem skwantyfikwoanym uniwersalnie, a więc jest prawdziwe.
+
+\section*{Zadanie 2}
+
+\subsection*{Zdania} Indukcyjnie (względem struktury schematu \( \alpha \)) pokazujemy silniejszą tezę: \textit{jeśli wartościowanie \( v \) na zmiennych jest zgodne z prawdziwością/fałszywością formuł podstawianych za zmienne w \( \alpha \), wartość podstawionej formuły, to prawdziwość \( \alpha[x_1/\varphi_1, x_2/\varphi_2, \ldots, x_n/\varphi_n] \) jest zgodna z \( [[\alpha]]_v \)}.
+
+\subsection*{Formuły ogólne} Wybierzmy dowolny model i dowolne stałe z niego do podstawienia za zmienne wolne. Podstawiamy wszystkie możliwe stałe tak, by podstawiane formuły nie miały zmiennych wolnych. 
+
+\section*{Zadanie 3}
+
+Oznaczmy przez \( a_1, a_2, \ldots, a_n \) wszystkie zmienne występujące w \( \alpha \), ale nie w \( \beta \). Analogicznie definiujemy \( \beta_1, \beta_2, \ldots, \beta_m \). 
+
+\paragraph{Obserwacja.} Schemat \( \alpha \to \beta \) jest tautologią dokładnie wtedy, gdy wszystkie wartościowania \( v \) t. że \( [[\alpha ]]_v = \top \) spełniają także \( [[\beta ]]_v = \top\).
+
+Znajdziemy formułę zależną tylko od zmiennych \( p_i \) spełnioną przez wszystkie wartościowania spełniające \( \alpha \) oraz taką, że wszystkie wartościowania ją spełniające spełniają \( \beta \). Określmy funkcję
+\[ 
+    f_\gamma (p_1, \ldots, p_k) = \max\limits_{\overline{a} \in \left\{ 0,\, 1 \right\}^n } f_\alpha(p_1, \ldots, p_k, a_1, \ldots, a_n).
+\]
+
+Dla danych wartościowań \( p_i \), jeśli w ogóle istnieje wartościowanie które spełnia \( \alpha \), to \( \gamma \) jest spełniona, w szczególności jest spełniona dla wszystkich (przy ustalonych wartościowaniach \( p_i \)) wartościowań spełniających \( \alpha \).
+
+Ustalmy wartościowania zmiennych \( p_i \). Mamy dwie możliwości: albo dla żadnego wartościowania z tymi wartościami \( p_i \) schemat \( \beta \) nie jest spełniony (i wtedy nie jest też spełnione \( \alpha \) przy tym układzie wartości \( p_i \) ), albo istnieje jakieś wartościowanie dla którego \( \beta \) jest spełniona.
+
+% TODO: co dalej
+
+\paragraph{Uwaga.} To jest wersja interpolacji Craiga dla \textbf{KRZ}.
+
+\section*{Zadanie 4}
+
+Dowodzimy, że dla każdego schematu KRZ \( \alpha \), \( [[\alpha ]]_v = [[\alpha ]]_{v'} \), indukcyjnie względem struktury schematu \( \alpha \).
+
+\section*{Zadanie 5} 
+
+Oba spójniki są zupełne, bo \( \neg \alpha \equiv \alpha \bot \alpha \equiv \alpha \mid \alpha \) oraz \( \alpha \wedge \beta \equiv \neg (\alpha \bot \beta) \equiv (\neg \alpha) \mid (\neg \beta) \).
+
+Dla dowodu w drugą stronę analizujemy możliwy kształt tabeli logicznej takiego spójnika \( \star \). Analizując formuły z jedną zmienną dochodzimy do wniosku, że \( b \star b = b^c \) dla \( b \in \left\{ \top, \bot \right\} \). Jeśli ten spójnik nie jest jednym z wymienionych w zadaniu, to albo \( a \star b = a \) albo \( a \star b = b \) dla \( a, b \in \left\{ \top, \bot \right\} \). Wtedy jednak każda formuła z dwiema zmiennymi zależy tylko od jednej z nich, nie da się więc np. wyrazić \( \alpha \wedge \beta \).
+
+\section*{Zadanie 7}
+
+Dowód w jedną stronę jest oczywistą indukcją względem struktury formuły.
+
+Zauważmy, że \( \alpha \vee \beta \) też daje \( \top \) dla \( \alpha = \top, \beta = \top \), więc też musi być wyrażalne jako formuła z \( \wedge, \to \). Istotnie, działa formuła
+\[ 
+    (\alpha \leftrightarrow \beta) \to \alpha \wedge \beta,
+\]
+gdzie \(\alpha \leftrightarrow \beta\) jest skrótem na \( \alpha \to \beta \wedge \beta \to \alpha \). Zatem tak naprawdę możemy próbować definiować formuły z \( \wedge, \vee, \to \). Wtedy:
+\begin{align*}
+    \alpha &::= v\,\mid\, \alpha \wedge \alpha | \alpha \vee \alpha | \alpha \to \alpha \\
+    \neg\alpha &::= \neg \v | \neg\alpha \vee \neg\alpha | \neg\alpha \wedge \neg\alpha | \alpha \wedge \neg\alpha.
+\end{align*}
+Prowadzimy teraz indukcję po liczbie zmiennych. Bazę zapenwiają formuły \( v \to v \) lub \( v \) (w zależności od wartości formuły przy wartościowaniu \( v \mapsto \bot \)). Do kroku indukcyjnego używamy \textit{rozwinięcia Shannona}
+\[ 
+    F(v_1, v_2, \ldots, v_n) \equiv v_1 \wedge F(\top, v_2, \ldots, v_n) \vee \neg v_1 \wedge F(\bot, v_2, \ldots, v_n).
+\]
+Jeśli \( F \) jest funkcją boolowską formuły, która przy wszystkich zmiennych ustalonych na \( \top \) daje \( \bot \), to \( F[v_1/\top] \) też, natomiast \( F[v_1/\bot] \) może dać \( \top \) lub \( \bot \). W zależności od tego, która z tych możliwości zachodzi, korzystamy z różnych możliwości, by otrzymać prawy koniunkt.
+
 \section*{Zadanie 9}
 
 \begin{proof}[\( (\Leftarrow) \)]
