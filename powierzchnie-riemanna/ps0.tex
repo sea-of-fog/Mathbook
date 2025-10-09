@@ -5,11 +5,19 @@
 
 \section*{Zadanie 2}
 
-Obicnamy \( f \) do \( \mathbb{C} \subseteq \overline{ \mathbb{C} } \). Ponieważ \( \overline{ \mathbb{C} } \) jest zwarta, to \( f \) obcięta do \( \mathbb{C} \) jest ograniczona, więc z \textbf{Tw. Liouville'a} \( f \) jest stała. Niestałą funkcją \( g: \overline{ \mathbb{C} } \to \overline{ \mathbb{C} } \) jest identyczność.
+Obicnamy \( f \) do \( \mathbb{C} \subseteq \overline{ \mathbb{C} } \). Ponieważ \( \overline{ \mathbb{C} } \) jest zwarta, to \( f \) obcięta do \( \mathbb{C} \) jest ograniczona, więc z \textbf{Tw. Liouville'a} \( f \) jest stała na \( \mathbb{C} \), a więc z ciągłości także na.
+
+Niestałą funkcją \( g: \overline{ \mathbb{C} } \to \overline{ \mathbb{C} } \) jest identyczność, także każdy wielomian dodatniego stopnia i niestała funkcja wymierna.
 
 \section*{Zadanie 4}
 
+\subsection*{Sposób brzydki (mój)}
+
 Wyrzucamy z dziedziny \( \infty \) oraz \( f^{-1}(\infty) \), otrzymująć nakłute \( \mathbb{C} \), a więc otwarty region w płaszczyźnie zespolonej (po obu stronach!). Do nich stosujemy tw. o odwzorowaniu odwrotnym, natomiast pozostałe punkty są osobliwościami usuwalnymi.
+
+\subsection*{Sposób ładny (G.C.)}
+
+Korzystamy z jednego z następnych zadań by zapewnić sobie, że \( f(\infty) = \infty \). Wtedy \( f|_\mathbb{C} \) jest bihomolorfizmem \( \mathbb{C} \) z definicji funkcji holomorficznej na sferze Riemanna. Żeby zbadać holomorficzność w \( \infty \) odnotujemy, że \( 1/f(1/z) \) ma w \( 0 \) osobliwość usuwalną, bo \( f \) jest ciągłe na \( \mathbb{C} \).
 
 \section*{Zadanie 6}
 
@@ -24,18 +32,25 @@ Definiujemy
 
 \section*{Zadanie 7}
 
-Korzystając z poprzedniego zadania możemy rozważyć \( g = \varphi_{f(0)} \circ f \), zatem b.s.o. \( f(0) = 0 \).
+Korzystając z poprzedniego zadania możemy rozważyć \( g = \varphi_{f(0)} \circ f \), zatem \( g(0) = 0 \). Wtedy \( g'(0) \cdot (g^{-1})'(0) = 1 \), ale skoro obie te liczby są z lematu Schwarza co do modułu nie większe niż \( 1 \), to obie są co do modułu równe 1, więc \( g(z) = az \), czyli \( f = \varphi_{-g(0)} \circ (z \mapsto az) \), gdzie \( a = f'(0) \).
 
 \section*{Zadanie 8}
 
-\begin{enumerate}
-    \item
-    % TODO: przypadek c = 0
-    % TODO: sprawdzenie
-    Określamy \( \psi_A(-d/c) = \infty \) oraz \( \psi_A(\infty) = a/c \). 
+\paragraph{Sposób gorszy.} Można na palcach zdefiniować \( \psi_A(-d/c) = \infty \) oraz \( \psi_A(\infty) = a/c \), formalnie rozważając osobno przypadek \( c = 0 \) (wtedy \( \psi_A \) jest liniową funkcją na \( \mathbb{C} \) oraz trzyma \( \infty \)).
 
-    \item
-\end{enumerate}
+\subsection*{(a)}
+Na palcach, jak w \textit{sposobie gorszym}, definiujemy \( \psi_A \). Przypadek \( c = 0 \) jest trywialny. W pozostałych przypadkach mamy do sprawdzenia trzy pary map.
+\[ 
+    \psi_A(1/z) = \frac{a/z + b}{c/z + d} = \frac{bz + a}{dz + c} 
+\]
+\[ 
+    1/\psi_A(1/Z) =  \frac{dz + c}{bz + a}
+\]
+
+\subsection*{(b)}
+
+Korzystamy z interpretacji \( \mathbb{C} \) jako \( \mathbb{C}P^1 \). Wtedy to działanie jest zrzuceniem do ilorazu naturalnego działania \( \mathrm{GL}(2, \mathbb{C}) \) na \( \mathbb{C}^2 \setminus \left\{ 0 \right\} \). To, że do ilorazu można przejść wynika z jednorodności funkcji liniowych.
+
 
 \section*{Zadanie 9}
 
@@ -63,7 +78,9 @@ skąd wyliczamy
 \begin{enumerate}
     \item Można skorzystać z poprzedniego zadania dla \( f(0), f(1), f(\infty) \).
 
-    \item Rozszerzamy \( h(z) = g(z)/z \) o \( h(0) = g'(0) \) oraz \( h(\infty) = 1 \). Wtedy \( h: \overline{\mathbb{C}} \to \mathbb{C} \) jest ciągłą funkcją, jest więc ograniczona. Holomorficzność na \( \mathbb{C} \) daje \textbf{TODO: twierdzenie o holomorficznej dziurze}.
+    \item Rozszerzamy \( h(z) = g(z)/z \) o \( h(0) = g'(0) \) oraz \( h(\infty) = 1 \). Wtedy \( h: \overline{\mathbb{C}} \to \mathbb{C} \) jest ciągłą funkcją, jest więc ograniczona. Holomorficzność na \( \mathbb{C} \) daje \textbf{TODO: twierdzenie o holomorficznej dziurze}, że \( h \) jest holomorficzne na \( \mathbb{C} \), więc \( h \) jest stałe z zad. 2. (albo z Tw. Liouville'a).
+
+    \item Skoro \( h(z) = a \), to \( g(z) = zh(z) = az \), więc \( f = \psi_{A^{-1}} \circ g = \psi_{A^{-1}}  \) z jednorodności działania \( \mathrm{GL}(2, \mathbb{C}) \) na \( \overline{\mathbb{C}} \).
 \end{enumerate}
 
 \section*{Zadanie 11}
@@ -84,3 +101,5 @@ Niech \( f: \mathbb{C} \to \mathbb{C} \) będzie biholomorfizmem. Wtedy
 \end{proof}
 
 Sprawdzenie holomorficzności na \( \overline{g}^{-1}[ \mathbb{C} ] \) jest trywialne (tam \( \overline{g} = g \)). W otoczeniu \( \overline{g}^{-1}(\infty) = \infty \) sprawdzamy \textit{zwykłą} holomorficzność funkcji \( 1/g(1/z) \) wokół \( 1/\infty = 0 \). Z lematu wyżej wynika, że jest ona tam ciągła, więc ma osobliwość usuwalną.
+
+Funkcja \( g \) jest zatem homografią. Jedyne homografie, które są funkcjami całkowitymi, to funkcje liniowe, co kończy dowód.
