@@ -66,11 +66,11 @@ Jeśli \( F \) jest funkcją boolowską formuły, która przy wszystkich zmienny
 
 \section*{Zadanie 9}
 
-\begin{proof}[\( (\Leftarrow) \)]
+\begin{proof}[\( (\Rightarrow) \)]
     Skoro \( X \vdash \varphi \to \psi \), to tym bardziej \( X \cup \{\varphi\} \vdash \varphi \to \psi \). Niech \( \alpha_1, \alpha_2, \ldots, \alpha_n = \varphi \to \psi \) będzie dowodem świadczącym, że \( X \cup \{ \varphi \} \vdash \varphi \to \psi \). Wprowadzając przesłankę \( \varphi \in X \cup \left\{ \varphi \right\} \) oraz korzystając z reguły \textbf{MP} możemy rozszerzyć ten dowód do dowodu formalnego \( \alpha_1, \alpha_2, \ldots, \alpha_n = \varphi \to \psi, \varphi, \psi \), więc \( X \cup \{\varphi\} \vdash \psi \).
 \end{proof}
 
-\begin{proof}[\( (\Rightarrow) \)]
+\begin{proof}[\( (\Leftarrow) \)]
     Niech \( \alpha_1, \alpha_2, \ldots, \alpha_n = \psi \) będzie dowodem formalnym poświadczającym, \( X \cup \left\{ \varphi \right\} \vdash \psi \). Pokażemy, że z \( X \) można udowodnić \( \varphi \to \psi \) poprzez dowód \( \varphi \to \alpha_1, \varphi \to \alpha_2, \ldots, \varphi \to \psi \).
 
     \paragraph{Claim.} Dla każdego \( 0 < i \leqslant n \), \( X \cup \left\{ \varphi \right\} \vdash \alpha_i \).
@@ -110,7 +110,7 @@ Wtedy \( X \cup \left\{ \varphi \right\} \vdash \psi \), ponieważ możemy skons
 \section*{Zadanie 10}
 
 \begin{proof}[\((\Leftarrow)\)]
-    Jeśli \( \mathrm{Cn(X)} = \mathrm{Form}_L \), to \( X \vdash \varphi \wedge \neg\varphi \) dla dowolnego zdania \( \varphi \in \mathrm{Prop}_L \), w szczególności np. dla zdania \( \varphi = \forall x. x = x \). Zatem \( X \) jest sprzeczny.
+    Jeśli \( \mathrm{Cn(X)} = \mathrm{Form}_L \), to \( X \vdash \varphi \wedge \neg\varphi \) dla dowolnego zdania \( \varphi \in \mathrm{Prop}_L \), w szczególności np. dla zdania \( \varphi = \forall x\, x = x \). Zatem \( X \) jest sprzeczny.
 \end{proof}
 
 \begin{proof}[\( (\Rightarrow) \)]
@@ -142,7 +142,7 @@ To, że \( \mathrm{Cn}(X \cup \left\{ \varphi \right\}) \) jest teorią wynika z
 
 \begin{proof}[Dowód obserwacji]
 
-    Niech \( psi \in  \mathrm{Cn}( \mathrm{Cn}(X) ) \), wtedy \( \mathrm{Cn}(X) \vdash \psi \). W dowodzie formalnym, który poświadcza \( \mathrm{Cn}(X) \vdash \psi \) wszystkie formuły \( \varphi_1, \ldots, \varphi_k \) wprowadzone jako przesłanki są konsekwencjami logicznymi \( X \), więc dla każdego \( i  \) od \( 1 \) do \( k \) istnieje dowód poświadczający \( X \vdash \varphi_i \). Możemy dla każdego \( i \) te dowody wstawić w miejsce \( \varphi_i \) w dowodzie \( \mathrm{Cn}(X) \vdash \psi \), otrzymując dowód formalny \( \psi \), który jako przesłanek używa tylko formuł z \( X \). Zatem \( X \vdash \psi \), czyli \( \psi \in \mathrm{Cn}(X) \), co z dowolności \( \psi \) daje inkluzję w lewo w tezie. 
+    Niech \( \psi \in  \mathrm{Cn}( \mathrm{Cn}(X) ) \), wtedy \( \mathrm{Cn}(X) \vdash \psi \). W dowodzie formalnym, który poświadcza \( \mathrm{Cn}(X) \vdash \psi \) wszystkie formuły \( \varphi_1, \ldots, \varphi_k \) wprowadzone jako przesłanki są konsekwencjami logicznymi \( X \), więc dla każdego \( i  \) od \( 1 \) do \( k \) istnieje dowód poświadczający \( X \vdash \varphi_i \). Możemy dla każdego \( i \) te dowody wstawić w miejsce \( \varphi_i \) w dowodzie \( \mathrm{Cn}(X) \vdash \psi \), otrzymując dowód formalny \( \psi \), który jako przesłanek używa tylko formuł z \( X \). Zatem \( X \vdash \psi \), czyli \( \psi \in \mathrm{Cn}(X) \), co z dowolności \( \psi \) daje inkluzję w lewo w tezie. 
 
     Inkluzja w prawo wynika z tego, że dla dowolnego zbioru formuł \( Y \) oraz \( \varphi \in Y \) zachodzi \( Y \vdash \varphi \) -- odpowiedni dowód składa się z wprowadzenia przesłanki.
     
@@ -152,14 +152,12 @@ To, że \( \mathrm{Cn}(X \cup \left\{ \varphi \right\}) \) jest teorią wynika z
 \end{proof}
 
 
-\paragraph{Claim 2.} Niech \( \left\{ X_\alpha \right\} \) będzie wstępujących łańcuchem niesprzecznych teorii języka \( L \). Wtedy suma \( \bigcup_\alpha X_\alpha \) też jest niesprzeczną teorią.
+\paragraph{Claim 2.} Niech \( \left\{ X_\alpha \right\} \) będzie wstępującym łańcuchem niesprzecznych teorii języka \( L \). Wtedy suma \( \bigcup_\alpha X_\alpha \) też jest niesprzeczną teorią.
 
 \begin{proof}[Dowód claimu 2.]
-    Claim 2. wynika z finitarnego charakteru dowodliwości. Dokładniej, załóżmy że \( \bigcup_\alpha X_\alpha \vdash \psi \wedge \neg \psi \) dla pewnego zdania \( \psi \in \mathrm{Prop}_L \). W dowodzie formalnym użytych jest tylko skończenie wiele przesłanek.
+    Teza wynika z finitarnego charakteru dowodliwości. Dokładniej, załóżmy że \( \bigcup_\alpha X_\alpha \vdash \psi \wedge \neg \psi \) dla pewnego zdania \( \psi \in \mathrm{Prop}_L \). W dowodzie formalnym użytych jest tylko skończenie wiele przesłanek. Nazwijmy je \( \varphi_1, \varphi_2, \ldots, \varphi_n \). Każda z nich pochodzi z którejś teorii \( X_\alpha \), powiedzmy zatem, że \( \varphi_k \in X_k \). Wtedy w szczególności któraś z teorii \( X_1, X_2, \ldots, X_n \) jest największa, powiedzmy \( X_k \), więc wszystkie przesłanki \( \varphi_i \) do niej należą. To jednak oznaczałoby, że \( X_k \) jest sprzeczna, co prowadzi do sprzeczności.
 
-    Nazwijmy je \( \varphi_1, \varphi_2, \ldots, \varphi_n \). Każda z nich pochodzi z którejś teorii \( X_\alpha \), powiedzmy zatem, że \( \varphi_k \in X_k \). Wtedy w szczególności któraś z teorii \( X_1, X_2, \ldots, X_n \) jest największa, powiedzmy \( X_k \), więc wszystkie przesłanki \( \varphi_i \) do niej należą. To jednak oznaczałoby, że \( X_k \) jest sprzeczna, co prowadzi do sprzeczności.
-
-    Podobnie dowodzimy, że wstępująca suma jest teorią.
+    Analogicznie, suma jest teorią, bo w dowolnym dowodzie poświadczającym \( \bigcup_\alpha X_\alpha \vdash \varphi \) użytych jest tylko skończenie wiele przesłanek, możemy zatem znaleźć teorię \( X_\beta \), która zawiera je wszystkie, więc \( X_\beta \vdash \varphi \), ale ponieważ \( X_\beta \) jest teorią, to \( \varphi \in X_\beta \subseteq \bigcup_\alpha X_\alpha \).
 \end{proof}
 
-Rozważmy zbiór \( E \) teorii języka \( L \) rozszerzających \( X \), częściowo uporządkowany przez inkluzję. Z \textbf{claimu 2.} każdy łańcuch w tym zbiorze uporządkowanym ma ograniczenie górne (sumę teorii z tego łańcucha), zatem z \textbf{lematu Kuratowskiego-Zorna} istnieje element maksymalny \( X' \in E \). Z \textbf{claimu 1.} wynika, że dla każdego zdania \( \varphi \) zachodzi albo \( X' \vdash \varphi \) albo \( X' \vdash \neg\varphi \), inaczej moglibyśmy poszerzyć \( X' \) do jeszcze większej teorii rozszerzającej X. Teoria \( X' \) jest poszukiwaną teorią zupelną.
+Rozważmy zbiór \( E \) niesprzecznych teorii języka \( L \) rozszerzających \( X \), częściowo uporządkowany przez inkluzję. Z \textbf{claimu 2.} każdy łańcuch w tym zbiorze uporządkowanym ma ograniczenie górne (sumę teorii z tego łańcucha), zatem z \textbf{lematu Kuratowskiego-Zorna} istnieje element maksymalny \( X' \in E \). Z \textbf{claimu 1.} wynika, że dla każdego zdania \( \varphi \) zachodzi albo \( X' \vdash \varphi \) albo \( X' \vdash \neg\varphi \), inaczej moglibyśmy poszerzyć \( X' \) do jeszcze większej teorii rozszerzającej \( X \). Teoria \( X' \) jest zatem poszukiwaną teorią zupelną.
