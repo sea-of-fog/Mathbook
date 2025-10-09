@@ -52,20 +52,22 @@ Zauważmy, że \( \alpha \vee \beta \) też daje \( \top \) dla \( \alpha = \top
     (\alpha \leftrightarrow \beta) \to \alpha \wedge \beta,
 \]
 gdzie \(\alpha \leftrightarrow \beta\) jest skrótem na \( \alpha \to \beta \wedge \beta \to \alpha \). Zatem tak naprawdę możemy próbować definiować formuły z \( \wedge, \vee, \to \). Wtedy:
-\begin{align*}
-    \alpha &::= v\,\mid\, \alpha \wedge \alpha | \alpha \vee \alpha | \alpha \to \alpha \\
-    \neg\alpha &::= \neg \v | \neg\alpha \vee \neg\alpha | \neg\alpha \wedge \neg\alpha | \alpha \wedge \neg\alpha.
-\end{align*}
+% \begin{align*}
+%     \alpha &::= v\,\mid\, \alpha \wedge \alpha \mid \alpha \vee \alpha | \alpha \to \alpha \\
+%     \neg\alpha &::= \neg \v | \neg\alpha \vee \neg\alpha | \neg\alpha \wedge \neg\alpha | \alpha \wedge \neg\alpha.
+% \end{align*}
 Prowadzimy teraz indukcję po liczbie zmiennych. Bazę zapenwiają formuły \( v \to v \) lub \( v \) (w zależności od wartości formuły przy wartościowaniu \( v \mapsto \bot \)). Do kroku indukcyjnego używamy \textit{rozwinięcia Shannona}
 \[ 
     F(v_1, v_2, \ldots, v_n) \equiv v_1 \wedge F(\top, v_2, \ldots, v_n) \vee \neg v_1 \wedge F(\bot, v_2, \ldots, v_n).
 \]
 Jeśli \( F \) jest funkcją boolowską formuły, która przy wszystkich zmiennych ustalonych na \( \top \) daje \( \bot \), to \( F[v_1/\top] \) też, natomiast \( F[v_1/\bot] \) może dać \( \top \) lub \( \bot \). W zależności od tego, która z tych możliwości zachodzi, korzystamy z różnych możliwości, by otrzymać prawy koniunkt.
 
+\newpage
+
 \section*{Zadanie 9}
 
 \begin{proof}[\( (\Leftarrow) \)]
-    Skoro \( X \vdash \varphi \to \psi \), to tym bardziej \( X \cup \{\varphi\} \vdash \varphi \to \psi \). Niech \( \alpha_1, \alpha_2, \ldots, \alpha_n = \varphi \to \psi \) będzie dowodem świadczącym, że \( X \cup \{ \varphi \} \vdash \varphi \to \psi \). Korzystając z reguły \textbf{MP} możemy rozszerzyć ten dowód do dowodu formalnego \( \alpha_1, \alpha_2, \ldots, \alpha_n = \varphi \to \psi, \psi \), więc \( X \cup \{\varphi\} \vdash \psi \).
+    Skoro \( X \vdash \varphi \to \psi \), to tym bardziej \( X \cup \{\varphi\} \vdash \varphi \to \psi \). Niech \( \alpha_1, \alpha_2, \ldots, \alpha_n = \varphi \to \psi \) będzie dowodem świadczącym, że \( X \cup \{ \varphi \} \vdash \varphi \to \psi \). Wprowadzając przesłankę \( \varphi \in X \cup \left\{ \varphi \right\} \) oraz korzystając z reguły \textbf{MP} możemy rozszerzyć ten dowód do dowodu formalnego \( \alpha_1, \alpha_2, \ldots, \alpha_n = \varphi \to \psi, \varphi, \psi \), więc \( X \cup \{\varphi\} \vdash \psi \).
 \end{proof}
 
 \begin{proof}[\( (\Rightarrow) \)]
@@ -74,20 +76,21 @@ Jeśli \( F \) jest funkcją boolowską formuły, która przy wszystkich zmienny
     \paragraph{Claim.} Dla każdego \( 0 < i \leqslant n \), \( X \cup \left\{ \varphi \right\} \vdash \alpha_i \).
 
 \begin{proof}[Dowód claimu]
-    Dowód \textbf{claimu} prowadzimy przez silną indukcję względem \( i \). Rozważamy przypadki w zależności od tego, jak \( \alpha_i \) zostało wprowadzone do dowodu \( X \cup \left\{ \varphi \right\} \vdash \psi\).
+    Dowód \textbf{claimu} prowadzimy przez silną indukcję względem \( i \). Rozważamy przypadki w zależności od tego, jak \( \alpha_i \) zostało wprowadzone do dowodu \( X \cup \left\{ \varphi \right\} \vdash \psi\). Bazę indukcji obejmują pierwsze trzy przypadki (pierwsza formuła w dowodzie może być tylko przesłanką lub aksjomatem).
 
     \begin{enumerate}
         \item \textbf{Przesłanka \( \varphi \).} Ponieważ \( v \to v \) jest tautologią KRZ, możemy skorzystać z aksjomatu \textbf{A0} i pod tę tautologię podstawić \(v := \varphi \), otrzymując \( \varphi \to \varphi \) bez konieczności korzystania z \( \varphi \) jako przesłanki.
-        \item Przesłanka \( \eta \in X \). Ponieważ wyprowadzamy dowód z \( X \), możemy użyć tej samej przesłanki. Potem korzystamy z tautologii KKRZ \( v \to (w \to v) \), podstawiając w niej \( v := \eta \), \( w := \varphi \) i korzystamy z reguły \textbf{MP}, by otrzymać dowód \( \varphi \to \eta \).
-        \item Aksjomat. Zauważmy, że dalej możemy uzyskać \( \alpha_i \) jako aksjomat. Ponadto, schemat \( v \to (w \to v) \) jest tautologią KRZ, możemy więc jako przykład tautologii uzyskać formułę \( \alpha_i \to (\varphi \to \alpha_i) \), po czym skorzystać z reguły \textbf{MP}, by uzyskać dowód \( \varphi \to \alpha_i \).
-        \item Modus ponens. Załóżmy, że \( \alpha_i \) wyprowadziliśmy z \( \alpha_j \) i \( \alpha_k = \alpha_j \to \alpha_i \). Z założenia indukcyjnego \( X \vdash \varphi \to \alpha_j \) i \( X \vdash \varphi \to (\alpha_j \to \alpha_i) \). Schemat \( (v \to w) \to ((v \to (w \to u)) \to (v \to u)) \) jest tautologią KRZ, więc możemy jako jego przykład uzyskać \( (\varphi \to \alpha_j) \to (\varphi \to (\alpha_j \to \alpha_i) \to (\varphi \to \alpha_i)) \), a potem zasotoswać dwukrotnie regułę \textbf{MP}.
-        \item \( \forall \)-reguła. Załóżmy, że \( \alpha_i \) wyprowadziliśmy z \( \alpha_j \) za pomocą \( \forall \)-reguły. Wtedy, zzałożenia indukcyjnego \( X \vdash \varphi \to \alpha_j \). Korzystając z \( \forall \)-reguły, możemy udowodnić \( X \vdash \forall v\,\,\varphi \to \alpha_j \), a potem z aksjomatu \textbf{A1} (\( \varphi \) jest zdaniem, więc nie ma zmiennych wolnych) oraz reguły \textbf{MP} uzyskać \( \varphi \to \forall v\,\,\alpha_j \equiv \varphi \to \alpha_i \).
+        \item \textbf{Przesłanka \( \psi \in X \).} Ponieważ wyprowadzamy dowód z \( X \), możemy użyć tej samej przesłanki. Potem korzystamy z tautologii KKRZ \( v \to (w \to v) \), podstawiając w niej \( v := \psi \), \( w := \varphi \) i korzystamy z reguły \textbf{MP}, by otrzymać dowód \( \varphi \to \psi \).
+        \item \textbf{Aksjomat.} Zauważmy, że dalej możemy uzyskać \( \alpha_i \) jako aksjomat. Ponadto, schemat \( v \to (w \to v) \) jest tautologią KRZ, możemy więc jako przykład tautologii uzyskać formułę \( \alpha_i \to (\varphi \to \alpha_i) \), skorzystać z \textbf{A0}, po czym skorzystać z reguły \textbf{MP}, by uzyskać dowód \( \varphi \to \alpha_i \).
+        \item \textbf{Modus ponens.} Załóżmy, że \( \alpha_i \) wyprowadziliśmy z \( \alpha_j \) i \( \alpha_k = \alpha_j \to \alpha_i \). Z założenia indukcyjnego \( X \vdash \varphi \to \alpha_j \) i \( X \vdash \varphi \to (\alpha_j \to \alpha_i) \). Schemat \( (v \to w) \to ((v \to (w \to u)) \to (v \to u)) \) jest tautologią KRZ, więc możemy jako jego przykład uzyskać \( (\varphi \to \alpha_j) \to (\varphi \to (\alpha_j \to \alpha_i) \to (\varphi \to \alpha_i)) \), a potem zasotoswać dwukrotnie regułę \textbf{MP}.
+        \item \textbf{\( \forall \)-reguła.} Załóżmy, że \( \alpha_i \) wyprowadziliśmy z \( \alpha_j \) za pomocą \( \forall \)-reguły. Wtedy, z założenia indukcyjnego \( X \vdash (\varphi \to \alpha_j) \). Korzystając z \( \forall \)-reguły, możemy udowodnić \( X \vdash \forall v\,\,\varphi \to \alpha_j \), a potem z aksjomatu \textbf{A1} (\( \varphi \) jest zdaniem, więc nie ma zmiennych wolnych) oraz reguły \textbf{MP} uzyskać \( \varphi \to \forall v\,\,\alpha_j = \varphi \to \alpha_i \).
     \end{enumerate}
     
 \end{proof}
 
 \end{proof}
 
+\newpage
 \section*{Zadanie 10}
 
 \begin{proof}[\((\Leftarrow)\)]
@@ -107,14 +110,29 @@ Ponieważ \( X \vdash \varphi \wedge \neg \varphi \), możemy dowód formalny po
 Ponieważ \( \psi \) było wybrane dowolnie, \( \mathrm{Cn}(X) = \mathrm{Form}_L \)
 \end{proof}
 
+\newpage
 \section*{Zadanie 11}
 
-Skonstruujemy szukane rozszerzenie korzystają z \textbf{lematu Kuratowskiego-Zorna}. 
+Skonstruujemy szukane rozszerzenie, korzystając z \textbf{lematu Kuratowskiego-Zorna}. 
 
 \paragraph{Claim 1.} Niech \( X \) będzie niezupełną, niesprzeczną teorią w języku \( L \), w szczególności niech \( \varphi \) będzie zdaniem takim, że \( X \not\vdash \varphi \) oraz \( X \not\vdash \neg\varphi \). Wtedy \( \mathrm{Cn}(X \cup \left\{ \varphi \right\}) \) jest niesprzeczną teorią ściśle większą niż \( X \).
 
 \begin{proof}[Dowód claimu 1]
 Załóżmy nie wprost, że \( X \cup \left\{ \varphi \right\} \) jest sprzeczne. Istnieje zatem zdanie \( \alpha \in \mathrm{Prop}_L \) t. że \( X \cup \left\{ \varphi \right\} \vdash \psi \wedge \neg \psi \). Ponieważ \( (\alpha \wedge \neg \alpha) \to \beta \) jest tautologią KRZ, możemy skorzystać z aksjomatu \textbf{A0} oraz reguły \textbf{MP} możemy udowodnić (podstwiając \( \psi \) za \( \alpha \) oraz \( \neg\varphi \) za \( \beta \)), że \( X \cup \left\{ \varphi \right\} \vdash \neg\varphi\). Z tw. o dedukcji wnioskujemy zatem, że \( X \vdash \varphi \to \neg\varphi \). Ponieważ \( (\alpha \to \neg\alpha) \to \neg\alpha \) jest tautologią KRZ, korzystając z \textbf{A0} oraz \textbf{MP}, że \( X \vdash \neg\varphi \), co jest sprzeczne z założeniami. 
+
+To, że \( \mathrm{Cn}(X \cup \left\{ \varphi \right\}) \) jest teorią wynika z następującej obserwacji. Jest ona oczywiście ściśle większa niż \( X \), bo zawiera \( \varphi \).
+
+\paragraph{Obserwacja.} Dla dowolnego zbioru formuł \( X \) mamy \( \mathrm{Cn}( \mathrm{Cn}(X) ) = \mathrm{Cn}(X) \).
+
+\begin{proof}[Dowód obserwacji]
+
+    Niech \( psi \in  \mathrm{Cn}( \mathrm{Cn}(X) ) \), wtedy \( \mathrm{Cn}(X) \vdash \psi \). W dowodzie formalnym, który poświadcza \( \mathrm{Cn}(X) \vdash \psi \) wszystkie formuły \( \varphi_1, \ldots, \varphi_k \) wprowadzone jako przesłanki są konsekwencjami logicznymi \( X \), więc dla każdego \( i  \) od \( 1 \) do \( k \) istnieje dowód poświadczający \( X \vdash \varphi_i \). Możemy dla każdego \( i \) te dowody wstawić w miejsce \( \varphi_i \) w dowodzie \( \mathrm{Cn}(X) \vdash \psi \), otrzymując dowód formalny \( \psi \), który jako przesłanek używa tylko formuł z \( X \). Zatem \( X \vdash \psi \), czyli \( \psi \in \mathrm{Cn}(X) \), co z dowolności \( \psi \) daje inkluzję w lewo w tezie. 
+
+    Inkluzja w prawo wynika z tego, że dla dowolnego zbioru formuł \( Y \) oraz \( \varphi \in Y \) zachodzi \( Y \vdash \varphi \) -- odpowiedni dowód składa się z wprowadzenia przesłanki.
+    
+\end{proof}
+
+
 \end{proof}
 
 
@@ -128,4 +146,4 @@ Załóżmy nie wprost, że \( X \cup \left\{ \varphi \right\} \) jest sprzeczne.
     Podobnie dowodzimy, że wstępująca suma jest teorią.
 \end{proof}
 
-Rozważmy zbiór teorii języka \( L \) rozszerzających \( X \), częściowo uporządkowany przez inkluzję. Z \textbf{claimu 2.} każdy łańcuch w tym zbiorze uporządkowanym ma ograniczenie górne (sumę teorii z tego łańcucha), z \textbf{lematu Kuratowskiego-Zorna} istnieje zatem element maksymalny \( X' \). Z \textbf{claimu 1.} wynika, że dla każdego zdania \( \varphi \) zachodzi albo \( X' \vdash \varphi \) albo \( X' \vdash \neg\varphi \), inaczej moglibyśmy poszerzyć \( X' \) do jeszcze większej teorii rozszerzającej X.
+Rozważmy zbiór \( E \) teorii języka \( L \) rozszerzających \( X \), częściowo uporządkowany przez inkluzję. Z \textbf{claimu 2.} każdy łańcuch w tym zbiorze uporządkowanym ma ograniczenie górne (sumę teorii z tego łańcucha), zatem z \textbf{lematu Kuratowskiego-Zorna} istnieje element maksymalny \( X' \in E \). Z \textbf{claimu 1.} wynika, że dla każdego zdania \( \varphi \) zachodzi albo \( X' \vdash \varphi \) albo \( X' \vdash \neg\varphi \), inaczej moglibyśmy poszerzyć \( X' \) do jeszcze większej teorii rozszerzającej X. Teoria \( X' \) jest poszukiwaną teorią zupelną.
