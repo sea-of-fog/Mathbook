@@ -90,7 +90,23 @@ Jeśli \( F \) jest funkcją boolowską formuły, która przy wszystkich zmienny
 
 \end{proof}
 
-\newpage
+\subsection*{Kontrprzykład, gdy \(\varphi\) nie jest zdaniem}
+
+Implikacja w prawo dalej zachodzi, pokażemy kontrprzykład dla implikacji w lewo. Rozważmy język \( L = \left\{ P^1, R^1 \right\} \) oraz \( X = \left\{ \forall x\,P(x) \to \forall x\,R(x) \right\} \), \( \varphi = P(x) \), \( \psi = R(x) \). 
+
+Wtedy \( X \cup \left\{ \varphi \right\} \vdash \psi \), ponieważ możemy skonstruować dowód wprowadzając dwie przesłanki i użyć \( \forall \)-reguły, by uzyskać \( \forall x\, P(x) \), z \textbf{MP} uzyskać \( \forall x\,R(x) \), z aksjomatu \textbf{A2} uzyskać \( \forall x\,R(x) \to R(x) \), po czym z \textbf{MP} uzyskać \( R(x) = \psi \).
+
+\paragraph{Lemat.} Jeśli \( M \models X \) oraz \( X \vdash \varphi \), to \( M \models \varphi \).
+
+\begin{proof}[Dowód lematu]
+    Dowód prowadzimy przez indukcję ze względu na długość dowodu poświadczającego \( X \vdash \varphi \). Jeśli dowód ma długość \( 1 \), to \( \varphi \) zostało wprowadzone jako przesłanka lub aksjomat. Jeśli \( \varphi \) jest przesłanką, to \( \varphi \in X \), a więc \( M \models \varphi \) wynika z \( M \models X \). Jeśli jest aksjomatem, to \( M \models \varphi \) z zadania 8.
+
+    Rozważmy teraz dowód o długości \( n+1 \). Jeśli \( \varphi \) zostało wprowadzone jako przesłanka lub aksjomat, to na mocy poprzedniego akapitu \( M \models \varphi \). Jeśli natomiast zostało wprowadzone przez \textbf{MP} lub \textbf{\( \forall \)-regułę}, to \( M \models \varphi \) wynika z założenia indukcyjnego oraz tego, że obie wspomniane reguły dowodowe są poprawne (także z zadanie 8.).
+
+\end{proof}
+
+Żeby pokazać, że \( X \not\vdash \varphi \to \psi \) pokażemy model \( X \), w którym formuła \( \varphi \to \psi \equiv \forall x\, (P(x) \to R(x)) \) nie jest spełniona. Niech \( |M| = \left\{ 1, 2 \right\} \), \( M \vdash P(1), R(2) \) oraz \( M \not\models P(2), R(1)  \). Wtedy \( M \models X \) (poprzednik implikacji nie jest spełniony), ale \( M \not\models \forall x\, (P(x) \to R(x)) \), co daje sprzeczność z \textbf{lematem}.
+ 
 \section*{Zadanie 10}
 
 \begin{proof}[\((\Leftarrow)\)]
