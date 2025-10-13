@@ -32,7 +32,10 @@ Definiujemy
 
 \section*{Zadanie 7}
 
-Korzystając z poprzedniego zadania możemy rozważyć \( g = \varphi_{f(0)} \circ f \), zatem \( g(0) = 0 \). Wtedy \( g'(0) \cdot (g^{-1})'(0) = 1 \), ale skoro obie te liczby są z lematu Schwarza co do modułu nie większe niż \( 1 \), to obie są co do modułu równe 1, więc \( g(z) = az \), czyli \( f = \varphi_{-g(0)} \circ (z \mapsto az) \), gdzie \( a = f'(0) \).
+Korzystając z poprzedniego zadania możemy rozważyć \( g = \varphi_{f(0)} \circ f \), zatem \( g(0) = 0 \). Wtedy \( g'(0) \cdot (g^{-1})'(0) = 1 \), ale skoro obie te liczby są z lematu Schwarza co do modułu nie większe niż \( 1 \), to obie są co do modułu równe 1, więc \( g(z) = az \), czyli \( f = \varphi_{-g(0)} \circ (z \mapsto az) \), gdzie \( a = f'(0) \) i \( |a| = 1 \). Zatem wzór można napisać
+\[ 
+    \frac{\omega z - w}{1 - \overline{w}\omega z}.
+\]
 
 \section*{Zadanie 8}
 
@@ -78,7 +81,9 @@ skąd wyliczamy
 \begin{enumerate}
     \item Można skorzystać z poprzedniego zadania dla \( f(0), f(1), f(\infty) \).
 
-    \item Rozszerzamy \( h(z) = g(z)/z \) o \( h(0) = g'(0) \) oraz \( h(\infty) = 1 \). Wtedy \( h: \overline{\mathbb{C}} \to \mathbb{C} \) jest ciągłą funkcją, jest więc ograniczona. Holomorficzność na \( \mathbb{C} \) daje \textbf{TODO: twierdzenie o holomorficznej dziurze}, że \( h \) jest holomorficzne na \( \mathbb{C} \), więc \( h \) jest stałe z zad. 2. (albo z Tw. Liouville'a).
+    \item Rozszerzamy \( h(z) = g(z)/z \) o \( h(0) = g'(0) \) oraz \( h(\infty) = 1 \). Wtedy \( h: \overline{\mathbb{C}} \to \mathbb{C} \) jest ciągłą funkcją, jest więc ograniczona.
+
+        Sprawdzamy w mapie. Wiadomo, że \( 1/g(1/z) \) jest holomorficzne w otoczeniu zera i ciągłe w zerze, więc jest holomorficzne i ma tam wartość zero, więc \( 1/g(1/z) = zk(z) \) przy \( k(0) \neq 0 \) (funkcja musi być 1-1, więc ma niezerową pochodną w zerze). Holomorficzność na \( \mathbb{C} \) daje \textbf{TODO: twierdzenie o holomorficznej dziurze}, że \( h \) jest holomorficzne na \( \mathbb{C} \), więc \( h \) jest stałe z zad. 2. (albo z Tw. Liouville'a).
 
     \item Skoro \( h(z) = a \), to \( g(z) = zh(z) = az \), więc \( f = \psi_{A^{-1}} \circ g = \psi_{A^{-1}}  \) z jednorodności działania \( \mathrm{GL}(2, \mathbb{C}) \) na \( \overline{\mathbb{C}} \).
 \end{enumerate}
