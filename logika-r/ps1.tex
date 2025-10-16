@@ -4,7 +4,7 @@
 
 \paragraph{Zdania skwantyfikowane.} Jeśli zdanie ma na początku/górze kwantyfikator, to jest fałszywe, jeśli jest to kwantyfikator egzystencjalny, a jest prawdziwe, jeśli jest to kwantyfikator uniwersalny (tzw. puste spełnienie, \textit{vacuous truth}).
 
-\paragraph{Zdania nieskwantyfikowane.} Jeśli zdanie jest formułą złożoną, ale na górze drzewa rozbioru nie ma kwantyfikatora, to jest ono przykładem pewnego schematu KRZ przez podstawienie doń zdań z kwantyfikatorami na górze. Z definicji prawdy Tarskiego wynika, że możemy \textit{wyliczyć} prawdziwość tego zdania podstawiając wartości zdań skantyfikowanych.
+\paragraph{Zdania nieskwantyfikowane.} Jeśli zdanie jest formułą złożoną, ale na górze drzewa rozbioru nie ma kwantyfikatora, to jest ono przykładem pewnego schematu KRZ przez podstawienie doń zdań z kwantyfikatorami na górze. Z definicji prawdy Tarskiego wynika, że możemy \textit{wyliczyć} prawdziwość tego zdania podstawiając wartości zdań skantyfikowanych (patrz analogiczny lemat w następnym zadaniu).
 
 \paragraph{Formuły ze zmiennymi wolnymi.}  Jeśli formuła ma zmienne wolne, to jej prawdziwość jest równoważna prawdziwości uniwersalnego domknięcia, które jest zdaniem skwantyfikwoanym uniwersalnie, a więc jest prawdziwe.
 
@@ -25,11 +25,9 @@ Znajdziemy formułę zależną tylko od zmiennych \( p_i \) spełnioną przez ws
     f_\gamma (p_1, \ldots, p_k) = \max\limits_{\overline{a} \in \left\{ 0,\, 1 \right\}^n } f_\alpha(p_1, \ldots, p_k, a_1, \ldots, a_n).
 \]
 
-Dla danych wartościowań \( p_i \), jeśli w ogóle istnieje wartościowanie które spełnia \( \alpha \), to \( \gamma \) jest spełniona, w szczególności jest spełniona dla wszystkich (przy ustalonych wartościowaniach \( p_i \)) wartościowań spełniających \( \alpha \).
+Dla danych wartościowań \( p_i \), jeśli nie istnieje wartościowanie \( a_i \) t. że \( [[\alpha]]_v = \top \), to \( \gamma \) też obliczy się do \( \bot \), więc obie postulowane implikacje będą prawdziwe niezależnie od wartości \( \beta \), bo obie będą \( \bot \to \bot \) i \( \bot \to \star \). 
 
-Ustalmy wartościowania zmiennych \( p_i \). Mamy dwie możliwości: albo dla żadnego wartościowania z tymi wartościami \( p_i \) schemat \( \beta \) nie jest spełniony (i wtedy nie jest też spełnione \( \alpha \) przy tym układzie wartości \( p_i \) ), albo istnieje jakieś wartościowanie dla którego \( \beta \) jest spełniona.
-
-% TODO: co dalej
+Jeśli natomiast przy pewnym ustawieniu \( a_i \) dostaniemy \( [[\alpha]]_v = \top \), to \( \alpha \to \gamma \) będzie \( \bot \to \top \) lub \( \top \to \bot \). Potrzebujemy jednak jeszcze pokazać, że przy tak ustalonych \( p_i \) zawsze będzie \( [[\beta]]_v = \top \). Gdyby jednak przy pewnym ustaleniu \( b_i \) tak nie było, to \( \alpha \to \beta \) byłoby \( \top \to \bot \) (bo wartości \( \alpha \) nie zależą od \( b_i \)!), czyli \( \not\models \alpha \to \beta \), sprzeczność.
 
 \paragraph{Rozwiązanie Newelskiego.} Zamieniamy implikację na nierówności funkcji boolowskich.
 
