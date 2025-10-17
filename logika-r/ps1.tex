@@ -73,7 +73,7 @@ Jeśli \( F \) jest funkcją boolowską formuły, która przy wszystkich zmienny
 \begin{proof}[\( (\Leftarrow) \)]
     Niech \( \alpha_1, \alpha_2, \ldots, \alpha_n = \psi \) będzie dowodem formalnym poświadczającym, \( X \cup \left\{ \varphi \right\} \vdash \psi \). Pokażemy, że z \( X \) można udowodnić \( \varphi \to \psi \) poprzez dowód \( \varphi \to \alpha_1, \varphi \to \alpha_2, \ldots, \varphi \to \psi \).
 
-    \paragraph{Claim.} Dla każdego \( 0 < i \leqslant n \), \( X \cup \left\{ \varphi \right\} \vdash \alpha_i \).
+    \paragraph{Claim.} Dla każdego \( 0 < i \leqslant n \), \( X \vdash \varphi \to \alpha_i \).
 
 \begin{proof}[Dowód claimu]
     Dowód \textbf{claimu} prowadzimy przez silną indukcję względem \( i \). Rozważamy przypadki w zależności od tego, jak \( \alpha_i \) zostało wprowadzone do dowodu \( X \cup \left\{ \varphi \right\} \vdash \psi\). Bazę indukcji obejmują pierwsze trzy przypadki (pierwsza formuła w dowodzie może być tylko przesłanką lub aksjomatem).
